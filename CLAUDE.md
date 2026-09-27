@@ -54,7 +54,7 @@ no `#C8102E`, no `#C79A3B` anywhere in this repo.
 | `--color-accent-deep` | `#047857` | Mint as small text / dividers on WHITE | 5.5:1 on white |
 | `--color-accent-wash` | `#E9FDF6` | Soft mint section backgrounds (the "wellness" feel) | — |
 | `--color-ink` | `#0B1B3A` | Headings and body text on white | 17.0:1 |
-| `--color-muted` | `#4A5873` | Secondary text on white | [VERIFY ≥4.5:1 in Prompt 0] |
+| `--color-muted` | `#4A5873` | Secondary text on white | 7.2:1 on white · 6.8:1 on accent-wash |
 | `--color-bg` | `#FFFFFF` | Page background | — |
 
 Rules:
@@ -368,7 +368,7 @@ the single badge row) · mega-menu · any home-services artifact (emergency 24/7
 - Zero grep hits before deploy for: `thrive-domain.tbd`, `placehold.co` in any `og:image`,
   `[NEEDS INPUT]`, `[VERIFY]`, `DISCLAIMER: pending`, `#C8102E`, `#C79A3B`, `#0A1F5C`,
   "South Texas Vascular" outside the footer line, "Playfair", `family=Inter`,
-  `'Inter'`.
+  `'Inter'`, `Barlow`, `Nunito`, `yourbusiness.com`, `service-one`, `city-one`.
 
 ## Git Discipline — FROZEN
 
