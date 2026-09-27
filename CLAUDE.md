@@ -22,8 +22,8 @@ value that needs a human check before launch.
 | Phone (site) | (956) 322-7662 → `tel:+19563227662`. **Single swappable token** (see Phone rule). |
 | Hours | Mon–Fri 9:00 AM–5:00 PM. Sat–Sun closed. |
 | Email | `[NEEDS INPUT]`. Omit from site and schema until provided. |
-| Domain | `[NEEDS INPUT]`. Build every absolute URL with the placeholder host `https://thrive-domain.tbd`. It must return zero grep hits before deploy. |
-| Canonical host | `[NEEDS INPUT — www vs non-www]`. Set as Vercel Primary on day one. |
+| Domain | `thriveivsolution.com`. Build every absolute URL on the canonical host `https://www.thriveivsolution.com`. |
+| Canonical host | `https://www.thriveivsolution.com` (Vercel Primary; the bare domain redirects to www). Set as Vercel Primary on day one. |
 | Region | Rio Grande Valley, South Texas |
 | Booking | Call now. Text only if confirmed (see Phone rule). GHL form `[NEEDS INPUT — maybe later]`. |
 
@@ -267,12 +267,12 @@ left in markup, commented out, not rendered.
 - ES titles translated equivalents, same length limits.
 - Home meta description must mention physician supervision + Edinburg + a call CTA.
 
-Per page: unique title and description, self-canonical (placeholder host), robots
+Per page: unique title and description, self-canonical (`https://www.thriveivsolution.com`), robots
 index/follow with max-image/snippet/video-preview, OG + Twitter (`brand_assets/og-image.jpg`
 1200×630 `[NEEDS INPUT — create]`), `og:locale` en_US / es_US.
 
 **JSON-LD.**
-- Home: `MedicalClinic` with `@id` `https://thrive-domain.tbd/#clinic`. Name, telephone
+- Home: `MedicalClinic` with `@id` `https://www.thriveivsolution.com/#clinic`. Name, telephone
   (token), PostalAddress (INCLUDED — public address), `geo` `[VERIFY]`,
   `openingHoursSpecification` (Mon–Fri 09:00–17:00), `areaServed`: Edinburg, McAllen,
   Mission, Pharr, Weslaco, Rio Grande Valley `[VERIFY — client's actual draw area]`,
@@ -368,7 +368,8 @@ the single badge row) · mega-menu · any home-services artifact (emergency 24/7
 - Zero grep hits before deploy for: `thrive-domain.tbd`, `placehold.co` in any `og:image`,
   `[NEEDS INPUT]`, `[VERIFY]`, `DISCLAIMER: pending`, `#C8102E`, `#C79A3B`, `#0A1F5C`,
   "South Texas Vascular" outside the footer line, "Playfair", `family=Inter`,
-  `'Inter'`, `Barlow`, `Nunito`, `yourbusiness.com`, `service-one`, `city-one`.
+  `'Inter'`, `Barlow`, `Nunito`, `yourbusiness.com`, `service-one`, `city-one`,
+  `https://thriveivsolution.com` (non-www absolute URLs must never appear).
 
 ## Git Discipline — FROZEN
 
@@ -384,7 +385,7 @@ the single badge row) · mega-menu · any home-services artifact (emergency 24/7
 
 ## Active Blockers
 
-**Launch-blocking:** domain + canonical host · full disclaimer text · og-image ·
+**Launch-blocking:** full disclaimer text · og-image ·
 native Spanish read (disclaimer + care advice minimum) · confirmation of what
 "physician-supervised" means in practice (who administers, screening, on-site presence) ·
 decision on dedicated Thrive phone line.
