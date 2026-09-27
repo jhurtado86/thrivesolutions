@@ -1,494 +1,400 @@
-# CLAUDE-SKELETON.md — Nexor AI blank CLAUDE.md
+# CLAUDE.md — Thrive IV Solutions
 
-This is the **starting point for every client's `CLAUDE.md`**. Copy it to the new client
-repo, rename it `CLAUDE.md`, and fill it in from the onboarding form.
+This is the **Thrive IV Solutions** website: a lean, bilingual (EN + `/es/`), 5-page site
+for a physician-supervised IV hydration and wellness clinic in Edinburg, TX. It is built
+from the **clean `nexor-template` base**. It is NOT a clone of the STVI repo, and no STVI
+content, copy, colors, or assets may appear in this repo. The STVI **design patterns**
+listed below are rebuilt from this spec.
 
-## How to use this skeleton
-
-Two layers, marked throughout:
-
-- **FROZEN** — identical on every build. The proven Nexor conventions. Do NOT rewrite
-  these per client. If you improve one, improve it *here* and roll it to all future
-  builds — never fork it silently in one client's file.
-- **`[NEEDS INPUT — …]`** — a client fact to fill from the onboarding form. If the form
-  didn't provide it, leave the flag; do NOT invent it. `[DECIDE — …]` marks a judgment
-  call to resolve at strategy lock. `[DERIVE — …]` marks something computed from an asset
-  (e.g. palette from logo).
-
-Fill every `[NEEDS INPUT]` you can, flag the rest, resolve every `[DECIDE]` at the
-strategy-lock gate. When every flag is either filled or consciously deferred to backfill,
-`CLAUDE.md` is locked and the build (BUILD-PROMPTS.md, Code-only) begins.
+Anything marked `[NEEDS INPUT]` is unconfirmed. Do not invent it. `[VERIFY]` means a draft
+value that needs a human check before launch.
 
 ---
 
-## What This Is — FILL PER CLIENT (boilerplate frozen)
+## Resolved token reference
 
-This is the **[NEEDS INPUT — Business Name]** website, built on the Nexor AI template.
-The generic template placeholders are resolved to this client's real identity below;
-anything not yet confirmed is left `[NEEDS INPUT]` and must NOT be invented. Keep the
-template's structure, section rhythm, nav pattern, dark sections, footer layout, and
-design system intact — only content, brand, service area, colors, logo, photos, and copy
-are client-specific.
-
-Trade: **[NEEDS INPUT — industry/trade]**. Several template modules are home-services
-artifacts that may not apply to this trade — see "Template Sections to DELETE."
-
-Treat any remaining `[NEEDS INPUT]` field as fill-in-the-blank. Do not invent client
-facts; confirm with the client / Juan before filling.
-
----
-
-## Resolved token reference — FILL PER CLIENT
-
-| Token | Resolved value |
+| Token | Value |
 |---|---|
-| Business name | [NEEDS INPUT] (short brand: [NEEDS INPUT]) |
-| Service One … Service Six | [NEEDS INPUT — the six locked service names] |
-| service slugs | [NEEDS INPUT — one slug per service] |
-| Primary city | [NEEDS INPUT — physical-location city; anchors NAP + homepage] |
-| City 2 … City 6 | [NEEDS INPUT — priority order below] |
-| city slugs | [NEEDS INPUT] |
-| Region | [NEEDS INPUT] |
-| State (full) | [NEEDS INPUT — e.g. Texas] |
-| State abbreviation | [NEEDS INPUT — e.g. TX] |
-| Phone (site) | [NEEDS INPUT — GHL tracking number ONLY; owner's personal line is never published] |
-| Email | [NEEDS INPUT] |
-| Domain | [NEEDS INPUT] — canonical host [NEEDS INPUT — www vs non-www, set as Vercel Primary day one] |
+| Business name | Thrive IV Solutions (short brand: Thrive IV) |
+| Trade | Physician-supervised IV hydration and wellness clinic |
+| Physician | Dr. R. Brookshire, board-certified vascular surgeon |
+| Address | 2511 Cornerstone Blvd, Ste 2511, Edinburg, TX 78539 `[VERIFY — suite number matches street number; confirm with client]` |
+| Phone (site) | (956) 322-7662 → `tel:+19563227662`. **Single swappable token** (see Phone rule). |
+| Hours | Mon–Fri 9:00 AM–5:00 PM. Sat–Sun closed. |
+| Email | `[NEEDS INPUT]`. Omit from site and schema until provided. |
+| Domain | `[NEEDS INPUT]`. Build every absolute URL with the placeholder host `https://thrive-domain.tbd`. It must return zero grep hits before deploy. |
+| Canonical host | `[NEEDS INPUT — www vs non-www]`. Set as Vercel Primary on day one. |
+| Region | Rio Grande Valley, South Texas |
+| Booking | Call now. Text only if confirmed (see Phone rule). GHL form `[NEEDS INPUT — maybe later]`. |
 
-> ⚠️ **Email domain may differ from website domain.** If so, both can be correct — do NOT
-> "fix" one to match the other, and never build a URL off the email domain. Confirm.
+**Phone rule.** (956) 322-7662 is shared with STVI for now. Define it ONCE as a constant
+(display string + E.164) and reference it everywhere, so a future dedicated Thrive line
+(possibly (956) 935-0109 `[NEEDS INPUT]`) is a one-line swap. Do NOT publish 935-0109 until
+confirmed. Do NOT ship an `sms:` link or "Text us" CTA until the client confirms the
+number receives texts. Until then, the primary CTA is **Call to Book**.
 
 ---
 
-## Brand color system — FROZEN methodology, FILL the values
+## Brand color system — navy base + logo blue + mint
 
-Palette is **derived from the client logo every build** — extract the hexes from
-`brand_assets/logo.png`; never assume the template's colors. Define once via CSS custom
-properties + Tailwind `theme.extend.colors`; reuse everywhere; never hardcode hexes per
-page.
+Derived from the official logo (`brand_assets/logo-white.png`). The logo itself is an
+electric-blue gradient drop + a mint-green IV bag and "IV" letters, with a WHITE wordmark.
+The logo contains no navy: navy is the chosen dark base because the white wordmark needs
+a dark background. **This is NOT STVI's palette.** No red, no gold, no `#0A1F5C`,
+no `#C8102E`, no `#C79A3B` anywhere in this repo.
 
-| Token | Hex | Role |
+| Token | Hex | Role | Contrast |
+|---|---|---|---|
+| `--color-primary` / `--color-dark` | `#0B1B3A` | Header, footer, dark sections, hero overlay tint. THE one dark token. | 17.0:1 vs white |
+| `--color-primary-mid` | `#13295A` | Hover on dark, secondary dark panels, dividers on dark | — |
+| `--color-blue` | `#0056FC` | Logo drop (deep end). Primary buttons, links on white. | 5.6:1 on white |
+| `--color-blue-bright` | `#00AEFF` | Logo drop (bright end). Gradients and accents on dark only. | 6.9:1 on navy · 2.5:1 on white (fill only) |
+| `--color-accent` (mint) | `#0FF9B0` | Logo mint. Eyebrows, prices, highlights ON DARK only. | 12.3:1 on navy · 1.4:1 on white (never text on white) |
+| `--color-accent-mid` | `#03BA89` | Logo mint (shadow end). Icons, fills, borders. | 2.5:1 on white (non-text only) |
+| `--color-accent-deep` | `#047857` | Mint as small text / dividers on WHITE | 5.5:1 on white |
+| `--color-accent-wash` | `#E9FDF6` | Soft mint section backgrounds (the "wellness" feel) | — |
+| `--color-ink` | `#0B1B3A` | Headings and body text on white | 17.0:1 |
+| `--color-muted` | `#4A5873` | Secondary text on white | [VERIFY ≥4.5:1 in Prompt 0] |
+| `--color-bg` | `#FFFFFF` | Page background | — |
+
+Rules:
+- Define once as CSS custom properties + Tailwind `theme.extend.colors`. Never hardcode hexes on a page.
+- Bright mint and bright blue are for dark backgrounds and non-text fills. On white, text uses `--color-blue`, `--color-accent-deep`, or `--color-ink`.
+- The signature gradient is the logo drop: `#00AEFF → #0056FC`. Use it sparingly (primary button fill, one accent line), never as a full-section background.
+- Never use default Tailwind blue/indigo/sky/cyan/teal/emerald classes. Every color comes from the tokens.
+- The wellness feel comes from generous white space, `--color-accent-wash` sections, and softer radii. It does NOT come from pastel gradients or spa clichés.
+
+**Logo files (official, cleaned from the client's source PNG):**
+- `brand_assets/logo-white.png` — white wordmark, for the navy header, footer, and dark sections. **Default site logo.**
+- `brand_assets/logo-dark.png` — same logo with the wordmark recolored to `#0B1B3A`, for any white/light surface.
+- `brand_assets/logo-icon.png` — drop + IV bag mark only, for favicon, apple-touch-icon, and tight mobile spots.
+- Never place `logo-white.png` on a light background (the wordmark disappears).
+- Header height ~40px desktop / ~34px mobile; footer ~36px. Never upscale past the source.
+- Known artifact: small smudge where the "R" leg meets the bowl. Invisible at header size; don't use the logo larger than ~320px wide until a vector/clean file is supplied `[NEEDS INPUT — SVG or high-res file]`.
+
+---
+
+## Typography
+
+- Display: **Fraunces** (soft optical serif; use weights 500–600, tight tracking on large headings).
+- Body: **DM Sans**.
+- Deliberately different from STVI's Playfair Display + Inter so the two brands never read as the same site.
+- Body text minimum **18px**, line-height ~1.65. Tap targets minimum **48px**.
+
+---
+
+## Positioning — the one idea every page carries
+
+**Physician-supervised IV therapy, overseen by a board-certified vascular surgeon.**
+This is the differentiator against med-spa drip bars. It leads the homepage hero, the
+homepage meta description, the About page, and the schema description.
+
+Locked wording (EN):
+- "Physician-supervised IV therapy in Edinburg."
+- "Overseen by Dr. R. Brookshire, a board-certified vascular surgeon."
+
+Locked wording (ES):
+- "Terapia IV supervisada por un médico en Edinburg."
+- "Bajo la supervisión del Dr. R. Brookshire, cirujano vascular certificado."
+  `[VERIFY — native read]`
+
+Do NOT claim (until confirmed `[NEEDS INPUT]`):
+- Who administers the IV (RN / NP / other).
+- That Dr. Brookshire is on-site during sessions or personally places IVs.
+- That there is a pre-drip health screening or consultation.
+- Any STVI credential line ("first board-certified…", "only one in Edinburg"). That wording belongs to STVI only.
+
+**Owner-name override.** The skeleton restricts the owner name to the About page. For
+Thrive, Dr. Brookshire's name and credential MAY appear in the hero, meta, and schema,
+because the physician is the differentiator. Never in CTA button labels.
+
+**Taglines (confirmed).** "Feel Better." · "Hydration. Recovery. Wellness." ·
+"Hydration That Works. So You Can Thrive." Use "Hydration That Works. So You Can Thrive."
+as the homepage final-CTA line; "Hydration. Recovery. Wellness." as the hero eyebrow.
+ES `[VERIFY — native read]`: "Siéntete mejor." · "Hidratación. Recuperación. Bienestar." ·
+"Hidratación que funciona. Para que prosperes."
+
+**Trust badges (confirmed).** Premium Ingredients · Safe & Professional · Personalized Care.
+Render as ONE understated row of three (text + small line icon), not a pill row, not
+invented seals or certifications. ES: Ingredientes de primera · Seguro y profesional ·
+Atención personalizada `[VERIFY]`.
+
+---
+
+## Menu — SINGLE SOURCE OF TRUTH for names and prices
+
+Pricing is **displayed** on this site (overrides the skeleton's no-price rule). Every
+price in EN copy, ES copy, and JSON-LD must come from this table. If a price changes,
+change it here first, then grep every page.
+
+| ID / anchor | Name (EN) | Name (ES) `[VERIFY]` | Type | Price | EN description (confirmed) |
+|---|---|---|---|---|---|
+| `recovery-pack` | Recovery Pack | Paquete de Recuperación | IV drip | $165 | Replenish, restore, recharge. For athletes, busy lifestyles, and post-workout recovery. |
+| `basic-hydration` | Basic Hydration | Hidratación Básica | IV drip | $100 | Stay hydrated, feel refreshed. For everyday wellness and routine hydration. |
+| `hangover-help` | Hangover Help | Alivio para la Cruda | IV drip | $185 | Feel better fast. Rehydrate, replenish, and bounce back sooner. |
+| `nad-plus` | NAD+ Injection | Inyección de NAD+ | **Intramuscular injection (NOT an IV)** | $65 | Supports cellular energy and mental clarity. For healthy aging, focus, and overall wellness. |
+
+Rules:
+- Page and nav label: **"IV & Wellness Menu"** (ES: "Menú de IV y Bienestar"). URL stays `/iv-menu/`.
+- NAD+ is always labeled as an injection ("quick injection, no IV line"). Never call it a drip or an IV.
+- Order on the page: Recovery Pack, Basic Hydration, Hangover Help, then NAD+ as a visually separate "Add-on / Injection" item.
+- No ingredient lists, dosages, or "what's in the bag" details until confirmed `[NEEDS INPUT]`.
+- Prices display as whole dollars ("$165"). No "starting at," no memberships, packages, or discounts unless added to this table.
+
+---
+
+## Health-claims language — LOCKED
+
+- Benefits use soft, supportive verbs: *helps you rehydrate*, *supports recovery*, *helps you feel refreshed*.
+- NEVER: cure, treat, heal, prevent, detox, boost immunity, "instant," guaranteed results, anti-aging promises, or any disease/condition claim.
+- NEVER compare against or disparage medical care or other clinics.
+- "Hangover Help" copy stays about rehydration and feeling better. No glamorizing drinking.
+- Every page carries the disclaimer (see below).
+
+---
+
+## Disclaimer — LOCKED placement, text `[NEEDS INPUT]`
+
+Placement: site-wide in the footer (small, full text) AND as a visible callout on
+What to Expect.
+
+Text: the client's full wording is `[NEEDS INPUT]`. Confirmed fragment: "Not a substitute for
+medical care. Consult your healthcare provider if pregnant…". Until the full text arrives,
+render exactly that confirmed fragment inside
+`<!-- DISCLAIMER: pending full client text -->` markers and do not write additional
+medical disclaimer language. ES translation happens only after the EN text is final.
+
+---
+
+## Care advice — What to Expect content (confirmed)
+
+**Before your visit:** eat a snack beforehand; wear loose, comfortable clothing (easy
+sleeve access); drink water ahead of time; avoid antihistamines and decongestants
+beforehand; sessions take about 30–45 minutes.
+
+**After your visit:** wait 1 hour before getting the IV site wet; wait 24 hours before
+strenuous activity; keep hydrating; avoid rough contact with the site for 48 hours;
+IV therapy supplements a healthy lifestyle, it doesn't replace one.
+
+Do not add timing advice, contraindications, or side-effect lists beyond this without
+client confirmation.
+
+---
+
+## Site Architecture — VERIFY against disk first
+
+Run `find . -name "*.html"` before writing paths. Disk is the source of truth.
+
+Clean-URL convention (from STVI): every page is `folder/index.html`. Patch `serve.mjs` to
+resolve `/folder/` → `folder/index.html` locally. `vercel.json` sets `cleanUrls: true` and
+`trailingSlash: true` for production parity.
+
+| Page | EN | ES |
 |---|---|---|
-| `--color-primary` | [DERIVE from logo] | Primary brand — dark hero/sections, footer, nav, primary buttons |
-| `--color-primary-mid` | [DERIVE] | Mid-tone — hover, secondary buttons, borders/dividers on dark |
-| `--color-accent` | [DERIVE] | Accent — icons, link accents, eyebrows, highlights on light |
-| `--color-accent-deep` | [DERIVE] | On-light fallback for the accent (see rule below) |
-| `--color-accent-bright` | [DERIVE] | On-dark counterpart of the accent (see rule below) |
-| `--color-silver` / neutral | [DERIVE] | Muted borders, secondary text on dark, chrome |
-| `--color-dark` (canonical) | [= primary] | THE single dark-section background token |
-| `--color-ink` | [DERIVE] | Near-black headings/body |
-| `--color-bg` | `#FFFFFF` | Body/content backgrounds |
-| `--color-muted` | [DERIVE] | Muted/secondary text |
+| Home | `/` (`index.html`) | `/es/` |
+| IV & Wellness Menu | `/iv-menu/` | `/es/iv-menu/` |
+| What to Expect / FAQ | `/what-to-expect/` | `/es/what-to-expect/` |
+| About | `/about/` | `/es/about/` |
+| Contact / Book | `/contact/` | `/es/contact/` |
 
-**FROZEN rules:**
-- **Accent-on-light fallback:** a bright accent is fine as fill / text-on-dark; as small
-  text or dividers on white it goes low-contrast — fall back to `--color-accent-deep`.
-- **Accent-on-dark fallback:** the same failure runs in reverse on dark sections — a deep
-  or mid-tone accent goes low-contrast on `--color-dark`. Every accent use on a dark
-  background (colored heading spans, dark-section eyebrows, step numbers, the footer
-  tagline, check strokes) uses `--color-accent-bright`, holding ≥4.5:1 against
-  `--color-dark` (≥3:1 covers large text/graphics, but the same token also sets small
-  text, so hold 4.5). Documented cross-build lesson — never ship raw `--color-accent` on
-  a dark section.
-- **Recolor contrast check (every build):** after deriving the palette and before any page
-  work, verify: `--color-accent-deep` vs `--color-bg` ≥4.5:1 · `--color-accent-bright` vs
-  `--color-dark` ≥4.5:1 · `--color-muted` vs `--color-bg-2` ≥4.5:1. Fix the token, never
-  the page.
-- **One canonical dark token:** `--color-dark` is the only dark-section background. Never
-  let a second near-identical dark hex drift in.
-- **Strip the template's red.** The template ships red as de-facto primary — remove it.
-  Red is semantic (emergency/urgency) only, and only if the brand actually uses it.
-  `[DECIDE — does this brand's palette include red at all? Default: no.]`
-- **Never use default Tailwind blue/indigo/sky/cyan.** Drive every color from the brand
-  tokens and derive shades from them.
+- ES pages use the same English slugs under `/es/` (routing stays simple).
+- **No thank-you page** until a GHL form exists. When a form is added, the thank-you trio applies (noindex/nofollow + excluded from sitemap + Disallow in robots.txt).
+- **No city pages, no individual drip pages, no gallery.** Local reach comes from schema `areaServed`. Drips link by anchor (`/iv-menu/#hangover-help`).
+
+### Nav (simple, no mega-menu)
+Logo · IV & Wellness Menu · What to Expect · About · Contact · **Español/English toggle** ·
+**Call to Book** button (phone token). Sticky header with persistent click-to-call. Mobile:
+hamburger drawer + the call button stays visible in the bar.
+
+### Footer
+Logo (small) · NAP · hours · the 5 page links · language toggle · the disclaimer ·
+one line: "Thrive IV Solutions is led by Dr. R. Brookshire, who also leads
+South Texas Vascular Institute." with a single link to STVI `[NEEDS INPUT — STVI URL]`.
+No other STVI branding anywhere.
 
 ---
 
-## Nav & logo sizing — FROZEN methodology, FILL the values
+## Bilingual method — FROZEN (from STVI)
 
-Nav height is **sized off the client logo** — a documented cross-build issue: past builds
-needed a 96–104px nav to fit 76px+ logos, and the template never inherited it. It is now
-driven by three tokens in `brand.css` (the defaults are a **starting point, not a fixed
-value** — resize per client from the logo):
-
-| Token | Default | Role |
-|---|---|---|
-| `--nav-height` | `96px` | Nav bar height. |
-| `--nav-logo-height` | `72px` | Client logo `<img>` height in the nav (swap the `<span>` wordmark for `<img class="nav-logo">`). |
-| `--footer-logo-height` | `116px` | Client logo `<img>` height in the footer (`<img class="footer-logo">`). |
-
-**FROZEN rules:**
-- These tokens are the ONLY place nav/logo heights are set. Every page consumes them —
-  the sticky + scrolled nav state, the mobile nav, and the desktop dropdowns all key off
-  `--nav-height` — so per-client resizing is **one edit in `brand.css`, never a 15-file sweep.**
-- Size `--nav-height` off the logo: it must clear `--nav-logo-height` with breathing room.
-- Changing the token keeps the scrolled/solid nav, the transparent-at-top state, hero
-  clearance, the mobile toggle, and the dropdown menus aligned — verify these after a resize.
+- Real, fully translated `/es/` pages. Not a JS toggle, not machine-translated widgets.
+- Every page pair carries reciprocal `hreflang="en"`, `hreflang="es"`, and `hreflang="x-default"` (→ EN).
+- `<html lang="en">` on EN, `<html lang="es">` on ES.
+- The Español/English toggle links to the **equivalent page**, not the other homepage.
+- Prices, phone, address, and hours are identical across languages (from the tokens above).
+- Spanish register: warm, plain, RGV-natural (e.g. "cruda," not "resaca"). Use *usted* in CTAs and instructions.
+- All ES copy is flagged for a native-speaker read before launch, especially the disclaimer and care advice. Mark uncertain phrases `[VERIFY]` in an HTML comment.
 
 ---
 
-## Integration placeholders — FROZEN insertion points, DECIDE per client
+## Page content briefs
 
-- `<!-- GHL CONTACT FORM EMBED -->` — [NEEDS INPUT — form name]. Use the GHL embed; never a custom form.
-- `<!-- GHL CHAT WIDGET SCRIPT -->` — [NEEDS INPUT] (insert before `</body>`).
-- `<!-- GHL EXTERNAL TRACKING SCRIPT -->` — [NEEDS INPUT] (insert in `<head>`).
-- `<!-- GHL REVIEW WIDGET EMBED -->` — [DECIDE]. Wire ONLY if review count/rating is
-  confirmed AND displayed. Until then: no widget, no stars, no counts, no `aggregateRating`.
-- `<!-- GOOGLE MAPS EMBED -->` — [DECIDE — wire only if the client has a public address].
-- `<!-- INSURANCE CARRIER LOGO ROW -->` — [DECIDE]. DO NOT wire unless specific carrier
-  partnerships are confirmed. Shipping a logo row means fabricating logos (burned prior
-  builds). Cover insurance in copy, not a logo wall.
-- `<!-- FINANCING SECTION -->` — [DECIDE — delete unless financing is actually offered].
-- Social share image: `brand_assets/og-image.jpg` (1200×630) — [NEEDS INPUT — create before launch].
+**Home.** Hero: eyebrow "Hydration. Recovery. Wellness." · H1 built on the target keyword
+("IV therapy in Edinburg" + physician-supervised angle) · subline naming Dr. Brookshire's
+credential · CTAs: Call to Book (primary), See the Menu (secondary). Then: trust-badge row ·
+menu preview (all 4 items with prices, linking to anchors) · "Why physician-supervised
+matters" section (plain-language, no claims beyond the Positioning rules) · short What to
+Expect teaser (30–45 min, what to bring) · final CTA ("Hydration That Works. So You Can
+Thrive." + call button + hours).
 
----
+**IV & Wellness Menu.** H1 around "IV hydration menu and prices." Four item blocks with
+anchor IDs, name, price, confirmed description, "best for" line, and a Call to Book
+button. NAD+ visually set apart as an injection. Short "Not sure which one?" section
+routing to a call. Disclaimer visible near the menu.
 
-## Template Sections to DELETE for this client — FROZEN candidates, FILL the list
+**What to Expect / FAQ.** Before / during (~30–45 min) / after, from the care advice.
+Disclaimer callout. FAQ (min 6, only from confirmed facts): how long a session takes,
+what to do before, what to do after, who oversees the therapy, prices, how to book, hours,
+where you're located, whether NAD+ is an IV (no — injection).
 
-Standard removable modules (delete any this trade doesn't offer):
-- Financing block / CTA — [DECIDE]
-- Insurance carrier-logo row — [DECIDE]
-- Review widget / star rating / review-count blocks — [DECIDE, default delete until confirmed]
-- Inventory / gallery page — [DECIDE — see gallery rules below]
-- Trust-badge pill row in the hero — delete by default (redundant with the eyebrow)
-- [NEEDS INPUT — any other home-services artifact irrelevant to this trade]
+**About.** Dr. R. Brookshire: board-certified vascular surgeon; why a physician-supervised
+clinic. Bio details beyond the credential are `[NEEDS INPUT]`. Do not invent training,
+years, schools, or staff. No team section until staff are confirmed.
 
----
-
-## Business Identity — FILL PER CLIENT (guardrails frozen)
-
-Every field is confirmed from onboarding or flagged `[NEEDS INPUT]`. Nothing inferred.
-
-- Business name / short brand: [NEEDS INPUT]
-- Industry / trade: [NEEDS INPUT]
-- Owner: [NEEDS INPUT]. **FROZEN rule:** owner name is referenced only in a dedicated
-  "About the Owner" section or where genuinely required — never threaded through general
-  body copy, headings, meta/OG, or CTAs.
-- Staff / team: [NEEDS INPUT — names + roles]. **Never infer staff or roles from social
-  posts. Confirm directly with the client.**
-- Relationship claims: **FROZEN** — no "family owned," "husband and wife," "couple," or
-  any relationship structure without explicit written confirmation. "Family-run" is a
-  tone signal (safe); a relationship *claim* is a fact (needs confirmation). [NEEDS INPUT]
-- Differentiator / ownership signal (e.g. veteran-owned): [NEEDS INPUT — confirmed only]
-- Owner background (for About page): [NEEDS INPUT]
-- **FROZEN framing rule:** an experience figure is a PERSONAL claim, not a business-age
-  claim. Write "[N] years in the [trade]" — never "[N] years serving [City]" (implies
-  business age). Founding year is separate and [NEEDS INPUT] until confirmed.
-- Supplier / franchise / dealer relationship: [NEEDS INPUT]
-- Physical address: [NEEDS INPUT — or "service-area only, no public address"]
-  → this sets the schema variant (PostalAddress included vs omitted; see SEO section).
-- Phone (site): [NEEDS INPUT — GHL tracking number]
-- Phone (owner personal — NOT FOR PUBLICATION): [NEEDS INPUT — recorded only so it's never
-  mistaken for the site number; must return zero grep hits before deploy]
-- Email: [NEEDS INPUT]
-- Domain + canonical host: [NEEDS INPUT]
-- Founded year: [NEEDS INPUT — do not state or compute until confirmed]
-- Licenses / certifications: [NEEDS INPUT — publish none until confirmed]
-- Official tagline: [NEEDS INPUT]
-- Review / reputation status: [NEEDS INPUT — until confirmed: no widget, no stars, no
-  counts, no `aggregateRating`, no testimonials. Unattributed testimonials are never published.]
-- Price range: [NEEDS INPUT — for JSON-LD `priceRange`]
-
-### Key operational facts — [NEEDS INPUT] (must be accurate everywhere once filled)
-- Service model (in-shop / mobile / both): [NEEDS INPUT]
-- Service-area / free-travel radius: [NEEDS INPUT]
-- Intake method / primary CTA framing: [NEEDS INPUT]
-- Any confirmed differentiators: [NEEDS INPUT]
-
-### Hours — [NEEDS INPUT] (for `openingHoursSpecification`)
+**Contact / Book.** Call to Book (big), address, hours, Google Maps embed (public address
+confirmed), parking/suite note `[NEEDS INPUT]`. `<!-- GHL CONTACT FORM EMBED -->` placeholder
+left in markup, commented out, not rendered.
 
 ---
 
-## Services — FROZEN methodology, FILL the six
+## Local SEO
 
-**FROZEN:** select service pages for search volume + lead intent (broad high-intent
-categories over narrow component terms). Minor/related services fold in as on-page
-sections or FAQ, not their own pages. Default is six pages; flex only if the client
-genuinely needs more/fewer.
+**Titles (<60 chars) and descriptions (<160).**
+- Home: "IV Therapy in Edinburg, TX | Thrive IV Solutions"
+- Menu: "IV Hydration Menu & Prices in Edinburg | Thrive IV"
+- What to Expect: "What to Expect at Your IV Visit | Thrive IV Solutions"
+- About: "Physician-Supervised IV Therapy | Dr. R. Brookshire"
+- Contact: "Book IV Therapy in Edinburg, TX | Thrive IV Solutions"
+- ES titles translated equivalents, same length limits.
+- Home meta description must mention physician supervision + Edinburg + a call CTA.
 
-- Flagship (highest volume + call volume): [NEEDS INPUT]
-- Secondary push (differentiator / highest ticket): [NEEDS INPUT]
-- Standard ×4: [NEEDS INPUT]
-- Folded-in sub-services (sections/FAQ, not pages): [NEEDS INPUT]
+Per page: unique title and description, self-canonical (placeholder host), robots
+index/follow with max-image/snippet/video-preview, OG + Twitter (`brand_assets/og-image.jpg`
+1200×630 `[NEEDS INPUT — create]`), `og:locale` en_US / es_US.
 
-> ⚠️ **FROZEN anti-cannibalization:** keep distinct search intents on distinct pages
-> (e.g. repair vs replacement). Never introduce a broad umbrella page that cannibalizes
-> two narrower ones.
+**JSON-LD.**
+- Home: `MedicalClinic` with `@id` `https://thrive-domain.tbd/#clinic`. Name, telephone
+  (token), PostalAddress (INCLUDED — public address), `geo` `[VERIFY]`,
+  `openingHoursSpecification` (Mon–Fri 09:00–17:00), `areaServed`: Edinburg, McAllen,
+  Mission, Pharr, Weslaco, Rio Grande Valley `[VERIFY — client's actual draw area]`,
+  `hasOfferCatalog` with the 4 menu items, each an `Offer` with `price` and
+  `priceCurrency: "USD"`, and `priceRange` "$65–$185". Include a `Physician` object for
+  Dr. R. Brookshire as `employee` / `founder` `[VERIFY role]`, with
+  `medicalSpecialty` vascular surgery. No `aggregateRating`, no `email` until provided.
+- Menu: `OfferCatalog` (the 4 Offers, same values as Home) + `BreadcrumbList`.
+- What to Expect: `FAQPage` (matches visible FAQs exactly) + `BreadcrumbList`.
+- About: `Physician` (Person) + `BreadcrumbList`.
+- Contact: clinic reference (`@id` only, not a re-declaration) + `BreadcrumbList`.
+- ES pages: same structures, translated text, `inLanguage: "es"`.
+- Offer count on Home == 4 == items on the Menu page.
+- Validate at search.google.com/test/rich-results before launch.
 
----
+**On-page:** exactly one H1 per page, no skipped heading levels, "Edinburg" in visible
+body text, descriptive alt text with service + location context.
 
-## Site Architecture — FROZEN structure, FILL the slugs
-
-> ⚠️ **FROZEN — VERIFY BEFORE WRITING PATHS.** After cloning the template and before
-> finalizing any path here, run `find . -name "*.html"` and confirm the real tree matches.
-> Prior builds shipped `CLAUDE.md` paths that didn't match the repo and paid for it every
-> session. **Disk is the source of truth.**
-
-- Homepage `index.html`
-- About `about.html`
-- Contact / Thank-You `thank-you.html` (noindex, nofollow)
-- 6 service pages under `/services/`: [NEEDS INPUT — slugs]
-- 6 city pages under `/areas/`: [NEEDS INPUT — slugs]
-- Inventory/gallery page: [DECIDE — include only if applicable; see gallery rules]
-
-### City priority — FROZEN methodology, FILL the order
-Home city anchors the homepage + NAP. Deepest city page = highest-volume target and
-becomes the CITY-PAGE TEMPLATE. Order drives GSC indexing sequence.
-- [NEEDS INPUT — primary → secondary → … with a one-line rationale each]
-- [DECIDE — any cities pending real search-volume data]
-
----
-
-## Always Do First — FROZEN
-Invoke the frontend-design skill before writing frontend code **if available** in the
-environment (it may not be installed in Claude Code — proceed without it if not).
-
-## Content Writing Methodology — FROZEN
-For all page copy, read and follow `SEO-CONTENT-PROMPT.md` in full as the PRIMARY writing
-methodology before writing any content. If wording ever conflicts with the technical rules
-below, `SEO-CONTENT-PROMPT.md` wins on wording; the rules below govern technical
-implementation.
+**Files:** `sitemap.xml` (all 10 pages, with `xhtml:link` hreflang alternates), `robots.txt`
+(allow all, point to sitemap).
 
 ---
 
-## Local SEO Requirements — FROZEN (fill only the title/description tokens)
+## Hero & asset patterns
 
-**Per-page metadata (every page):** unique `<title>` <60 chars; unique
-`<meta description>` <160 with a service + city + CTA; local `keywords`;
-`robots` index/follow with max-image/snippet/video-preview; self-referential `canonical`;
-`<html lang="en">` + viewport.
-
-**Open Graph + Twitter (every page):** og:title/description/url/type/image/locale/site_name;
-twitter summary_large_image + title/description/image; images → 1200×630 (flag if not created).
-
-**Structured Data (JSON-LD) — FROZEN patterns:**
-- Homepage: the correct `@type` for the trade `[NEEDS INPUT — e.g. AutoRepair / HVACBusiness / LocalBusiness]`
-  (never a mismatched type, never bare LocalBusiness if a specific subtype fits). Include
-  name, telephone (GHL), email, priceRange (pending), `openingHoursSpecification`,
-  `areaServed` (full city list), `hasOfferCatalog` (the six services).
-- **PostalAddress:** INCLUDE only if the client has a public address; OMIT entirely for
-  service-area businesses. `[DECIDE per address field above]`
-- **`aggregateRating`:** include ONLY when real reviews are confirmed AND displayed.
-- License numbers → `additionalProperty`.
-- **Service pages:** 3 blocks — `Service` + `FAQPage` (min 6 Q&As) + `BreadcrumbList`.
-- **City pages:** 3 blocks — `LocalBusiness` ref (same `@id` as homepage, not a
-  re-declaration) + `FAQPage` (min 4 city-scoped Q&As) + `BreadcrumbList`.
-  `areaServed` = that city only, never the full list.
-- **Inventory/gallery pages:** `ImageGallery` or `CollectionPage` only — never `Service`.
-- **Thank-you trio (one atomic unit):** noindex/nofollow meta + excluded from `sitemap.xml`
-  + Disallow in `robots.txt`.
-- **Per-page title collision:** the flagship service title must lead with a different
-  phrase than the homepage title even when they share a keyword.
-- **Offer-catalog count == live service-page count.**
-- Validate at `search.google.com/test/rich-results` before launch.
-
-**Visible on-page SEO — FROZEN:** exactly one `<h1>`/page; H2/H3 hierarchy, no skipped
-levels; city names in human-readable body text; service+city combos appear naturally;
-descriptive alt text with service/location context.
-
-**City pages — anti-duplicate — FROZEN:** each city page ≥30–40% unique content; never
-just swap the city name (doorway-page penalty); reference real, VERIFIED local anchors
-(highways/neighborhoods/landmarks/districts) — flag `[VERIFY]` rather than invent; unique
-intro + unique "why [City] chooses us" per page.
-
-**Technical SEO files — FROZEN:** `sitemap.xml` (all indexable pages; exclude thank-you);
-`robots.txt` (allow crawl, disallow thank-you, point to sitemap).
-
-**Title/description patterns — FILL:**
-- Homepage: [NEEDS INPUT]
-- Service page: [NEEDS INPUT]
-- City page: [NEEDS INPUT]
+- Hero and final-CTA backgrounds use ONLY `brand_assets/hero-background.*` and
+  `brand_assets/cta-background.*`. Until those exist: `https://placehold.co/1920x1080`.
+  Never promote a content photo into these slots.
+- Hero: full-bleed static image, left-anchored text, navy overlay (~0.7) + vignette +
+  text-shadows. Home hero `min-h-[85vh]`; inner-page heroes shorter (~50vh). No hero video.
+- Uniform photo containers: one `aspect-ratio` + `object-fit: cover` site-wide.
+- Photo tiers: Home 3 · Menu 1 per drip (4, or placeholders) · What to Expect 1 · About
+  1 portrait of Dr. Brookshire (`aspect-[3/4]`, `object-position: center top`) · Contact 0.
+- Dr. Brookshire's headshot: `[NEEDS INPUT — reuse the STVI headshot only with client
+  permission; supply the file into this repo's brand_assets/]`.
+- Excluded photo types: identifiable patients without consent, visible needle insertion
+  close-ups, anything clinical-gory, blood, stock photos of bars/drinking.
+- Document exact filenames from `ls brand_assets/`. Never assume names.
 
 ---
 
-## Hero & Asset Patterns — FROZEN
+## Anti-Generic / Human-Built Guardrails — FROZEN (from STVI)
 
-### Hero + Final-CTA backgrounds — dedicated named slots ONLY
-- The hero background and the final-CTA background are **their own asset slots.** They are
-  filled **only** by a purpose-made image named exactly `hero-background.*` and
-  `cta-background.*` in `brand_assets/`.
-- **They NEVER use a client content/job photo.** A client's section/gallery photos are
-  never promoted into either background. Ever.
-- Until the dedicated file exists, both stay on `https://placehold.co/1920x1080` at exact
-  final dimensions. Flag as pending — never substitute another image to "fill" it.
-- **Off-limits on every content-photo and layout pass** (also enforced in WORKFLOW.md).
-  A photo/layout prompt must not touch these two backgrounds unless it is explicitly about
-  them.
-- Static full-bleed image is the default hero on every page including the homepage
-  (`min-h-screen`, left-anchored text block, image + dark overlay ~0.7 + edge vignette +
-  text-shadows).
+- Brand tokens only. Layered, color-tinted shadows (never flat `shadow-md`).
+- Distinct display + body fonts; tight tracking on large headings.
+- Subtle depth: layered radial gradients + SVG-noise grain on dark sections.
+- Animate only `transform`/`opacity`, spring easing. Never `transition-all`.
+- Every clickable element has hover + focus-visible + active states.
+- Base → elevated → floating depth system; intentional spacing tokens.
+- **Human-built feel:** no decorative icon grids, no invented badges/seals/"as seen in," no
+  card-grid-for-everything. Vary section layouts (split, full-width text, list, menu
+  table). No emoji. No stock "spa" clichés (orchids, stones, water drops everywhere).
 
-### Hero video — enhancement, homepage only
-Only when the client provides a usable clip. Replaces the static homepage hero; the
-`hero-background` image becomes the poster/fallback. **FROZEN sequence, never skipped:**
-trim only → save preview → client approves in/out → compress separately (H.264, strip
-audio, ~2–3MB) → wire in last. `.gitignore` the raw source + trim preview; commit only the
-final compressed clip.
-
-### Uniform photo sizing — every section, every page
-- **Every content photo uses the same-size aspect-ratio container** (`aspect-ratio` +
-  `object-fit: cover`), never a fixed `h-[Npx]`. One ratio applied site-wide so no photo
-  is a different size than another within or across sections.
-- This is independent of the photo *tier* (which sets how MANY photos a page gets, below).
-  Tiers govern count; this rule governs that every container is the same dimensions.
-
-### Split-section layout — FROZEN
-Interior page content is built from **alternating split sections**: two ~50/50 columns —
-a text column and **one** uniform `.photo-frame` photo — stacking text-first on mobile.
-The photo side alternates down the page (right, left, right…) and section backgrounds
-alternate light/dark. **One photo per split; never a photo grid inside a split.** Text
-column = optional eyebrow → H2 → 1–2 short paragraphs → optional 2×2 checklist → optional
-inline `link-arrow`. The photo *tier* (below) sets how many splits a page gets — one split
-per photo slot (flagship service = 5 splits, standard = 2, city = 1 coverage split).
-
-### Cards — icon-free, centered — FROZEN
-Service / feature / value cards ship **without icons or emblems** (no icon squares, no
-emblem circles) and with **centered text**. Card containers (border/shadow/radius) are
-unchanged. **Numbered step cards keep their 01–04 numbers** — those aren't icons. Cards on
-a dark section take a translucent dark-card treatment so text stays legible. The contact
-block keeps its functional call/email/address icons (contact affordances, not card emblems).
-
-**OPTIONAL MODULE accent sweep:** the commented-out OPTIONAL MODULE blocks (insurance carrier row, review widget) sit on dark sections and use raw `--color-accent` internally on their dark-card labels — any build that enables one must sweep those labels to `--color-accent-bright` per the accent-on-dark rule.
-
-### Homepage FAQ + gallery — FROZEN
-The homepage ships an **active** FAQ accordion (5–6 token Q&As, same `<details>` styling as
-service/city pages) and an **active** uniform gallery grid (8 `.photo-frame` tiles at 1-
-and 2-column breakpoints so the last row always fills). These are page sections, distinct
-from the optional inventory/gallery *page* below.
-
-### Gallery / inventory section — uniform grid, no dead space
-If the client has a dedicated gallery or inventory section:
-- **Uniform grid:** equal cells, consistent gutters, every image the same size.
-- **No dead space and no ragged last row** — size the grid so the final row fills or is
-  balanced; never leave an orphaned single image floating in an empty row.
-- Inventory/gallery page is **blocked until real photos exist** — do not ship it against
-  placeholders.
-- Excluded photo types apply here too (see below).
-
-### Photo Tier Allocation — FROZEN default (override per client at strategy lock)
-| Page type | Body photos | Hero |
-|---|---|---|
-| Flagship service | 5 | ✓ |
-| Secondary push service | 3 | ✓ |
-| Standard service | 2 | ✓ |
-| City page | 1 | ✓ |
-| About | 2 (2 splits) | ✓ |
-| Inventory / gallery | No limit (reuse accepted) | ✓ |
-
-**FROZEN rules:** one-photo-one-slot on all non-inventory pages (no photo twice on a
-page); cross-page reuse minimized except on inventory; excluded types everywhere —
-readable license plates, strong tilt/rotation, stained/damaged subjects, anything
-privacy-sensitive; owner/people slots use `aspect-[3/4]` + `object-position: center top`
-(portrait is the norm for headshots); document EXACT asset filenames confirmed by
-`ls brand_assets/` — never assume naming.
-
-### City-page clone zones — FROZEN
-Four unique zones per city, everything else shared:
-`<!-- CITY-SWAP: intro -->` · `<!-- CITY-SWAP: local-anchors -->` ·
-`<!-- CITY-SWAP: why-city -->` · `<!-- CITY-SWAP: faq -->`
-The Areas We Serve dropdown (desktop + mobile) is a protected shared zone — mark it and
-never modify it during a city clone pass:
-`<!-- SHARED ZONE: Areas We Serve dropdown — do NOT modify during city clone pass -->`
+Content voice follows `SEO-CONTENT-PROMPT.md` (5th-grade reading level, avoid its word
+list). Where it conflicts with the Health-claims or Positioning rules above, **these
+rules win** (medical claims precision beats keyword stuffing).
 
 ---
 
-## Screenshot discipline — FROZEN (tiered)
+## Workflow — FROZEN
 
-Code MUST save real PNG files to `./temporary screenshots/` and report the exact path — a
-prose description is never a substitute. **Number of rounds is tiered by page type:**
-
-- **Gated template pages — homepage, flagship service, deepest city: 2 comparison rounds.**
-  These set the pattern everything inherits; iterate until right.
-- **Clones and structural pages — remaining services/cities, about, thank-you: 1 round +
-  a click-through.** They inherit an approved parent, so verify, don't re-iterate.
-- More rounds only if the 1-round check surfaces a real problem.
-
-(Serve on localhost first — never screenshot a `file:///` path.)
+- Invoke the frontend-design skill before frontend code if available; proceed without it if not.
+- `node serve.mjs` (background, don't double-start) → `http://localhost:3000`.
+- `node screenshot.mjs http://localhost:3000/[path] [label]` → `./temporary screenshots/`.
+  Read the PNG back and report the exact path. Never screenshot `file:///`.
+- Screenshot rounds: **Home and IV & Wellness Menu = 2 rounds (gated templates).** All other
+  pages and all ES pages = 1 round + click-through.
+- Screenshot each gated page at desktop (1440) and mobile (390).
+- Output: self-contained HTML, Tailwind via CDN, shared CSS in `brand.css`, mobile-first.
 
 ---
 
-## Reference Images — FROZEN
-Default: build ORIGINAL pages from this file with high craft — do NOT match a provided
-reference. The match-exactly rules apply ONLY when a reference image is explicitly
-provided (then: match layout/spacing/type/color, swap placeholder content, don't improve
-the design, 2 comparison rounds).
+## Template sections to DELETE
 
-## Local Server / Screenshot Workflow — FROZEN
-`node serve.mjs` (root at `http://localhost:3000`, background, don't double-start).
-`node screenshot.mjs http://localhost:3000 [label]` → `./temporary screenshots/screenshot-N[-label].png`
-(auto-incremented). Read the PNG back and analyze specifics (px sizes, exact hexes,
-spacing, alignment, radii, shadows).
-
-## Output Defaults — FROZEN
-Self-contained HTML; Tailwind via CDN; `https://placehold.co/WIDTHxHEIGHT` placeholders;
-mobile-first responsive.
-
-## Anti-Generic Guardrails — FROZEN
-Brand tokens only (never default Tailwind palette). Layered color-tinted shadows (never
-flat `shadow-md`). Distinct display + body fonts; tight tracking on large headings,
-generous body line-height. Layered radial gradients + SVG-noise grain for depth. Animate
-only `transform`/`opacity` (never `transition-all`), spring easing. Every clickable
-element has hover + focus-visible + active states. Image overlays + a color-treatment
-layer. Intentional spacing tokens. A base→elevated→floating depth system.
+Financing · insurance carrier-logo row · review widget / stars / counts / testimonials ·
+service-area and city pages · inventory/gallery · hero trust-badge pill row (replaced by
+the single badge row) · mega-menu · any home-services artifact (emergency 24/7 bars,
+"free estimate" CTAs, before/after sliders).
 
 ---
 
-## Locked Language — FROZEN framework, FILL per client
-Freeze anything that must never drift:
-- Insurance framing: [NEEDS INPUT — e.g. "works with all carriers"; never name a carrier
-  or promise coverage outcomes / $0 deductible; route to "we'll help you file the claim"]
-- Warranty: [NEEDS INPUT — publish no warranty scope until confirmed in writing]
-- Certification/quality claims: [NEEDS INPUT — no cert claim until confirmed]
-- Ownership signal: [NEEDS INPUT — confirmed only]
-- Experience framing: [NEEDS INPUT — personal-experience wording, not business-age]
-- Testimonials/reviews: [NEEDS INPUT — none publishable until reputation confirmed]
-- **Guarantee / warranty scope, licensing & insurance status, and insurance-coverage
-  outcomes are `[NEEDS INPUT]` per client and must NEVER be asserted in base template
-  copy** — not in body, headings, cards, trust badges/pills, meta, or JSON-LD. Ship them
-  as claim-free or self-flagged placeholders (see the service-page guarantee-FAQ answer
-  for the pattern); the client confirms scope in writing before any such claim goes live.
-  Covers "satisfaction guarantee," "Licensed & Insured," and "we bill your carrier / most
-  claims cost little or nothing."
+## Hard Rules
 
-## Hard Rules — FROZEN
-- No invented facts; confirm before filling any `[NEEDS INPUT]`.
-- No price / range / "starting at" unless explicitly confirmed here — route pricing intent
-  to the quote CTA (applies to copy, FAQ, AND JSON-LD Offer blocks).
-- No insurance coverage-outcome claims.
-- No relationship claim without written confirmation.
-- No review widgets/stars/counts/`aggregateRating` until reputation is confirmed.
-- Never infer ownership/roles/relationships from social posts.
-- Never publish the owner's personal number — GHL tracking number only; grep returns zero
-  hits for the personal number before deploy.
-- Never promote a client photo into the `hero-background` / `cta-background` slots.
-- No readable license plates or privacy-sensitive photos.
-- Strip the template's red; no default Tailwind blue/indigo as primary.
-- No `transition-all`.
-- Follow the tiered screenshot rule above — don't stop after one pass on a *gated template
-  page*; a single round + click-through is correct for clones.
+- No invented facts. `[NEEDS INPUT]` stays flagged until confirmed.
+- No STVI content, colors, copy, or credential wording in this repo (the footer
+  sister-practice line is the one exception).
+- Prices only from the Menu table. NAD+ is always an injection.
+- No health claims beyond the locked language. Disclaimer on every page.
+- No reviews/stars/`aggregateRating`/testimonials until reputation is confirmed.
+- Phone only via the single token. No `sms:` link until texting is confirmed. Never
+  publish an unconfirmed number.
+- No `transition-all`. No default Tailwind palette. No red.
+- Zero grep hits before deploy for: `thrive-domain.tbd`, `placehold.co` in any `og:image`,
+  `[NEEDS INPUT]`, `[VERIFY]`, `DISCLAIMER: pending`, `#C8102E`, `#C79A3B`, `#0A1F5C`,
+  "South Texas Vascular" outside the footer line, "Playfair", `family=Inter`,
+  `'Inter'`.
 
 ## Git Discipline — FROZEN
-- Commit/push only when asked; branch first if on the default branch.
-- Rename a service/city → update its filename, all hrefs, nav/footer labels, schema,
-  title/meta, and breadcrumb together.
-- Three-command pre-commit check, no exceptions: `git status`, `git branch`,
-  `git remote -v` (the client repo, NOT nexor-template).
-- Logical commit separation: CLAUDE.md → own commit; brand_assets → own commit; page
-  builds grouped by phase. Never mix client-layer decisions with build work.
-- Commit assets immediately on placement (their own commit).
-- Set the canonical host as Vercel **Primary on day one**, not at launch.
-- Submit the sitemap to GSC as the full canonical URL. Indexing order: services → primary
-  city → remaining cities → about. ~10–12 URL inspections/day; spread across days. Re-check
-  the homepage canonical in GSC 3–5 days post-launch.
+
+- Three-command check before every commit: `git status`, `git branch`, `git remote -v`
+  (origin = the Thrive repo, NEVER `nexor-template`, NEVER the STVI repo).
+- Commit only when asked; branch first if on the default branch.
+- Separate commits: CLAUDE.md · brand_assets · EN pages · ES pages · SEO files.
+- Canonical host as Vercel Primary on day one.
+- GSC: submit the full sitemap URL. Inspect order: Home → Menu → What to Expect → About →
+  Contact → ES pages.
 
 ---
 
-## Active Blockers — [NEEDS INPUT] summary (fill per client)
+## Active Blockers
 
-**Launch-blocking:** [NEEDS INPUT — e.g. GHL tracking number, GHL form embed, chat/tracking scripts, og-image]
+**Launch-blocking:** domain + canonical host · full disclaimer text · og-image ·
+native Spanish read (disclaimer + care advice minimum) · confirmation of what
+"physician-supervised" means in practice (who administers, screening, on-site presence) ·
+decision on dedicated Thrive phone line.
 
-**Backfillable (build against placeholders, swap in one pass):** [NEEDS INPUT — e.g.
-photos, review status, certifications, founding year, social links, priceRange, warranty terms]
+**Backfillable:** vector/SVG logo (current PNG is usable) · hero/cta backgrounds · drip photos · Dr. Brookshire
+headshot + bio details · email · whether the phone receives texts · GHL form ·
+parking/suite note · STVI URL for the footer line · `areaServed` city list · `geo`
+coordinates · review status.
 
-**Open decisions for Juan (resolve at strategy lock):** [DECIDE — e.g. cities pending
-volume data, any framing calls, gallery/inventory page yes/no]
+**Separate-GBP note (for Juan, not Code):** Thrive sharing STVI's address, suite, and
+phone risks Google merging or confusing the two Business Profiles. A dedicated Thrive phone
+line (and ideally a distinct suite designation) before creating Thrive's GBP is strongly
+recommended.
