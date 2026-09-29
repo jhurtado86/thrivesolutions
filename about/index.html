@@ -50,23 +50,42 @@
   <script src="/site.js"></script>
   <link rel="stylesheet" href="/brand.css" />
 
-  <!-- BreadcrumbList now; the page-specific schema lands with the page content. -->
+  <!-- About schema: Physician (Person) with the @id the homepage founder object points to + BreadcrumbList. No image until the headshot exists; no bio details beyond the confirmed credential. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    "@graph": [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.thriveivsolution.com/"
+        "@type": [
+          "Physician",
+          "Person"
+        ],
+        "@id": "https://www.thriveivsolution.com/about/#physician",
+        "name": "Dr. R. Brookshire",
+        "jobTitle": "Board-certified vascular surgeon",
+        "medicalSpecialty": "https://schema.org/Surgical",
+        "knowsAbout": "Vascular surgery",
+        "url": "https://www.thriveivsolution.com/about/",
+        "worksFor": {
+          "@id": "https://www.thriveivsolution.com/#clinic"
+        }
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "About",
-        "item": "https://www.thriveivsolution.com/about/"
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.thriveivsolution.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About",
+            "item": "https://www.thriveivsolution.com/about/"
+          }
+        ]
       }
     ]
   }
@@ -130,9 +149,12 @@
 
   <main id="main-content">
 
-    <!-- SHELL: page content lands in a later prompt (see the CLAUDE.md page brief). -->
+    <!-- ============================================================
+         HERO (inner, ~50vh) — transparent-nav pattern.
+         Background slot: brand_assets/hero-background.* ONLY.
+         [NEEDS INPUT — hero-background file]. Placeholder until then.
+    ============================================================ -->
     <section class="hero hero--inner" aria-labelledby="page-title">
-      <!-- Background slot: brand_assets/hero-background.* ONLY. [NEEDS INPUT — hero-background file]. -->
       <img class="hero__bg" src="https://placehold.co/1920x1080" alt="IV therapy room at Thrive IV Solutions in Edinburg, TX" width="1920" height="1080" fetchpriority="high" decoding="async" />
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="hero__wash" aria-hidden="true"></div>
@@ -142,16 +164,110 @@
         <div class="hero__text flow" style="--flow: 1.5rem;">
           <p class="eyebrow reveal">About Thrive IV</p>
           <h1 id="page-title" class="display-xl reveal" data-delay="1">Physician-supervised IV therapy, led by Dr.&nbsp;R.&nbsp;Brookshire.</h1>
-          <p class="hero__lead reveal" data-delay="2">Thrive IV Solutions is overseen by Dr. R. Brookshire, a board-certified vascular surgeon, in Edinburg, TX.</p>
-          <div class="hero__actions reveal" data-delay="3">
+          <p class="hero__lead reveal" data-delay="2">Thrive IV Solutions is an IV hydration and wellness clinic in Edinburg, TX, overseen by a board-certified vascular surgeon.</p>
+          <div class="hero__actions btn-row reveal" data-delay="3">
             <a href="tel:+19563227662" class="btn btn-primary btn-lg" data-phone-href>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               Call to Book
             </a>
+            <a href="/iv-menu/" class="btn btn-outline btn-outline--dark btn-lg">
+              See the Menu
+              <svg class="icon-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
           </div>
+          <p class="hero__meta reveal" data-delay="4">
+            <span>Or dial <a href="tel:+19563227662" data-phone-href data-phone>(956) 322-7662</a></span><span class="dot" aria-hidden="true">·</span><span>Mon–Fri 9 AM–5 PM</span><span class="dot" aria-hidden="true">·</span><span>2511 Cornerstone Blvd, Edinburg</span>
+          </p>
         </div>
       </div>
       <div class="hero__line" aria-hidden="true"></div>
+    </section>
+
+    <!-- ============================================================
+         THE PHYSICIAN — confirmed credential only. 50/50, portrait 3:4.
+         [NEEDS INPUT — Dr. Brookshire bio: training, years in practice,
+         schools, hometown, staff. Do not invent. No STVI credential wording.]
+    ============================================================ -->
+    <section class="section" id="physician" aria-labelledby="physician-title">
+      <div class="wrap grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
+        <div class="reveal reveal--scale">
+          <!-- [NEEDS INPUT — Dr. Brookshire headshot; reuse the STVI photo only with client permission]. Placeholder at final 3:4 size. -->
+          <figure class="photo-frame photo-frame--portrait">
+            <img src="https://placehold.co/900x1200" alt="Dr. R. Brookshire, the board-certified vascular surgeon who oversees IV therapy at Thrive IV Solutions in Edinburg, TX" width="900" height="1200" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="flow reveal" data-delay="1" style="--flow: 1.5rem;">
+          <p class="eyebrow">The physician</p>
+          <h2 id="physician-title" class="display-lg">Dr. R. Brookshire</h2>
+          <p class="lead">Board-certified vascular surgeon.</p>
+          <p class="copy">Vascular surgery is the specialty that focuses on blood vessels, including the veins an IV uses. Dr. Brookshire oversees Thrive IV Solutions in Edinburg, TX.</p>
+          <dl class="spec">
+            <div class="spec__row"><dt>Credential</dt><dd>Board-certified vascular surgeon</dd></div>
+            <div class="spec__row"><dt>Role</dt><dd>Oversees Thrive IV Solutions</dd></div>
+            <div class="spec__row"><dt>Clinic</dt><dd>2511 Cornerstone Blvd, Ste 2511, Edinburg, TX 78539</dd></div>
+          </dl>
+          <div class="btn-row">
+            <a href="tel:+19563227662" class="btn btn-primary" data-phone-href>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call to Book
+            </a>
+            <a href="/iv-menu/" class="link-arrow">
+              See the IV &amp; Wellness Menu
+              <svg class="icon-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WHY PHYSICIAN-SUPERVISED — plain language, Positioning rules only.
+    ============================================================ -->
+    <section class="section section--wash" id="why" aria-labelledby="why-title">
+      <div class="wrap wrap--narrow flow" style="--flow: 1.5rem;">
+        <div class="flow reveal">
+          <p class="eyebrow">Why it matters</p>
+          <h2 id="why-title" class="display-lg">Why we run a physician-supervised clinic.</h2>
+          <p class="copy">An IV drip puts fluids straight into a vein. That is a medical procedure, and it deserves a physician's oversight. So Thrive IV Solutions runs as a physician-supervised clinic, with Dr. Brookshire overseeing every drip on the menu.</p>
+          <p class="copy">We serve Edinburg and the Rio Grande Valley from 2511 Cornerstone Blvd. Every drip has one clear price, and sessions take about 30 to 45 minutes.</p>
+        </div>
+        <div class="flow reveal" data-delay="1">
+          <h3 class="display-md">What every visit includes</h3>
+          <ul class="checklist" style="margin-block-start: 0.85rem;">
+            <li>Premium Ingredients</li>
+            <li>Safe &amp; Professional</li>
+            <li>Personalized Care</li>
+          </ul>
+        </div>
+        <div class="btn-row reveal" data-delay="2">
+          <a href="/what-to-expect/" class="link-arrow">
+            What to expect at your visit
+            <svg class="icon-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA — cta-background slot ONLY (brand_assets/cta-background.*)
+         [NEEDS INPUT — cta-background file]. Placeholder until then.
+    ============================================================ -->
+    <section class="section section--dark cta" id="book" aria-labelledby="cta-title">
+      <img class="cta__bg" src="https://placehold.co/1920x1080" alt="" width="1920" height="1080" loading="lazy" decoding="async" aria-hidden="true" />
+      <div class="cta__overlay" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="cta__inner reveal">
+          <p class="eyebrow">Feel Better.</p>
+          <h2 id="cta-title" class="display-xl">Hydration That Works.<br />So You Can <em>Thrive.</em></h2>
+          <p>Call to book your IV session in Edinburg. Open Monday through Friday, 9 AM to 5 PM.</p>
+          <a href="tel:+19563227662" class="btn btn-primary btn-lg" data-phone-href>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call to Book
+            </a>
+          <a href="tel:+19563227662" class="cta__phone" data-phone-href data-phone>(956) 322-7662</a>
+          <p class="cta__meta">Mon–Fri 9:00 AM–5:00 PM · Sat–Sun closed<br />2511 Cornerstone Blvd, Ste 2511, Edinburg, TX 78539</p>
+        </div>
+      </div>
     </section>
 
   </main>
