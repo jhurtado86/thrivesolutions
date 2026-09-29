@@ -38,6 +38,9 @@ await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
 // 1. Step through the page (viewport-sized steps, a beat between each) so
 //    reveals trigger the way they would on a real scroll, then go back up.
 await page.evaluate(async () => {
+  // The site uses scroll-behavior: smooth; make programmatic scrolls instant so
+  // each step lands before the next one and the final scroll-to-top completes.
+  document.documentElement.style.scrollBehavior = 'auto';
   const step = Math.max(240, Math.round(window.innerHeight * 0.6));
   for (let y = 0; y <= document.documentElement.scrollHeight; y += step) {
     window.scrollTo(0, y);
@@ -69,11 +72,13 @@ const forced = await page.evaluate(() => {
   const style = document.createElement('style');
   style.textContent = '*, *::before, *::after { transition-duration: 0s !important; transition-delay: 0s !important; animation: none !important; }';
   document.head.appendChild(style);
-  window.scrollTo(0, 0);
+  window.scrollTo({ top: 0, behavior: 'instant' });
   return left.length;
 });
 if (forced) console.warn(`NOTE: ${forced} reveal(s) had not fired on scroll and were forced.`);
 await new Promise((r) => setTimeout(r, 500));
+const y = await page.evaluate(() => window.scrollY);
+if (y !== 0) throw new Error(`Page is not at the top before capture (scrollY=${y}); fixed header would render mid-page.`);
 await page.screenshot({ path: outPath, fullPage: true });
 await browser.close();
 
