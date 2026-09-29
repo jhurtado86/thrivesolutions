@@ -147,10 +147,12 @@
     <!-- ============================================================
          HERO (inner, ~50vh) — transparent-nav pattern.
          Background slot: brand_assets/hero-background.* ONLY.
-         [NEEDS INPUT — hero-background file]. Placeholder until then.
     ============================================================ -->
     <section class="hero hero--inner" aria-labelledby="page-title">
-      <img class="hero__bg" src="https://placehold.co/1920x1080" alt="IV therapy room at Thrive IV Solutions in Edinburg, TX" width="1920" height="1080" fetchpriority="high" decoding="async" />
+      <picture>
+        <source type="image/webp" srcset="/brand_assets/hero-background.webp" />
+        <img class="hero__bg" src="/brand_assets/hero-background.jpg" alt="IV drip bag on a stand beside a reclining treatment chair, IV therapy in Edinburg, TX" width="1920" height="1072" fetchpriority="high" decoding="async" />
+      </picture>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="hero__wash" aria-hidden="true"></div>
       <div class="hero__vignette" aria-hidden="true"></div>

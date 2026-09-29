@@ -50,7 +50,7 @@
   <script src="/site.js"></script>
   <link rel="stylesheet" href="/brand.css" />
 
-  <!-- About schema: Physician (Person) with the @id the homepage founder object points to + BreadcrumbList. No image until the headshot exists; no bio details beyond the confirmed credential. -->
+  <!-- About schema: Physician (Person) with the @id the homepage founder object points to + BreadcrumbList. No bio details beyond the confirmed credential. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -66,6 +66,7 @@
         "medicalSpecialty": "https://schema.org/Surgical",
         "knowsAbout": "Vascular surgery",
         "url": "https://www.thriveivsolution.com/about/",
+        "image": "https://www.thriveivsolution.com/brand_assets/dr-brookshire.jpg",
         "worksFor": {
           "@id": "https://www.thriveivsolution.com/#clinic"
         }
@@ -152,10 +153,12 @@
     <!-- ============================================================
          HERO (inner, ~50vh) — transparent-nav pattern.
          Background slot: brand_assets/hero-background.* ONLY.
-         [NEEDS INPUT — hero-background file]. Placeholder until then.
     ============================================================ -->
     <section class="hero hero--inner" aria-labelledby="page-title">
-      <img class="hero__bg" src="https://placehold.co/1920x1080" alt="IV therapy room at Thrive IV Solutions in Edinburg, TX" width="1920" height="1080" fetchpriority="high" decoding="async" />
+      <picture>
+        <source type="image/webp" srcset="/brand_assets/hero-background.webp" />
+        <img class="hero__bg" src="/brand_assets/hero-background.jpg" alt="IV drip bag on a stand beside a reclining treatment chair, IV therapy in Edinburg, TX" width="1920" height="1072" fetchpriority="high" decoding="async" />
+      </picture>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="hero__wash" aria-hidden="true"></div>
       <div class="hero__vignette" aria-hidden="true"></div>
@@ -191,9 +194,11 @@
     <section class="section" id="physician" aria-labelledby="physician-title">
       <div class="wrap grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
         <div class="reveal reveal--scale">
-          <!-- [NEEDS INPUT — Dr. Brookshire headshot; reuse the STVI photo only with client permission]. Placeholder at final 3:4 size. -->
           <figure class="photo-frame photo-frame--portrait">
-            <img src="https://placehold.co/900x1200" alt="Dr. R. Brookshire, the board-certified vascular surgeon who oversees IV therapy at Thrive IV Solutions in Edinburg, TX" width="900" height="1200" loading="lazy" decoding="async" />
+            <picture>
+              <source type="image/webp" srcset="/brand_assets/dr-brookshire-600.webp 600w, /brand_assets/dr-brookshire.webp 1200w" sizes="(min-width: 1024px) 50vw, 100vw" />
+              <img src="/brand_assets/dr-brookshire.jpg" srcset="/brand_assets/dr-brookshire-600.jpg 600w, /brand_assets/dr-brookshire.jpg 1200w" sizes="(min-width: 1024px) 50vw, 100vw" alt="Dr. R. Brookshire, the board-certified vascular surgeon who oversees IV therapy at Thrive IV Solutions in Edinburg, TX" width="1200" height="1600" loading="lazy" decoding="async" />
+            </picture>
           </figure>
         </div>
         <div class="flow reveal" data-delay="1" style="--flow: 1.5rem;">
@@ -250,10 +255,12 @@
 
     <!-- ============================================================
          CTA — cta-background slot ONLY (brand_assets/cta-background.*)
-         [NEEDS INPUT — cta-background file]. Placeholder until then.
     ============================================================ -->
     <section class="section section--dark cta" id="book" aria-labelledby="cta-title">
-      <img class="cta__bg" src="https://placehold.co/1920x1080" alt="" width="1920" height="1080" loading="lazy" decoding="async" aria-hidden="true" />
+      <picture>
+        <source type="image/webp" srcset="/brand_assets/cta-background.webp" />
+        <img class="cta__bg" src="/brand_assets/cta-background.jpg" alt="" width="1920" height="1072" loading="lazy" decoding="async" aria-hidden="true" />
+      </picture>
       <div class="cta__overlay" aria-hidden="true"></div>
       <div class="wrap">
         <div class="cta__inner reveal">
