@@ -83,6 +83,23 @@ Rules:
 
 ---
 
+## Layout — shared container (FROZEN)
+
+- One container for everything: header row, hero text, every section, footer.
+  `--container: 80rem` (**1280px** max-width, side padding included) with
+  `--gutter: clamp(20px, 4vw, 40px)` side padding, on ALL pages. At 1440 the content edge
+  sits at 120px; the header logo and the hero text share that one left edge.
+- Hero text block max-width **620px**, left-anchored on the container edge. The right ~half
+  of the hero frame is reserved for the photo subject.
+- **Menu preview (Home).** Desktop: left ~40% = one tall 4:5 image, `position: sticky`
+  with a top offset below the header; right ~60% = eyebrow, H2, intro, then the ledger.
+  Ledger rows: name + type label on top, description below, price right-aligned on the name
+  line. Mobile: intro → full-width image → ledger. No floating image boxes.
+- Photo sections are true 50/50 splits with the image filling its full column width
+  (see Hero & asset patterns).
+
+---
+
 ## Positioning — the one idea every page carries
 
 **Physician-supervised IV therapy, overseen by a board-certified vascular surgeon.**
@@ -203,14 +220,22 @@ resolve `/folder/` → `folder/index.html` locally. `vercel.json` sets `cleanUrl
 
 ### Nav (simple, no mega-menu)
 Logo · IV & Wellness Menu · What to Expect · About · Contact · **Español/English toggle** ·
-**Call to Book** button (phone token). Sticky header with persistent click-to-call. Mobile:
-hamburger drawer + the call button stays visible in the bar.
+**Call to Book** button (phone token). Persistent click-to-call. Mobile: hamburger drawer +
+the call button stays visible in the bar.
+
+**Transparent nav — FROZEN.** The header is `position: fixed` and fully transparent on load,
+so the hero background shows through behind it. After ~40px of scroll it becomes solid
+`--color-dark` with the elevated shadow, animated with opacity only (a `::before` layer),
+no layout shift. Every hero carries top padding equal to the nav height and a top-down navy
+gradient scrim so the white logo and links stay readable over any photo. Mobile: same
+behavior; the drawer is solid navy and forces the solid header while it is open. Inner
+pages use the same pattern over their shorter heroes.
 
 ### Footer
 Logo (small) · NAP · hours · the 5 page links · language toggle · the disclaimer ·
 one line: "Thrive IV Solutions is led by Dr. R. Brookshire, who also leads
-South Texas Vascular Institute." with a single link to STVI `[NEEDS INPUT — STVI URL]`.
-No other STVI branding anywhere.
+South Texas Vascular Institute." with a single link to STVI (`https://stvi.tech`, on the
+practice name). No other STVI branding anywhere.
 
 ---
 
@@ -231,7 +256,7 @@ No other STVI branding anywhere.
 **Home.** Hero: eyebrow "Hydration. Recovery. Wellness." · H1 built on the target keyword
 ("IV therapy in Edinburg" + physician-supervised angle) · subline naming Dr. Brookshire's
 credential · CTAs: Call to Book (primary), See the Menu (secondary). Then: trust-badge row ·
-menu preview (all 4 items with prices, linking to anchors) · "Why physician-supervised
+menu preview (all 4 items with prices, linking to anchors; sticky-image layout, see Layout) · "Why physician-supervised
 matters" section (plain-language, no claims beyond the Positioning rules) · short What to
 Expect teaser (30–45 min, what to bring) · final CTA ("Hydration That Works. So You Can
 Thrive." + call button + hours).
@@ -301,9 +326,14 @@ body text, descriptive alt text with service + location context.
 - Hero and final-CTA backgrounds use ONLY `brand_assets/hero-background.*` and
   `brand_assets/cta-background.*`. Until those exist: `https://placehold.co/1920x1080`.
   Never promote a content photo into these slots.
-- Hero: full-bleed static image, left-anchored text, navy overlay (~0.7) + vignette +
-  text-shadows. Home hero `min-h-[85vh]`; inner-page heroes shorter (~50vh). No hero video.
-- Uniform photo containers: one `aspect-ratio` + `object-fit: cover` site-wide.
+- Hero: full-bleed static image, left-anchored text (max-width 620px on the shared
+  container edge), navy overlay (~0.7) + top scrim + vignette + text-shadows. Home hero
+  `min-h-[85vh]`; inner-page heroes shorter (~50vh). No hero video.
+- Uniform photo containers: ONE ratio site-wide, **4:5**, via `aspect-ratio` +
+  `object-fit: cover` (`.photo-frame`). The Dr. Brookshire portrait is the only exception
+  (3:4, `object-position: center top`). Photo sections are true 50/50 splits with the image
+  filling its full column width; never a small floating image box. Placeholders at the
+  final size: `placehold.co/1200x1500` (4:5) and `placehold.co/900x1200` (portrait).
 - Photo tiers: Home 3 · Menu 1 per drip (4, or placeholders) · What to Expect 1 · About
   1 portrait of Dr. Brookshire (`aspect-[3/4]`, `object-position: center top`) · Contact 0.
 - Dr. Brookshire's headshot: `[NEEDS INPUT — reuse the STVI headshot only with client
@@ -319,12 +349,31 @@ body text, descriptive alt text with service + location context.
 - Brand tokens only. Layered, color-tinted shadows (never flat `shadow-md`).
 - Distinct display + body fonts; tight tracking on large headings.
 - Subtle depth: layered radial gradients + SVG-noise grain on dark sections.
-- Animate only `transform`/`opacity`, spring easing. Never `transition-all`.
+- Motion follows the Motion system below. Never `transition-all`.
 - Every clickable element has hover + focus-visible + active states.
 - Base → elevated → floating depth system; intentional spacing tokens.
 - **Human-built feel:** no decorative icon grids, no invented badges/seals/"as seen in," no
   card-grid-for-everything. Vary section layouts (split, full-width text, list, menu
   table). No emoji. No stock "spa" clichés (orchids, stones, water drops everywhere).
+
+### Motion system — FROZEN (premium, restrained)
+
+- `transform` and `opacity` only. Spring easing from `brand.css` (`--ease-spring` for
+  hover/press, `--ease-reveal` for reveals). Reveals run 500–800ms. ONE
+  `IntersectionObserver` in `site.js` drives every reveal. No animation libraries, no
+  parallax on text, no looping animations.
+- Hero entrance on load: eyebrow → H1 → subline → buttons → meta line, fade-up ~16px with
+  ~90ms stagger. The hero background settles from `scale(1.06)` to `1.0` over ~2.5s.
+- Scroll reveals, once: section headings and text fade-up; ledger rows stagger in (~80ms);
+  images fade + scale 1.03 → 1.0.
+- Header: opacity-only transparent → solid swap (see Transparent nav).
+- Buttons: slight lift + deeper shadow on hover, press-in on active; arrow icons nudge right
+  on hover.
+- `prefers-reduced-motion: reduce`: no motion, everything fully visible.
+- JS off = content visible. The hidden pre-reveal state exists only under `html.js`, a
+  class `site.js` sets first thing. Elements use `.reveal` (+ `.reveal--scale` for images,
+  `data-delay` / `data-stagger` for order) and receive `.is-in`; `screenshot.mjs` forces
+  `.is-in` for captures.
 
 Content voice follows `SEO-CONTENT-PROMPT.md` (5th-grade reading level, avoid its word
 list). Where it conflicts with the Health-claims or Positioning rules above, **these
@@ -392,8 +441,7 @@ decision on dedicated Thrive phone line.
 
 **Backfillable:** vector/SVG logo (current PNG is usable) · hero/cta backgrounds · drip photos · Dr. Brookshire
 headshot + bio details · email · whether the phone receives texts · GHL form ·
-parking/suite note · STVI URL for the footer line · `areaServed` city list · `geo`
-coordinates · review status.
+parking/suite note · `areaServed` city list · `geo` coordinates · review status.
 
 **Separate-GBP note (for Juan, not Code):** Thrive sharing STVI's address, suite, and
 phone risks Google merging or confusing the two Business Profiles. A dedicated Thrive phone
