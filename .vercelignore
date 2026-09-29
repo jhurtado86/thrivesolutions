@@ -8,3 +8,4 @@ package-lock.json
 node_modules/
 _partials/
 .claude/
+brand_assets/_source/
