@@ -383,6 +383,8 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   .hero__meta .dot { display: inline; }
 }
 @media (min-width: 1024px) { .hero { padding-top: var(--nav-height); } }
+/* Art-directed mobile background (9:16 file): subject low, text over the calm upper area */
+@media (max-width: 767px) { .hero__bg { object-position: 50% 80%; } .cta__bg { object-position: 50% 50%; } }
 .hero__line { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--gradient-drop-line); opacity: 0.9; }
 
 /* ============================================================
