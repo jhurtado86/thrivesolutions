@@ -144,12 +144,12 @@ Pricing is **displayed** on this site (overrides the skeleton's no-price rule). 
 price in EN copy, ES copy, and JSON-LD must come from this table. If a price changes,
 change it here first, then grep every page.
 
-| ID / anchor | Name (EN) | Name (ES) `[VERIFY]` | Type | Price | EN description (confirmed) |
-|---|---|---|---|---|---|
-| `recovery-pack` | Recovery Pack | Paquete de Recuperación | IV drip | $165 | Replenish, restore, recharge. For athletes, busy lifestyles, and post-workout recovery. |
-| `basic-hydration` | Basic Hydration | Hidratación Básica | IV drip | $100 | Stay hydrated, feel refreshed. For everyday wellness and routine hydration. |
-| `hangover-help` | Hangover Help | Alivio para la Cruda | IV drip | $185 | Feel better fast. Rehydrate, replenish, and bounce back sooner. |
-| `nad-plus` | NAD+ Injection | Inyección de NAD+ | **Intramuscular injection (NOT an IV)** | $65 | Supports cellular energy and mental clarity. For healthy aging, focus, and overall wellness. |
+| ID / anchor | Name (EN) | Name (ES) `[VERIFY]` | Type | Price | EN description (confirmed) | Best for (EN, page line) |
+|---|---|---|---|---|---|---|
+| `recovery-pack` | Recovery Pack | Paquete de Recuperación | IV drip | $165 | Replenish, restore, recharge. For athletes, busy lifestyles, and post-workout recovery. | Athletes, busy lifestyles, and post-workout recovery. |
+| `basic-hydration` | Basic Hydration | Hidratación Básica | IV drip | $100 | Stay hydrated, feel refreshed. For everyday wellness and routine hydration. | Everyday wellness and routine hydration. |
+| `hangover-help` | Hangover Help | Alivio para la Cruda | IV drip | $185 | Feel better fast. Rehydrate, replenish, and bounce back sooner. | The morning after a late night. `[VERIFY]` |
+| `nad-plus` | NAD+ Injection | Inyección de NAD+ | **Intramuscular injection (NOT an IV)** | $65 | Supports cellular energy and mental clarity. For healthy aging, focus, and overall wellness. | Healthy aging, focus, and overall wellness. |
 
 Rules:
 - Page and nav label: **"IV & Wellness Menu"** (ES: "Menú de IV y Bienestar"). URL stays `/iv-menu/`.
@@ -157,6 +157,8 @@ Rules:
 - Order on the page: Recovery Pack, Basic Hydration, Hangover Help, then NAD+ as a visually separate "Add-on / Injection" item.
 - No ingredient lists, dosages, or "what's in the bag" details until confirmed `[NEEDS INPUT]`.
 - Prices display as whole dollars ("$165"). No "starting at," no memberships, packages, or discounts unless added to this table.
+- The "Best for" line on the Menu page comes from this table. Three are lifted from the confirmed
+  descriptions; Hangover Help's is a draft `[VERIFY]` until the client confirms it.
 
 ---
 
