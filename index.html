@@ -3,1491 +3,511 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home Services in [City] | Your Business Name</title>
-  <meta name="description" content="Professional home services in [City], [ST] and across the [Region]. Same-day appointments, free estimates, and clear, upfront pricing. Call (555) 000-0000." />
-  <meta name="keywords" content="home services [City] [ST], home services [City], local home services [Region], home services near me [City], [City 2] home services, professional home services [Region], Your Business Name [City]" />
+  <title>IV Therapy in Edinburg, TX | Thrive IV Solutions</title>
+  <meta name="description" content="Physician-supervised IV therapy in Edinburg, TX, overseen by a board-certified vascular surgeon. Drips priced up front. Call (956) 322-7662 to book." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <link rel="canonical" href="https://yourbusiness.com/" />
+  <link rel="canonical" href="https://www.thriveivsolution.com/" />
+  <link rel="alternate" hreflang="en" href="https://www.thriveivsolution.com/" />
+  <link rel="alternate" hreflang="es" href="https://www.thriveivsolution.com/es/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.thriveivsolution.com/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Home Services in [City] | Your Business Name" />
-  <meta property="og:description" content="Professional home services across [City] &amp; the [Region]. Same-day appointments, free estimates, and mobile service to your door. Call (555) 000-0000." />
-  <meta property="og:url" content="https://yourbusiness.com/" />
+  <meta property="og:title" content="IV Therapy in Edinburg, TX | Thrive IV Solutions" />
+  <meta property="og:description" content="Physician-supervised IV therapy in Edinburg, TX, overseen by a board-certified vascular surgeon. Drips priced up front. Call (956) 322-7662 to book." />
+  <meta property="og:url" content="https://www.thriveivsolution.com/" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://placehold.co/1200x630" /><!-- PLACEHOLDER: brand_assets/og-image.jpg does not exist yet — create 1200×630 social share image before launch -->
+  <meta property="og:image" content="https://www.thriveivsolution.com/brand_assets/og-image.jpg" /><!-- [NEEDS INPUT — create brand_assets/og-image.jpg, 1200×630] -->
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Thrive IV Solutions, physician-supervised IV therapy in Edinburg, TX" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:site_name" content="Your Business Name" />
+  <meta property="og:locale:alternate" content="es_US" />
+  <meta property="og:site_name" content="Thrive IV Solutions" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Home Services in [City] | Your Business Name" />
-  <meta name="twitter:description" content="Professional home services across [City] &amp; the [Region]. Same-day appointments, free estimates, and clear, upfront pricing. Call (555) 000-0000." />
-  <meta name="twitter:image" content="https://placehold.co/1200x630" /><!-- PLACEHOLDER: same 1200×630 image -->
+  <meta name="twitter:title" content="IV Therapy in Edinburg, TX | Thrive IV Solutions" />
+  <meta name="twitter:description" content="Physician-supervised IV therapy in Edinburg, TX, overseen by a board-certified vascular surgeon. Drips priced up front. Call (956) 322-7662 to book." />
+  <meta name="twitter:image" content="https://www.thriveivsolution.com/brand_assets/og-image.jpg" /><!-- same 1200×630 file as og:image -->
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/brand.css" />
+<!-- ============================================================
+     SHARED HEAD — canonical copy lives in _partials/head-shared.html.
+     Paste verbatim into every page, AFTER the per-page meta
+     (title, description, canonical, hreflang, OG/Twitter).
+     Order matters: Tailwind CDN → /site.js (theme + phone token) → /brand.css.
+     ============================================================ -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand_assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand_assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand_assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0B1B3A" /><!-- = --color-primary; meta tags cannot read CSS tokens -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..600;1,9..144,500..600&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet" />
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            /* Semantic palette — values resolve from /brand.css tokens */
-            primary: { DEFAULT: 'var(--color-primary)', mid: 'var(--color-primary-mid)' },
-            accent:  { DEFAULT: 'var(--color-accent)', deep: 'var(--color-accent-deep)' },
-            dark:    { DEFAULT: 'var(--color-dark)', 3: 'var(--color-dark-3)' },
-            ink:     'var(--color-ink)',
-            muted:   { DEFAULT: 'var(--color-muted)', light: 'var(--color-muted-light)' },
-            line:    'var(--color-line)',
-            bg:      { DEFAULT: 'var(--color-bg)', 2: 'var(--color-bg-2)' },
-            rating:  'var(--color-rating)',
-          },
-          fontFamily: {
-            display: ['Barlow', 'sans-serif'],
-            body:    ['Nunito', 'sans-serif'],
-          },
-          boxShadow: {
-            'card':    '0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
-            'card-lg': '0 8px 32px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.05)',
-            'glow':    '0 0 28px rgba(var(--color-dark-rgb),0.16)',
-            'cta':     '0 4px 20px rgba(var(--color-accent-rgb),0.30)',
-          },
-          letterSpacing: { tight: '-0.03em' },
-          lineHeight:    { body: '1.7' },
-        },
-      },
-    };
-  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/site.js"></script>
+  <link rel="stylesheet" href="/brand.css" />
 
-  <style>
-    /* Color tokens live in /brand.css (single source of truth). */
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Nunito', sans-serif; background: var(--color-bg); color: var(--color-ink); }
-    h1,h2,h3,h4 { font-family: 'Barlow', sans-serif; }
-
-    .section-dark { background: var(--color-bg); }
-    .section-mid  {
-      background:
-        radial-gradient(ellipse 100% 60% at 50% 0%, rgba(var(--color-dark-rgb), 0.05) 0%, transparent 55%),
-        var(--color-bg-2);
-    }
-    .dark-section { background: var(--color-dark); }
-
-    /* ---- Atmospheric depth for light sections (grain + corner wash) ---- */
-    .atmo { position: relative; overflow: hidden; }
-    .atmo > * { position: relative; z-index: 1; }
-    .atmo::before {
-      content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-      opacity: 0.05; background-size: 160px 160px;
-      background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='160'%20height='160'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.85'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-    .atmo::after {
-      content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-      background: var(--wash, transparent);
-    }
-    .wash-navy-tr  { --wash: radial-gradient(ellipse 55% 48% at 100% 0%,   rgba(var(--color-dark-rgb), 0.06) 0%, transparent 60%); }
-    .wash-navy-br  { --wash: radial-gradient(ellipse 55% 48% at 100% 100%, rgba(var(--color-dark-rgb), 0.06) 0%, transparent 60%); }
-    .wash-navy-bl  { --wash: radial-gradient(ellipse 55% 48% at 0% 100%,   rgba(var(--color-dark-rgb), 0.06) 0%, transparent 60%); }
-    .wash-ember-tl { --wash: radial-gradient(ellipse 55% 48% at 0% 0%,     rgba(var(--color-accent-rgb), 0.05) 0%, transparent 60%); }
-    .wash-ember-tr { --wash: radial-gradient(ellipse 55% 48% at 100% 0%,   rgba(var(--color-accent-rgb), 0.05) 0%, transparent 60%); }
-
-    /* ---- Insurance section: deep-navy treatment (page rhythm) ---- */
-    #insurance.dark-section {
-      background:
-        radial-gradient(ellipse 90% 70% at 12% 0%,   rgba(var(--color-dark-rgb), 0.20) 0%, transparent 55%),
-        radial-gradient(ellipse 85% 65% at 100% 100%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 52%),
-        var(--color-dark);
-    }
-    #insurance .area-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.02) 100%), rgba(var(--color-dark-rgb), 0.45);
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.30), 0 20px 50px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.06);
-    }
-    #insurance .area-card > .text-center span { color: var(--color-muted-light) !important; }
-    #insurance .area-card p { color: var(--color-muted-light) !important; }
-    #insurance .insurer-pill {
-      background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.16); color: var(--color-line);
-    }
-    #insurance .insurer-pill:hover {
-      background: rgba(255,255,255,0.12); border-color: rgba(var(--color-accent-rgb), 0.45); transform: translateY(-1px);
-    }
-
-    /* ---- Reviews section: deep-navy treatment (page rhythm) ---- */
-    #reviews.dark-section {
-      background:
-        radial-gradient(ellipse 80% 60% at 12% 6%, rgba(var(--color-accent-rgb), 0.07) 0%, transparent 50%),
-        var(--color-dark);
-    }
-    #reviews .area-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.02) 100%), rgba(var(--color-dark-rgb), 0.45) !important;
-      border-color: rgba(255,255,255,0.10) !important;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.30), 0 20px 50px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.06);
-    }
-
-    .dark-section .text-white        { color: var(--color-bg) !important; }
-    .dark-section .text-muted  { color: var(--color-muted-light) !important; }
-    .dark-section .btn-outline       { color: var(--color-bg); border-color: rgba(255,255,255,0.28); }
-    .dark-section .btn-outline:hover { border-color: rgba(255,255,255,0.60); background: rgba(255,255,255,0.06); }
-    .dark-section .divider           { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); }
-    .dark-section .section-title-accent { background: linear-gradient(90deg, transparent 0%, var(--color-accent) 25%, var(--color-accent) 75%, transparent 100%); }
-    .dark-section .link-arrow        { color: var(--color-accent-bright); }
-    .dark-section .link-arrow:hover  { color: var(--color-line); }
-
-    .section-dark .text-white,
-    .section-mid  .text-white       { color: var(--color-ink); }
-    .section-dark .text-muted,
-    .section-mid  .text-muted { color: var(--color-muted); }
-    .hero-bg .text-muted      { color: var(--color-muted-light); }
-
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(var(--color-dark-rgb), 0.12) 30%, rgba(var(--color-dark-rgb), 0.12) 70%, transparent 100%);
-    }
-
-    .dark-cta-ramp {
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 90px; pointer-events: none; z-index: 3;
-      background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, transparent 100%);
-    }
-
-    .nav-wordmark {
-      font-family: 'Barlow', sans-serif;
-      font-weight: 800; font-size: 24px;
-      letter-spacing: -0.02em; color: var(--color-bg); line-height: 1;
-      transition: color 0.25s cubic-bezier(0.4,0,0.2,1);
-    }
-    #navbar.scrolled .nav-wordmark { color: var(--color-ink); }
-
-    /* Nav bar + logo sizing — driven by --nav-height / --nav-logo-height /
-       --footer-logo-height in brand.css (size the nav off the client logo). */
-    #navbar .nav-row { height: var(--nav-height); }
-    .nav-logo    { height: var(--nav-logo-height); width: auto; display: block; }
-    .footer-logo { height: var(--footer-logo-height); width: auto; display: block; }
-
-    .footer-wordmark {
-      font-family: 'Barlow', sans-serif;
-      font-weight: 800; font-size: 28px;
-      letter-spacing: -0.02em; color: var(--color-bg); line-height: 1;
-    }
-
-    #navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-      background: transparent;
-      border-bottom: 1px solid transparent;
-      transition: background 0.40s cubic-bezier(0.4,0,0.2,1),
-                  border-color 0.40s cubic-bezier(0.4,0,0.2,1),
-                  box-shadow 0.40s cubic-bezier(0.4,0,0.2,1);
-    }
-    #navbar .text-muted          { color: rgba(255,255,255,0.68) !important; }
-    #navbar .hover\:text-white:hover   { color: rgba(255,255,255,1) !important; }
-    #navbar #hamburger                 { color: rgba(255,255,255,0.80) !important; border-color: rgba(255,255,255,0.18) !important; }
-    #mobile-menu                       { background: rgba(var(--color-dark-rgb), 0.96); backdrop-filter: blur(18px); }
-    #mobile-menu a.mobile-nav-link     { color: rgba(255,255,255,0.68) !important; }
-    #mobile-menu a.mobile-nav-link:hover { color: rgba(255,255,255,1) !important; background: rgba(255,255,255,0.06) !important; }
-    #mobile-menu                       { border-top-color: rgba(255,255,255,0.08) !important; }
-
-    #navbar.scrolled {
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
-      border-bottom-color: rgba(var(--color-dark-rgb), 0.07);
-      box-shadow: 0 1px 24px rgba(0,0,0,0.06);
-    }
-    #navbar.scrolled .text-muted         { color: var(--color-muted) !important; }
-    #navbar.scrolled .hover\:text-white:hover  { color: var(--color-ink) !important; }
-    #navbar.scrolled #hamburger                { color: var(--color-ink) !important; border-color: rgba(var(--color-dark-rgb), 0.16) !important; }
-    #navbar.scrolled #mobile-menu              { background: var(--color-bg); }
-    #navbar.scrolled #mobile-menu a.mobile-nav-link       { color: var(--color-muted) !important; }
-    #navbar.scrolled #mobile-menu a.mobile-nav-link:hover { color: var(--color-ink) !important; background: rgba(var(--color-dark-rgb), 0.04) !important; }
-    #navbar.scrolled #mobile-menu { border-top-color: rgba(var(--color-dark-rgb), 0.08) !important; }
-
-    .nav-link { position: relative; }
-    .nav-link::after {
-      content: ''; position: absolute; bottom: -2px; left: 0;
-      width: 0; height: 2px; background: var(--color-accent);
-      transition: width 0.25s cubic-bezier(0.4,0,0.2,1);
-    }
-    .nav-link:hover::after { width: 100%; }
-
-    /* ── Services dropdown (desktop) ── */
-    .nav-dropdown { position: relative; height: var(--nav-height); display: flex; align-items: center; }
-    .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; }
-    .nav-dropdown-trigger .nav-chev { transition: transform 0.25s cubic-bezier(0.4,0,0.2,1); }
-    .nav-dropdown:hover .nav-chev,
-    .nav-dropdown:focus-within .nav-chev { transform: rotate(180deg); }
-    .nav-dropdown-menu {
-      position: absolute; top: 100%; left: 50%;
-      margin-top: 14px; min-width: 252px; padding: 8px;
-      background: rgba(var(--color-dark-rgb), 0.97); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(255,255,255,0.08); border-radius: 14px;
-      box-shadow: 0 18px 48px rgba(0,0,0,0.34), 0 2px 8px rgba(0,0,0,0.18);
-      opacity: 0; visibility: hidden; pointer-events: none;
-      transform: translateX(-50%) translateY(8px);
-      transition: opacity 0.22s cubic-bezier(0.4,0,0.2,1), transform 0.22s cubic-bezier(0.4,0,0.2,1);
-      z-index: 60;
-    }
-    .nav-dropdown-menu::before { content: ''; position: absolute; top: -14px; left: 0; right: 0; height: 14px; }
-    .nav-dropdown:hover .nav-dropdown-menu,
-    .nav-dropdown:focus-within .nav-dropdown-menu {
-      opacity: 1; visibility: visible; pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
-    }
-    .nav-dropdown-menu a {
-      display: block; padding: 10px 14px; border-radius: 9px;
-      font-size: 14px; font-weight: 500; line-height: 1.3; white-space: nowrap;
-      color: rgba(255,255,255,0.70);
-      transition: color 0.15s cubic-bezier(0.4,0,0.2,1), background 0.15s cubic-bezier(0.4,0,0.2,1);
-    }
-    .nav-dropdown-menu a:hover { color: var(--color-bg); background: rgba(255,255,255,0.07); }
-    .nav-dropdown-menu a[aria-current="page"] { color: var(--color-bg); font-weight: 700; background: rgba(var(--color-accent-rgb), 0.16); }
-    #navbar.scrolled .nav-dropdown-menu {
-      background: rgba(255,255,255,0.98); border-color: rgba(var(--color-dark-rgb), 0.08);
-      box-shadow: 0 18px 48px rgba(var(--color-dark-rgb), 0.14), 0 2px 8px rgba(var(--color-dark-rgb), 0.06);
-    }
-    #navbar.scrolled .nav-dropdown-menu a { color: var(--color-muted); }
-    #navbar.scrolled .nav-dropdown-menu a:hover { color: var(--color-ink); background: rgba(var(--color-dark-rgb), 0.04); }
-    #navbar.scrolled .nav-dropdown-menu a[aria-current="page"] { color: var(--color-ink); background: rgba(var(--color-accent-rgb), 0.12); }
-
-    /* ── Services dropdown (mobile) ── */
-    .mobile-services-toggle {
-      display: flex; align-items: center; justify-content: space-between; width: 100%;
-      background: none; border: none; cursor: pointer; font: inherit; text-align: left;
-      color: rgba(255,255,255,0.68);
-      transition: color 0.15s cubic-bezier(0.4,0,0.2,1), background 0.15s cubic-bezier(0.4,0,0.2,1);
-    }
-    .mobile-services-toggle:hover { color: var(--color-bg); background: rgba(255,255,255,0.06); }
-    .mobile-services-toggle .nav-chev { transition: transform 0.25s cubic-bezier(0.4,0,0.2,1); flex-shrink: 0; }
-    .mobile-services-toggle[aria-expanded="true"] .nav-chev { transform: rotate(180deg); }
-    .mobile-services-submenu {
-      display: none; flex-direction: column; gap: 2px;
-      margin: 2px 0 2px 14px; padding-left: 10px;
-      border-left: 1px solid rgba(255,255,255,0.12);
-    }
-    .mobile-services-submenu.open { display: flex; }
-    .mobile-services-submenu a {
-      padding: 9px 12px; border-radius: 8px; font-size: 14px; font-weight: 500;
-      color: rgba(255,255,255,0.58);
-      transition: color 0.15s cubic-bezier(0.4,0,0.2,1), background 0.15s cubic-bezier(0.4,0,0.2,1);
-    }
-    .mobile-services-submenu a:hover { color: var(--color-bg); background: rgba(255,255,255,0.06); }
-    .mobile-services-submenu a[aria-current="page"] { color: var(--color-bg); font-weight: 700; }
-    #navbar.scrolled .mobile-services-toggle { color: var(--color-muted); }
-    #navbar.scrolled .mobile-services-toggle:hover { color: var(--color-ink); background: rgba(var(--color-dark-rgb), 0.04); }
-    #navbar.scrolled .mobile-services-submenu { border-left-color: rgba(var(--color-dark-rgb), 0.10); }
-    #navbar.scrolled .mobile-services-submenu a { color: var(--color-muted); }
-    #navbar.scrolled .mobile-services-submenu a:hover { color: var(--color-ink); background: rgba(var(--color-dark-rgb), 0.04); }
-
-    .hero-bg { background: var(--color-dark); }
-    .hero-vignette {
-      background: radial-gradient(ellipse 120% 100% at 50% 50%, transparent 35%, rgba(0,0,0,0.50) 100%);
-      pointer-events: none;
-    }
-    .hero-bg .btn-outline { color: rgba(255,255,255,0.88); border-color: rgba(255,255,255,0.20); }
-    .hero-bg .btn-outline:hover { border-color: rgba(var(--color-accent-rgb), 0.50); background: rgba(var(--color-dark-rgb), 0.14); transform: translateY(-2px); }
-    @media (max-width: 767px) { .hero-text-block h1 { font-size: 2.15rem !important; } }
-
-    .btn-primary {
-      background: var(--color-accent); color: var(--color-bg);
-      font-weight: 700; border-radius: 8px; padding: 14px 28px; font-size: 15px;
-      letter-spacing: 0.01em;
-      box-shadow: 0 4px 18px rgba(var(--color-accent-rgb), 0.30);
-      transition: transform 0.18s cubic-bezier(0.4,0,0.2,1),
-                  box-shadow 0.18s cubic-bezier(0.4,0,0.2,1),
-                  background 0.18s cubic-bezier(0.4,0,0.2,1);
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-primary:hover  { background: var(--color-accent-deep); transform: translateY(-2px); box-shadow: 0 8px 26px rgba(var(--color-accent-rgb), 0.38); }
-    .btn-primary:active { transform: translateY(0); box-shadow: 0 2px 10px rgba(var(--color-accent-rgb), 0.22); }
-    .btn-primary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-
-    .btn-outline {
-      background: transparent; color: var(--color-ink);
-      font-weight: 600; border: 1.5px solid rgba(var(--color-dark-rgb), 0.22);
-      border-radius: 8px; padding: 13px 28px; font-size: 15px;
-      transition: transform 0.18s cubic-bezier(0.4,0,0.2,1),
-                  border-color 0.18s cubic-bezier(0.4,0,0.2,1),
-                  background 0.18s cubic-bezier(0.4,0,0.2,1);
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-outline:hover  { border-color: var(--color-accent); background: rgba(var(--color-dark-rgb), 0.05); transform: translateY(-2px); }
-    .btn-outline:active { transform: translateY(0); }
-    .btn-outline:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-
-    .service-card {
-      background: var(--color-bg); border: 1px solid rgba(var(--color-dark-rgb), 0.07); border-radius: 16px; padding: 30px;
-      box-shadow: 0 1px 2px rgba(var(--color-dark-rgb), 0.05), 0 6px 18px rgba(var(--color-dark-rgb), 0.10), 0 16px 40px rgba(var(--color-dark-rgb), 0.09), 0 0 0 1px rgba(var(--color-dark-rgb), 0.05);
-      transition: transform 0.24s cubic-bezier(0.34,1.56,0.64,1),
-                  box-shadow 0.24s cubic-bezier(0.4,0,0.2,1),
-                  border-color 0.24s cubic-bezier(0.4,0,0.2,1);
-    }
-    .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 20px 48px rgba(var(--color-dark-rgb), 0.13), 0 0 0 1.5px rgba(var(--color-dark-rgb), 0.20);
-      border-color: transparent;
-    }
-    .service-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-
-    .feature-card {
-      background: var(--color-bg); border: 1px solid rgba(var(--color-dark-rgb), 0.07); border-radius: 16px; padding: 28px 24px;
-      box-shadow: 0 1px 2px rgba(var(--color-dark-rgb), 0.05), 0 6px 18px rgba(var(--color-dark-rgb), 0.09), 0 16px 38px rgba(var(--color-dark-rgb), 0.08);
-      transition: transform 0.24s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.24s cubic-bezier(0.4,0,0.2,1);
-    }
-    .feature-card:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 36px rgba(var(--color-dark-rgb), 0.11); }
-
-    /* Dark-card treatment for feature-cards placed on a dark section (e.g. How It Works). */
-    #how-it-works .feature-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.02) 100%), rgba(var(--color-dark-rgb), 0.45);
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.30), 0 20px 50px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.06);
-    }
-
-    .insurer-pill {
-      background: rgba(var(--color-dark-rgb), 0.07); border: 1px solid rgba(var(--color-dark-rgb), 0.16);
-      border-radius: 100px; padding: 8px 20px; font-size: 14px; font-weight: 600;
-      color: var(--color-accent); display: inline-flex; align-items: center;
-      transition: background 0.18s, border-color 0.18s, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
-    }
-    .insurer-pill:hover { background: rgba(var(--color-dark-rgb), 0.14); border-color: rgba(var(--color-dark-rgb), 0.30); transform: translateY(-1px); }
-    .section-title-accent {
-      display: inline-block; width: 64px; height: 3px;
-      background: linear-gradient(90deg, transparent 0%, var(--color-accent) 25%, var(--color-accent) 75%, transparent 100%);
-      border-radius: 2px; margin-bottom: 12px;
-    }
-    .icon-wrap {
-      width: 48px; height: 48px;
-      background: linear-gradient(135deg, rgba(var(--color-dark-rgb), 0.10) 0%, rgba(var(--color-dark-rgb), 0.06) 100%);
-      border: 1px solid rgba(var(--color-dark-rgb), 0.14); border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px; flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(var(--color-dark-rgb), 0.09), inset 0 1px 0 rgba(255,255,255,0.60);
-    }
-    .link-arrow {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 14px; font-weight: 600; color: var(--color-accent);
-      transition: color 0.18s cubic-bezier(0.4,0,0.2,1), gap 0.18s cubic-bezier(0.4,0,0.2,1);
-    }
-    .link-arrow:hover { color: var(--color-accent-deep); gap: 10px; }
-    .link-arrow:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 4px; }
-
-    .area-card {
-      background: linear-gradient(135deg, rgba(var(--color-dark-rgb), 0.04) 0%, rgba(var(--color-dark-rgb), 0.015) 100%), var(--color-bg);
-      border: 1px solid rgba(var(--color-dark-rgb), 0.12); border-radius: 18px; padding: 36px 40px;
-      box-shadow: 0 1px 3px rgba(var(--color-dark-rgb), 0.05), 0 10px 28px rgba(var(--color-dark-rgb), 0.10), 0 22px 56px rgba(var(--color-dark-rgb), 0.09), 0 0 0 1px rgba(var(--color-dark-rgb), 0.06);
-    }
-    .area-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--color-accent), var(--color-accent-deep));
-      box-shadow: 0 0 6px rgba(var(--color-dark-rgb), 0.40); flex-shrink: 0;
-    }
-
-    #mobile-menu {
-      display: none;
-      max-height: calc(100vh - var(--nav-height) - 12px);
-      max-height: calc(100dvh - var(--nav-height) - 12px);
-      overflow-y: auto;
-    }
-    #mobile-menu.open { display: block; }
-
-    .fade-up {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1), transform 0.55s cubic-bezier(0.4,0,0.2,1);
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    .phone-pulse { position: relative; }
-    .phone-pulse::after {
-      content: ""; position: absolute; inset: -3px; border-radius: 11px;
-      border: 2px solid rgba(var(--color-accent-rgb), 0.45);
-      opacity: 0; pointer-events: none;
-      animation: pulse-ring 2.5s cubic-bezier(0.4,0,0.6,1) infinite;
-    }
-    @keyframes pulse-ring {
-      0%        { transform: scale(0.98); opacity: 0.55; }
-      70%, 100% { transform: scale(1.15); opacity: 0; }
-    }
-
-    @media (min-width: 1024px) {
-      .hero-outer {
-        max-width: none !important; margin-left: 0 !important; margin-right: 0 !important;
-        padding-left: clamp(48px, 5vw, 96px) !important; padding-right: 0 !important;
-      }
-      .hero-text-block { max-width: 600px !important; }
-    }
-
-    /* ── Skip link, anchor offset, FAQ chevron, reduced motion ── */
-    .skip-link {
-      position: absolute; top: 0; left: -9999px; z-index: 100;
-      background: var(--color-bg); color: var(--color-ink);
-      padding: 10px 18px; border-radius: 0 0 10px 0; font-weight: 600;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.18);
-    }
-    .skip-link:focus { left: 0; }
-    section[id] { scroll-margin-top: calc(var(--nav-height) + 8px); }
-    .faq-chevron { transition: transform 0.22s cubic-bezier(0.4,0,0.2,1); }
-    details[open] .faq-chevron { transform: rotate(180deg); }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .phone-pulse::after { animation: none; opacity: 0; }
-      .fade-up { opacity: 1; transform: none; transition: none; }
-    }
-
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--color-bg-2); }
-    ::-webkit-scrollbar-thumb { background: var(--color-line); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
-  </style>
-
-  <!-- Homepage business schema. Set [BUSINESS @TYPE] to the trade's schema.org type — e.g. AutoRepair, HVACBusiness, PlumbingBusiness, RoofingContractor; fall back to LocalBusiness only if no specific subtype fits. -->
-  <!-- REMOVE this PostalAddress block (the "address" property in the JSON-LD below) entirely for service-area clients with no public address. -->
+  <!-- Home schema: MedicalClinic. Prices mirror the Menu table in CLAUDE.md (4 Offers).
+       Omitted on purpose until confirmed: email, aggregateRating, geo (backfillable — add
+       GeoCoordinates once the client confirms). founder role is [VERIFY role].
+       areaServed list is [VERIFY — client's actual draw area]. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "[BUSINESS @TYPE]",
-    "@id": "https://yourbusiness.com/#business",
-    "name": "Your Business Name",
-    "description": "Professional home services in [City], [ST] and across the [Region]. Serving homes and businesses with same-day appointments, free estimates, and mobile service.",
-    "url": "https://yourbusiness.com/",
-    "telephone": "+15550000000",
-    "email": "hello@yourbusiness.com",
+    "@type": "MedicalClinic",
+    "@id": "https://www.thriveivsolution.com/#clinic",
+    "name": "Thrive IV Solutions",
+    "alternateName": "Thrive IV",
+    "slogan": "Hydration. Recovery. Wellness.",
+    "description": "Physician-supervised IV therapy in Edinburg, TX, overseen by Dr. R. Brookshire, a board-certified vascular surgeon. IV hydration and wellness drips and NAD+ injections.",
+    "url": "https://www.thriveivsolution.com/",
+    "telephone": "+19563227662",
+    "image": "https://www.thriveivsolution.com/brand_assets/og-image.jpg",
+    "logo": "https://www.thriveivsolution.com/brand_assets/logo-dark.png",
+    "priceRange": "$65–$185",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "[Street Address]",
-      "addressLocality": "[City]",
-      "addressRegion": "[ST]",
-      "postalCode": "[ZIP]",
+      "streetAddress": "2511 Cornerstone Blvd, Ste 2511",
+      "addressLocality": "Edinburg",
+      "addressRegion": "TX",
+      "postalCode": "78539",
       "addressCountry": "US"
     },
-    "priceRange": "[priceRange]",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "08:00",
-        "closes": "18:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         "opens": "09:00",
-        "closes": "16:00"
+        "closes": "17:00"
       }
     ],
     "areaServed": [
-      { "@type": "City", "name": "[City]",   "containedInPlace": { "@type": "State", "name": "[State]" } },
-      { "@type": "City", "name": "[City 2]",  "containedInPlace": { "@type": "State", "name": "[State]" } },
-      { "@type": "City", "name": "[City 3]",   "containedInPlace": { "@type": "State", "name": "[State]" } },
-      { "@type": "City", "name": "[City 4]",     "containedInPlace": { "@type": "State", "name": "[State]" } },
-      { "@type": "City", "name": "[City 5]",  "containedInPlace": { "@type": "State", "name": "[State]" } },
-      { "@type": "City", "name": "[City 6]", "containedInPlace": { "@type": "State", "name": "[State]" } }
+      { "@type": "City", "name": "Edinburg" },
+      { "@type": "City", "name": "McAllen" },
+      { "@type": "City", "name": "Mission" },
+      { "@type": "City", "name": "Pharr" },
+      { "@type": "City", "name": "Weslaco" },
+      { "@type": "Place", "name": "Rio Grande Valley" }
     ],
+    "founder": {
+      "@type": "Physician",
+      "@id": "https://www.thriveivsolution.com/about/#physician",
+      "name": "Dr. R. Brookshire",
+      "jobTitle": "Board-certified vascular surgeon",
+      "medicalSpecialty": "https://schema.org/Surgical",
+      "knowsAbout": "Vascular surgery",
+      "url": "https://www.thriveivsolution.com/about/",
+      "worksFor": { "@id": "https://www.thriveivsolution.com/#clinic" }
+    },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Our Services",
+      "name": "IV & Wellness Menu",
+      "url": "https://www.thriveivsolution.com/iv-menu/",
       "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service One" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service Two" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service Three" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service Four" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service Five" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service Six" } }
+        {
+          "@type": "Offer",
+          "name": "Recovery Pack",
+          "price": 165,
+          "priceCurrency": "USD",
+          "url": "https://www.thriveivsolution.com/iv-menu/#recovery-pack",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Recovery Pack",
+            "serviceType": "IV drip",
+            "description": "Replenish, restore, recharge. For athletes, busy lifestyles, and post-workout recovery."
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Basic Hydration",
+          "price": 100,
+          "priceCurrency": "USD",
+          "url": "https://www.thriveivsolution.com/iv-menu/#basic-hydration",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Basic Hydration",
+            "serviceType": "IV drip",
+            "description": "Stay hydrated, feel refreshed. For everyday wellness and routine hydration."
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Hangover Help",
+          "price": 185,
+          "priceCurrency": "USD",
+          "url": "https://www.thriveivsolution.com/iv-menu/#hangover-help",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Hangover Help",
+            "serviceType": "IV drip",
+            "description": "Feel better fast. Rehydrate, replenish, and bounce back sooner."
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "NAD+ Injection",
+          "price": 65,
+          "priceCurrency": "USD",
+          "url": "https://www.thriveivsolution.com/iv-menu/#nad-plus",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "NAD+ Injection",
+            "serviceType": "Intramuscular injection",
+            "description": "Supports cellular energy and mental clarity. For healthy aging, focus, and overall wellness."
+          }
+        }
       ]
     }
   }
   </script>
 </head>
-<body class="font-body leading-body">
-
+<body class="site">
   <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <!-- ============================================================
-       STICKY NAVIGATION
-  ============================================================ -->
-  <nav id="navbar">
-    <div class="nav-row max-w-6xl mx-auto px-5 flex items-center justify-between">
-
-      <!-- LOGO PLACEHOLDER — swap the <span> for <img class="nav-logo" ...>; height comes from --nav-logo-height in brand.css -->
-      <a href="/" class="flex items-center group" aria-label="Your Business Name home">
-        <span class="nav-wordmark">Your Business Name</span>
+<!-- ============================================================
+     SHARED HEADER — canonical copy lives in _partials/header.html.
+     Paste verbatim into every EN page. Per page, change ONLY:
+       1) aria-current="page" on the matching nav link (none on Home)
+       2) both Español hrefs → the equivalent /es/ page
+     Phone: data-phone / data-phone-href are hydrated from /site.js
+     (the single phone token). Static values are the same number.
+     ============================================================ -->
+  <header class="site-header" id="site-header">
+    <div class="wrap site-header__row">
+      <a href="/" class="site-logo" aria-label="Thrive IV Solutions home">
+        <img src="/brand_assets/logo-white.png" alt="Thrive IV Solutions" width="1293" height="401" decoding="async" fetchpriority="high" />
       </a>
 
-      <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center gap-7">
-        <div class="nav-dropdown">
-          <a href="/#services" class="nav-link nav-dropdown-trigger text-sm font-medium text-muted hover:text-white transition-colors duration-150">
-            Services
-            <svg class="nav-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </a>
-          <div class="nav-dropdown-menu" aria-label="Services">
-            <a href="/services/service-one.html">Service One</a>
-            <a href="/services/service-two.html">Service Two</a>
-            <a href="/services/service-three.html">Service Three</a>
-            <a href="/services/service-four.html">Service Four</a>
-            <a href="/services/service-five.html">Service Five</a>
-            <a href="/services/service-six.html">Service Six</a>
-          </div>
-        </div>
-        <!-- SHARED ZONE: Areas We Serve dropdown — do NOT modify during
-             city-page clone-and-localize pass. All city entries constant. -->
-        <div class="nav-dropdown">
-          <a href="/#service-area" class="nav-link nav-dropdown-trigger text-sm font-medium text-muted hover:text-white transition-colors duration-150">
-            Areas We Serve
-            <svg class="nav-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </a>
-          <div class="nav-dropdown-menu" aria-label="Areas We Serve">
-            <a href="/areas/city-one.html">[City]</a>
-            <a href="/areas/city-two.html">[City 2]</a>
-            <a href="/areas/city-three.html">[City 3]</a>
-            <a href="/areas/city-four.html">[City 4]</a>
-            <a href="/areas/city-five.html">[City 5]</a>
-            <a href="/areas/city-six.html">[City 6]</a>
-          </div>
-        </div>
-        <!-- END SHARED ZONE: Areas We Serve dropdown -->
-        <!-- OPTIONAL MODULE LINK (desktop nav, #insurance): re-enable with the Insurance module: <a href="/#insurance"   class="nav-link text-sm font-medium text-muted hover:text-white transition-colors duration-150">Insurance</a> -->
-        <a href="/about.html" class="nav-link text-sm font-medium text-muted hover:text-white transition-colors duration-150">About</a>
-        <!-- OPTIONAL MODULE LINK (desktop nav, #reviews): re-enable with the Review widget module: <a href="/#reviews"     class="nav-link text-sm font-medium text-muted hover:text-white transition-colors duration-150">Reviews</a> -->
-        <a href="/#contact"     class="nav-link text-sm font-medium text-muted hover:text-white transition-colors duration-150">Contact</a>
-        <a href="tel:+15550000000" class="btn-primary text-sm py-2.5 px-5 phone-pulse ml-4">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          (555) 000-0000
+      <nav class="site-nav" aria-label="Main">
+        <a href="/iv-menu/" class="nav-link">IV &amp; Wellness Menu</a>
+        <a href="/what-to-expect/" class="nav-link">What to Expect</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+        <a href="/es/" class="lang-toggle" lang="es" hreflang="es">Español</a>
+        <a href="tel:+19563227662" class="btn btn-primary btn-sm" data-phone-href>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call to Book
+        </a>
+      </nav>
+
+      <div class="site-header__mobile">
+        <a href="tel:+19563227662" class="btn btn-primary btn-sm" data-phone-href aria-label="Call to book">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call
+        </a>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Open menu">
+          <svg class="icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+          <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-drawer" id="mobile-drawer" aria-label="Main menu">
+      <a href="/iv-menu/" class="nav-link">IV &amp; Wellness Menu</a>
+      <a href="/what-to-expect/" class="nav-link">What to Expect</a>
+      <a href="/about/" class="nav-link">About</a>
+      <a href="/contact/" class="nav-link">Contact</a>
+      <div class="mobile-drawer__actions">
+        <a href="/es/" class="lang-toggle" lang="es" hreflang="es">Español</a>
+        <a href="tel:+19563227662" class="btn btn-primary" data-phone-href>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call to Book&nbsp;<span data-phone>(956) 322-7662</span>
         </a>
       </div>
-
-      <!-- Mobile hamburger -->
-      <button id="hamburger" class="md:hidden p-2 rounded-lg border border-white/10 text-white hover:border-white/30 transition-colors duration-150" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-        <svg id="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden px-5 pb-4 mt-3 border-t border-white/10">
-      <div class="flex flex-col gap-1 pt-4">
-        <button type="button" class="mobile-services-toggle py-3 px-3 rounded-lg font-medium" aria-expanded="false" aria-controls="mobile-services-submenu">
-          Services
-          <svg class="nav-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div id="mobile-services-submenu" class="mobile-services-submenu">
-          <a href="/services/service-one.html">Service One</a>
-          <a href="/services/service-two.html">Service Two</a>
-          <a href="/services/service-three.html">Service Three</a>
-          <a href="/services/service-four.html">Service Four</a>
-          <a href="/services/service-five.html">Service Five</a>
-          <a href="/services/service-six.html">Service Six</a>
-        </div>
-        <!-- SHARED ZONE: Areas We Serve dropdown — do NOT modify during
-             city-page clone-and-localize pass. All city entries constant. -->
-        <button type="button" class="mobile-services-toggle py-3 px-3 rounded-lg font-medium" aria-expanded="false" aria-controls="mobile-areas-submenu">
-          Areas We Serve
-          <svg class="nav-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div id="mobile-areas-submenu" class="mobile-services-submenu">
-          <a href="/areas/city-one.html">[City]</a>
-          <a href="/areas/city-two.html">[City 2]</a>
-          <a href="/areas/city-three.html">[City 3]</a>
-          <a href="/areas/city-four.html">[City 4]</a>
-          <a href="/areas/city-five.html">[City 5]</a>
-          <a href="/areas/city-six.html">[City 6]</a>
-        </div>
-        <!-- END SHARED ZONE: Areas We Serve dropdown -->
-        <!-- OPTIONAL MODULE LINK (mobile nav, #insurance): re-enable with the Insurance module: <a href="/#insurance" class="mobile-nav-link py-3 px-3 rounded-lg font-medium">Insurance</a> -->
-        <a href="/about.html" class="mobile-nav-link py-3 px-3 rounded-lg font-medium">About</a>
-        <!-- OPTIONAL MODULE LINK (mobile nav, #reviews): re-enable with the Review widget module: <a href="/#reviews"   class="mobile-nav-link py-3 px-3 rounded-lg font-medium">Reviews</a> -->
-        <a href="/#contact"   class="mobile-nav-link py-3 px-3 rounded-lg font-medium">Contact</a>
-        <a href="tel:+15550000000" class="btn-primary mt-3 justify-center">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Call (555) 000-0000
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ============================================================
-       HERO
-  ============================================================ -->
-  <section class="hero-bg relative min-h-screen flex items-center overflow-hidden" style="padding-top: clamp(88px, 14vw, 128px); padding-bottom: clamp(56px, 8vw, 96px);" aria-label="Your Business Name Professional Home Services in [City] [ST]">
-
-    <!-- OFF-LIMITS: hero-background — dedicated named file only, never a content photo -->
-    <img
-      src="https://placehold.co/1920x1080"
-      alt="Professional home services in [City] and across the [Region] — Your Business Name"
-      fetchpriority="high"
-      style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; z-index: 0;"
-    />
-
-    <!-- Dark overlay -->
-    <div style="position: absolute; inset: 0; z-index: 1; background:
-      linear-gradient(180deg, rgba(var(--color-dark-rgb), 0.72) 0%, rgba(var(--color-dark-rgb), 0.32) 25%, rgba(var(--color-dark-rgb), 0.28) 65%, rgba(var(--color-dark-rgb), 0.75) 100%),
-      radial-gradient(ellipse 65% 100% at 0% 50%, rgba(var(--color-dark-rgb), 0.78) 0%, transparent 65%);
-    "></div>
-
-    <!-- Edge vignette -->
-    <div class="hero-vignette absolute inset-0 z-[2]"></div>
-
-    <div class="hero-outer relative z-10 max-w-5xl mx-auto px-5 w-full">
-      <div class="hero-text-block max-w-2xl fade-up">
-
-
-        <!-- Eyebrow -->
-        <p style="font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-line); margin-bottom: 20px; text-shadow: 0 1px 8px rgba(0,0,0,0.45);">Trusted Local Home Services</p>
-
-        <h1 class="font-display text-white mb-5" style="font-size: clamp(2.4rem, 6vw, 3.8rem); letter-spacing: -0.03em; line-height: 1.06; font-weight: 800; text-shadow: 0 2px 24px rgba(0,0,0,0.45);">
-          Professional<br />Home Services<br />
-          <span style="color: var(--color-accent-bright);">in [City], [ST].</span>
-        </h1>
-
-        <p class="mb-8 max-w-xl" style="color: rgba(255,255,255,0.88); font-size: clamp(1rem, 2.2vw, 1.125rem); line-height: 1.72; text-shadow: 0 1px 8px rgba(0,0,0,0.35);">
-          When you need a job done right in [City], the last thing you want is the runaround. Our team comes to you, explains every step, and stands behind clean, careful work. Every job we take on is <strong style="color: var(--color-bg);">handled start to finish by our own crew</strong>.
-        </p>
-
-        <!-- CTAs -->
-        <div class="flex flex-wrap gap-4 mb-10">
-          <a href="tel:+15550000000" class="btn-primary text-base px-7 py-4">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Call Now — (555) 000-0000
-          </a>
-          <a href="/#contact" class="btn-outline text-base px-7 py-4">
-            Get a Free Quote
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </div>
-
-        <!-- Stats row -->
-        <div class="flex flex-wrap gap-8">
-          <div>
-            <div class="font-display font-bold text-2xl text-white" style="text-shadow: 0 1px 8px rgba(0,0,0,0.4);">Upfront</div>
-            <div class="text-muted text-sm mt-0.5">Honest Pricing</div>
-          </div>
-          <div class="w-px" style="background: rgba(255,255,255,0.14);"></div>
-          <div>
-            <div class="font-display font-bold text-2xl text-white" style="text-shadow: 0 1px 8px rgba(0,0,0,0.4);">Mobile</div>
-            <div class="text-muted text-sm mt-0.5">Service Available</div>
-          </div>
-          <div class="w-px" style="background: rgba(255,255,255,0.14);"></div>
-          <div>
-            <div class="font-display font-bold text-2xl text-white" style="text-shadow: 0 1px 8px rgba(0,0,0,0.4);">Free</div>
-            <div class="text-muted text-sm mt-0.5">Free Estimates</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Ember accent bridge -->
-    <div class="absolute bottom-0 left-0 right-0 z-20" style="height: 4px; background: linear-gradient(90deg, transparent 0%, var(--color-accent) 18%, var(--color-accent) 82%, transparent 100%); opacity: 0.90;"></div>
-  </section>
+    </nav>
+  </header>
 
   <main id="main-content">
 
     <!-- ============================================================
-         2. INTRO SPLIT — text left / photo right (who we are, what we do)
+         HERO — full-bleed static image, navy overlay, left-anchored
+         Background slot: brand_assets/hero-background.* ONLY.
+         [NEEDS INPUT — hero-background file]. Placeholder until then.
+         Alt text describes the intended shot; match it to the final photo.
     ============================================================ -->
-    <section class="section-dark atmo wash-navy-tr py-24" aria-label="About Your Business Name">
-      <div class="max-w-6xl mx-auto px-5">
-        <div class="grid lg:grid-cols-2 gap-14 items-center">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero__bg" src="https://placehold.co/1920x1080" alt="IV therapy room at Thrive IV Solutions in Edinburg, TX" width="1920" height="1080" fetchpriority="high" decoding="async" />
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__wash" aria-hidden="true"></div>
+      <div class="hero__vignette" aria-hidden="true"></div>
 
-          <!-- Text -->
-          <div class="fade-up">
-            <p style="font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 14px;">Local &amp; Trusted</p>
-            <h2 class="font-display text-4xl lg:text-[2.75rem] font-bold text-white mb-6" style="letter-spacing: -0.03em; line-height: 1.1;">
-              Your Local Home Services Team in [City]
-            </h2>
-            <p class="text-muted text-lg mb-5" style="line-height: 1.7;">
-              Your Business Name is a local home services company serving [City] and the surrounding [Region]. We handle everything from quick fixes to full installations — and our team comes to you, on your schedule.
-            </p>
-            <p class="text-muted text-lg mb-7" style="line-height: 1.7;">
-              Every job is handled start to finish by our own crew. We explain each step, quote up front, and stand behind clean, careful work — the kind that keeps [City] neighbors sending us their friends.
-            </p>
-            <a href="/about.html" class="link-arrow">
-              Learn more about our team
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      <div class="wrap hero__inner">
+        <div class="hero__text flow" style="--flow: 1.5rem;">
+          <p class="eyebrow fade-up">Hydration. Recovery. Wellness.</p>
+          <h1 id="hero-title" class="display-xl fade-up" data-delay="1">Physician-supervised IV&nbsp;therapy <em>in Edinburg.</em></h1>
+          <p class="hero__lead fade-up" data-delay="2">Overseen by <strong>Dr. R. Brookshire, a board-certified vascular surgeon.</strong> IV hydration and wellness drips at our Edinburg clinic, with every price listed up front.</p>
+          <div class="hero__actions btn-row fade-up" data-delay="3">
+            <a href="tel:+19563227662" class="btn btn-primary btn-lg" data-phone-href>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call to Book
+            </a>
+            <a href="/iv-menu/" class="btn btn-outline btn-outline--dark btn-lg">
+              See the Menu
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
             </a>
           </div>
-
-          <!-- Photo -->
-          <div class="fade-up" style="transition-delay: 0.1s;">
-            <div class="photo-frame">
-              <img src="https://placehold.co/1200x900" alt="Your Business Name home services team in [City]" loading="lazy" />
-            </div>
-          </div>
-
+          <p class="hero__meta fade-up" data-delay="4">
+            <span>Or dial <a href="tel:+19563227662" data-phone-href data-phone>(956) 322-7662</a></span><span class="dot" aria-hidden="true">·</span><span>Mon–Fri 9 AM–5 PM</span><span class="dot" aria-hidden="true">·</span><span>2511 Cornerstone Blvd, Edinburg</span>
+          </p>
         </div>
       </div>
+      <div class="hero__line" aria-hidden="true"></div>
     </section>
 
     <!-- ============================================================
-         3. HOW IT WORKS — 4 numbered cards (no icons, numbers kept)
+         TRUST ROW — the three confirmed badges, one understated row
     ============================================================ -->
-    <section id="how-it-works" class="dark-section py-24" aria-label="How working with Your Business Name works">
-      <div class="max-w-6xl mx-auto px-5">
-        <div class="text-center mb-12 fade-up">
-          <div class="flex justify-center mb-3"><div class="section-title-accent"></div></div>
-          <p style="font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent-bright); margin-bottom: 14px;">How It Works</p>
-          <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-4" style="letter-spacing: -0.03em;">
-            Getting Started Is Simple
-          </h2>
-          <p class="text-muted text-lg max-w-2xl mx-auto" style="line-height: 1.7;">
-            From your first call to a finished job, our team keeps it clear and easy — across [City] and the [Region].
-          </p>
-        </div>
-
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 fade-up" style="transition-delay: 0.06s;">
-
-          <div class="feature-card text-center">
-            <div class="font-display font-extrabold mb-3" style="font-size: 2.25rem; line-height: 1; color: var(--color-accent-bright);">01</div>
-            <h3 class="font-display font-bold text-white text-lg mb-2">Call or Message Us</h3>
-            <p class="text-muted text-sm" style="line-height: 1.7;">Tell us what you need anywhere in [City] or the [Region]. We answer your questions and get you a fast quote.</p>
-          </div>
-
-          <div class="feature-card text-center">
-            <div class="font-display font-extrabold mb-3" style="font-size: 2.25rem; line-height: 1; color: var(--color-accent-bright);">02</div>
-            <h3 class="font-display font-bold text-white text-lg mb-2">Get Your Free Quote</h3>
-            <p class="text-muted text-sm" style="line-height: 1.7;">You get a clear, upfront price before any work begins — no surprises and no pressure.</p>
-          </div>
-
-          <div class="feature-card text-center">
-            <div class="font-display font-extrabold mb-3" style="font-size: 2.25rem; line-height: 1; color: var(--color-accent-bright);">03</div>
-            <h3 class="font-display font-bold text-white text-lg mb-2">Book Your Time</h3>
-            <p class="text-muted text-sm" style="line-height: 1.7;">Pick a time that works for you. Same-day and mobile service are available across the [Region].</p>
-          </div>
-
-          <div class="feature-card text-center">
-            <div class="font-display font-extrabold mb-3" style="font-size: 2.25rem; line-height: 1; color: var(--color-accent-bright);">04</div>
-            <h3 class="font-display font-bold text-white text-lg mb-2">We Handle It</h3>
-            <p class="text-muted text-sm" style="line-height: 1.7;">Our own crew shows up on time, does the job right, and cleans up before we leave.</p>
-          </div>
-
-        </div>
-      </div>
+    <section class="trust" aria-label="What every visit includes">
+      <ul class="wrap trust__list" role="list">
+        <li class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7c-3.6 4.4-6.5 8-6.5 11.3a6.5 6.5 0 0 0 13 0c0-3.3-2.9-6.9-6.5-11.3z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2 2.4"/></svg>
+          Premium Ingredients
+        </li>
+        <li class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          Safe &amp; Professional
+        </li>
+        <li class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          Personalized Care
+        </li>
+      </ul>
     </section>
 
     <!-- ============================================================
-         4. SERVICES — 6 cards, no icons, centered text, Learn more
+         MENU PREVIEW — the signature ledger. All 4 items, prices ONLY
+         from the CLAUDE.md Menu table. NAD+ set apart as an injection.
     ============================================================ -->
-    <section id="services" class="section-mid atmo wash-navy-tr py-24" aria-label="Home services in [City] and the [Region]">
-      <div class="max-w-6xl mx-auto px-5">
-
-        <div class="text-center mb-12 fade-up">
-          <div class="flex justify-center mb-3"><div class="section-title-accent"></div></div>
-          <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-4" style="letter-spacing: -0.03em;">
-            Our Services in [City] &amp; the [Region]
-          </h2>
-          <p class="text-muted text-lg max-w-2xl mx-auto" style="line-height: 1.7;">
-            Quality home services in [City] shouldn't mean waiting a week to get on the schedule. Your Business Name handles everything from quick fixes to full installations — and our team comes to you, across [City], [City 2], [City 3], [City 4], [City 5], and [City 6].
-          </p>
+    <section class="section section--dark" id="menu" aria-labelledby="menu-title">
+      <div class="wrap">
+        <div class="grid gap-10 lg:grid-cols-12 lg:gap-16 items-end mb-12 lg:mb-14">
+          <div class="lg:col-span-7 flow fade-up">
+            <p class="eyebrow">IV &amp; Wellness Menu</p>
+            <h2 id="menu-title" class="display-lg">Four options. One clear price each.</h2>
+            <p class="lead">Every drip is priced in whole dollars. Pick the one that fits your day, or call and we will help you choose.</p>
+          </div>
+          <div class="lg:col-span-5 fade-up" data-delay="1">
+            <!-- [NEEDS INPUT — drip photo]. Placeholder at final 4:3 size. -->
+            <figure class="photo-frame">
+              <img src="https://placehold.co/1200x900" alt="IV drip bag hung and ready for a hydration session at Thrive IV Solutions in Edinburg, TX" width="1200" height="900" loading="lazy" decoding="async" />
+            </figure>
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 fade-up" style="transition-delay: 0.06s;">
-
-          <a href="/services/service-one.html" class="service-card block text-center">
-            <h3 class="font-display font-bold text-white text-xl mb-2">Service One</h3>
-            <p class="text-muted text-sm mb-5" style="line-height: 1.7;">Our most-requested service in [City]. We handle every job from start to finish with quality materials matched to the work and a clean, precise result — and most jobs are completed the same day.</p>
-            <span class="link-arrow">
-              Learn more
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="ledger fade-up">
+          <a class="ledger__row" href="/iv-menu/#recovery-pack">
+            <span class="ledger__head">
+              <span class="ledger__name">Recovery Pack <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+              <span class="ledger__type">IV drip</span>
             </span>
+            <span class="ledger__desc">Replenish, restore, recharge. For athletes, busy lifestyles, and post-workout recovery.</span>
+            <span class="ledger__price">$165</span>
           </a>
-
-          <a href="/services/service-two.html" class="service-card block text-center">
-            <h3 class="font-display font-bold text-white text-xl mb-2">Service Two</h3>
-            <p class="text-muted text-sm mb-5" style="line-height: 1.7;">A faster, smaller-scale fix handled the right way. Your Business Name takes care of it efficiently — often in about an hour — and the work in [City] is done with the same care.</p>
-            <span class="link-arrow">
-              Learn more
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          <a class="ledger__row" href="/iv-menu/#basic-hydration">
+            <span class="ledger__head">
+              <span class="ledger__name">Basic Hydration <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+              <span class="ledger__type">IV drip</span>
             </span>
+            <span class="ledger__desc">Stay hydrated, feel refreshed. For everyday wellness and routine hydration.</span>
+            <span class="ledger__price">$100</span>
           </a>
-
-          <a href="/services/service-three.html" class="service-card block text-center">
-            <h3 class="font-display font-bold text-white text-xl mb-2">Service Three</h3>
-            <p class="text-muted text-sm mb-5" style="line-height: 1.7;">Careful, thorough work you can count on. Our team gets it done right — often in about an hour — and you'll notice the difference right away.</p>
-            <span class="link-arrow">
-              Learn more
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          <a class="ledger__row" href="/iv-menu/#hangover-help">
+            <span class="ledger__head">
+              <span class="ledger__name">Hangover Help <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+              <span class="ledger__type">IV drip</span>
             </span>
+            <span class="ledger__desc">Feel better fast. Rehydrate, replenish, and bounce back sooner.</span>
+            <span class="ledger__price">$185</span>
           </a>
 
-          <a href="/services/service-four.html" class="service-card block text-center">
-            <h3 class="font-display font-bold text-white text-xl mb-2">Service Four</h3>
-            <p class="text-muted text-sm mb-5" style="line-height: 1.7;">You don't have to come to us. Our team loads up and comes to your home, office, or wherever works for you — across all of [City], [City 2], [City 3], [City 4], [City 5], and [City 6].</p>
-            <span class="link-arrow">
-              Learn more
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          <p class="ledger__group">Add-on · quick injection, no IV line</p>
+          <a class="ledger__row" href="/iv-menu/#nad-plus">
+            <span class="ledger__head">
+              <span class="ledger__name">NAD+ Injection <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+              <span class="ledger__type">Intramuscular injection</span>
             </span>
-          </a>
-
-          <a href="/services/service-five.html" class="service-card block text-center">
-            <h3 class="font-display font-bold text-white text-xl mb-2">Service Five</h3>
-            <p class="text-muted text-sm mb-5" style="line-height: 1.7;">When you need it done right, our team handles it the same day across [City] and the [Region] — clean work, careful attention to detail, and a precise finish.</p>
-            <span class="link-arrow">
-              Learn more
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </span>
-          </a>
-
-          <a href="/services/service-six.html" class="service-card block text-center">
-            <h3 class="font-display font-bold text-white text-xl mb-2">Service Six</h3>
-            <p class="text-muted text-sm mb-5" style="line-height: 1.7;">When you need it handled fast, our team responds quickly — using quality materials matched to the job and installed with the same care we bring to every job at Your Business Name.</p>
-            <span class="link-arrow">
-              Learn more
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </span>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         5. DIFFERENTIATOR SPLIT — photo left / text right, DARK
-    ============================================================ -->
-    <section id="why-us" class="dark-section py-24" aria-label="Why choose Your Business Name">
-      <div class="max-w-6xl mx-auto px-5">
-        <div class="grid lg:grid-cols-2 gap-14 items-center">
-
-          <!-- Photo (left) -->
-          <div class="fade-up order-2 lg:order-1">
-            <div class="photo-frame">
-              <img src="https://placehold.co/1200x900" alt="Your Business Name crew at work in [City]" loading="lazy" />
-            </div>
-          </div>
-
-          <!-- Text (right) -->
-          <div class="fade-up order-1 lg:order-2" style="transition-delay: 0.1s;">
-            <p style="font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent-bright); margin-bottom: 14px;">Why [City] Chooses Us</p>
-            <h2 class="font-display text-4xl lg:text-[2.75rem] font-bold text-white mb-5" style="letter-spacing: -0.03em; line-height: 1.1;">
-              Honesty. Attention to Detail. Dedication.
-            </h2>
-            <p class="text-muted text-lg mb-7" style="line-height: 1.7;">
-              We built Your Business Name around a simple idea: do the job right, be honest about what it costs, show up when you say you will, and stand behind your work. No gimmicks, no upsell, no fine print.
-            </p>
-
-            <!-- 2x2 checklist -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-8">
-              <div class="flex items-start gap-2.5 text-sm" style="color: var(--color-muted-light); line-height: 1.6;">
-                <svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-bright)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Straight answers, every time
-              </div>
-              <div class="flex items-start gap-2.5 text-sm" style="color: var(--color-muted-light); line-height: 1.6;">
-                <svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-bright)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Clear, upfront pricing
-              </div>
-              <div class="flex items-start gap-2.5 text-sm" style="color: var(--color-muted-light); line-height: 1.6;">
-                <svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-bright)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Mobile service to your door
-              </div>
-              <div class="flex items-start gap-2.5 text-sm" style="color: var(--color-muted-light); line-height: 1.6;">
-                <svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-bright)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Workmanship that lasts
-              </div>
-            </div>
-
-            <a href="/about.html" class="link-arrow">
-              Learn more about us
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         6. SERVICE AREAS — city list block + one photo
-    ============================================================ -->
-    <section id="service-area" class="section-dark atmo wash-navy-bl py-24" aria-label="Serving [City] and the [Region]">
-      <div class="max-w-6xl mx-auto px-5">
-
-        <div class="text-center mb-12 fade-up">
-          <div class="flex justify-center mb-3"><div class="section-title-accent"></div></div>
-          <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-4" style="letter-spacing: -0.03em;">
-            Serving [City] &amp; the [Region]
-          </h2>
-          <p class="text-muted text-lg max-w-2xl mx-auto" style="line-height: 1.7;">
-            Your Business Name is based in [City] — right in the heart of the [Region]. From here, our team dispatches mobile service to six cities across the [Region].
-          </p>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-12 items-center fade-up" style="transition-delay: 0.06s;">
-
-          <!-- Photo (right on desktop) -->
-          <div class="photo-frame lg:order-2">
-            <img src="https://placehold.co/1200x900" alt="Your Business Name serving [City] and the [Region]" loading="lazy" />
-          </div>
-
-          <!-- City list (left on desktop) -->
-          <div class="area-card lg:order-1">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-8">
-
-              <div class="flex items-start gap-3">
-                <div class="area-dot mt-1"></div>
-                <div>
-                  <div class="flex items-center gap-2 mb-1">
-                    <a href="/areas/city-one.html" class="text-sm font-semibold hover:underline" style="color: var(--color-ink);">[City]</a>
-                    <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background: rgba(var(--color-dark-rgb), 0.10); color: var(--color-accent);">Primary</span>
-                  </div>
-                  <p class="text-xs" style="color: var(--color-muted); line-height: 1.6;">Based in [City]. Same-day service throughout [City] and its neighborhoods.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="area-dot mt-1"></div>
-                <div>
-                  <a href="/areas/city-two.html" class="text-sm font-semibold hover:underline block mb-1" style="color: var(--color-ink);">[City 2]</a>
-                  <p class="text-xs" style="color: var(--color-muted); line-height: 1.6;">Mobile service to [City 2] homes and businesses across the [Region].</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="area-dot mt-1"></div>
-                <div>
-                  <a href="/areas/city-three.html" class="text-sm font-semibold hover:underline block mb-1" style="color: var(--color-ink);">[City 3]</a>
-                  <p class="text-xs" style="color: var(--color-muted); line-height: 1.6;">Serving [City 3] with quick dispatch from [City], usually same morning.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="area-dot mt-1"></div>
-                <div>
-                  <a href="/areas/city-four.html" class="text-sm font-semibold hover:underline block mb-1" style="color: var(--color-ink);">[City 4]</a>
-                  <p class="text-xs" style="color: var(--color-muted); line-height: 1.6;">[City 4] and [City 5] are covered in a single run when schedules align.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="area-dot mt-1"></div>
-                <div>
-                  <a href="/areas/city-five.html" class="text-sm font-semibold hover:underline block mb-1" style="color: var(--color-ink);">[City 5]</a>
-                  <p class="text-xs" style="color: var(--color-muted); line-height: 1.6;">Mobile service in [City 5] — call ahead to confirm same-day availability.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="area-dot mt-1"></div>
-                <div>
-                  <a href="/areas/city-six.html" class="text-sm font-semibold hover:underline block mb-1" style="color: var(--color-ink);">[City 6]</a>
-                  <p class="text-xs" style="color: var(--color-muted); line-height: 1.6;">Same mobile service available to [City 6] residents across the [Region].</p>
-                </div>
-              </div>
-
-            </div>
-            <p class="text-sm mt-6 pt-5 border-t" style="border-color: rgba(var(--color-dark-rgb), 0.12); color: var(--color-muted);">
-              Not sure if we cover your area?
-              <a href="tel:+15550000000" class="font-semibold hover:underline" style="color: var(--color-accent);">Call us — (555) 000-0000</a>.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ============================================================
-         7. GALLERY — dedicated uniform grid (8 tiles: 2 & 4 cols fill)
-    ============================================================ -->
-    <section id="gallery" class="dark-section atmo wash-ember-tl py-24" aria-label="Recent home services jobs in [City] and the [Region]">
-      <div class="max-w-7xl mx-auto px-5">
-
-        <div class="text-center mb-12 fade-up">
-          <div class="flex justify-center mb-3"><div class="section-title-accent"></div></div>
-          <p style="font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent-bright); margin-bottom: 14px;">Our Work</p>
-          <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-4" style="letter-spacing: -0.03em;">
-            Real Home Services Jobs From Around [City]
-          </h2>
-          <p class="text-muted text-lg max-w-2xl mx-auto" style="line-height: 1.7;">
-            Real jobs from real customers across the [Region] — handled with the same care every time.
-          </p>
-        </div>
-
-        <!-- Uniform gallery grid — every cell is the standard .photo-frame (4:3).
-             8 tiles fill complete rows at 1 and 2 columns (no ragged row). -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 fade-up" style="transition-delay: 0.06s;">
-          <figure class="photo-frame">
-            <img src="https://placehold.co/1200x900" alt="Home services project in [City] by Your Business Name" loading="lazy" />
-          </figure>
-          <figure class="photo-frame">
-            <img src="https://placehold.co/1200x900" alt="Home services team at work in [City] by Your Business Name" loading="lazy" />
-          </figure>
-          <figure class="photo-frame">
-            <img src="https://placehold.co/1200x900" alt="Recent home services project in [City] by Your Business Name" loading="lazy" />
-          </figure>
-          <figure class="photo-frame">
-            <img src="https://placehold.co/1200x900" alt="Completed home services project in [City] by Your Business Name" loading="lazy" />
-          </figure>
-          <figure class="photo-frame">
-            <img src="https://placehold.co/1200x900" alt="Finished home services job in [City] by Your Business Name" loading="lazy" />
-          </figure>
-          <figure class="photo-frame">
-            <img src="https://placehold.co/1200x900" alt="Home services job completed in [City] by Your Business Name" loading="lazy" />
-          </figure>
-          <figure class="photo-frame">
-            <img src="https://placehold.co/1200x900" alt="Home services work in the [Region] by Your Business Name" loading="lazy" />
-          </figure>
-          <figure class="photo-frame">
-            <img src="https://placehold.co/1200x900" alt="Local home services job by Your Business Name in [City]" loading="lazy" />
-          </figure>
-        </div>
-
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- OPTIONAL MODULE: Insurance carrier row — delete this entire block if not used by this client -->
-    <!--
-    <section id="insurance" class="dark-section py-20" aria-label="Insurance for home services in [City]">
-      <div class="max-w-6xl mx-auto px-5">
-
-        <div class="text-center mb-12 fade-up">
-          <div class="flex justify-center mb-3"><div class="section-title-accent"></div></div>
-          <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-4" style="letter-spacing: -0.03em;">
-            Insurance,<br />Made Simple
-          </h2>
-          <p class="text-muted text-lg max-w-2xl mx-auto" style="line-height: 1.7;">
-            If your project is covered by your insurance, Your Business Name works directly with your carrier so you're not left figuring out the paperwork on your own. Not filing a claim? You'll still get a free, no-pressure estimate and clear, upfront pricing before any work begins — in [City] and across the [Region].
-          </p>
-        </div>
-
-        <div class="fade-up" style="transition-delay: 0.06s;">
-          <div class="area-card mb-10">
-            <div class="text-center mb-5">
-              <span class="text-xs font-bold uppercase tracking-widest" style="color: var(--color-accent); font-family: 'Barlow', sans-serif;">We Work Directly With These Carriers</span>
-            </div>
-            <div class="flex flex-wrap justify-center gap-3">
-              <span class="insurer-pill">Allstate</span>
-              <span class="insurer-pill">USAA</span>
-              <span class="insurer-pill">Geico</span>
-              <span class="insurer-pill">Nationwide</span>
-              <span class="insurer-pill">Progressive</span>
-              <span class="insurer-pill">Liberty Mutual</span>
-              <span class="insurer-pill">Farmers Insurance</span>
-              <span class="insurer-pill">Assurance</span>
-            </div>
-            <p class="text-center mt-5 text-sm" style="color: var(--color-muted);">Don't see your carrier? Call us — we work with most major providers.</p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div class="text-center">
-              <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-display font-extrabold text-xl mx-auto mb-4" style="background: var(--color-accent); font-family: 'Barlow', sans-serif;">1</div>
-              <h3 class="font-display font-bold text-white text-base mb-2">Call or Book Online</h3>
-              <p class="text-sm text-muted" style="line-height: 1.65;">Tell us about the job and, if you're filing a claim, who your insurance carrier is. We can usually walk you through your options in just a few minutes over the phone.</p>
-            </div>
-            <div class="text-center">
-              <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-display font-extrabold text-xl mx-auto mb-4" style="background: var(--color-accent); font-family: 'Barlow', sans-serif;">2</div>
-              <h3 class="font-display font-bold text-white text-base mb-2">We Work With Your Insurance</h3>
-              <p class="text-sm text-muted" style="line-height: 1.65;">Your Business Name reaches out to your carrier directly to verify your coverage and what's needed to move forward. We keep you in the loop the whole way through.</p>
-            </div>
-            <div class="text-center">
-              <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-display font-extrabold text-xl mx-auto mb-4" style="background: var(--color-accent); font-family: 'Barlow', sans-serif;">3</div>
-              <h3 class="font-display font-bold text-white text-base mb-2">Job Done, Stress-Free</h3>
-              <p class="text-sm text-muted" style="line-height: 1.65;">Once everything's confirmed, our team schedules the work at your location — your home, office, or wherever works for you. We handle the details so you don't have to.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <div class="divider"></div>
-    -->
-    <!-- END OPTIONAL MODULE: Insurance carrier row -->
-
-    <!-- OPTIONAL MODULE: Review widget (GHL review-widget embed goes inside this block) — delete this entire block if not used by this client -->
-    <!--
-    <section id="reviews" class="dark-section atmo wash-navy-br py-20" aria-label="Customer reviews">
-      <div class="max-w-6xl mx-auto px-5">
-
-        <div class="text-center mb-12 fade-up">
-          <div class="flex justify-center mb-3"><div class="section-title-accent"></div></div>
-          <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-4" style="letter-spacing: -0.03em;">
-            Reviews From Across<br />[City] &amp; the [Region]
-          </h2>
-          <p class="text-muted text-lg max-w-xl mx-auto" style="line-height: 1.7;">
-            Real customer reviews from across [City], [City 2], [City 3], [City 4], and the rest of the [Region]. Paste the GHL review widget below — never hardcode ratings or review counts.
-          </p>
-        </div>
-
-        <div class="fade-up" style="transition-delay: 0.06s;">
-          <div style="background: var(--color-bg); border-radius: 16px; padding: 20px 20px 12px; box-shadow: 0 24px 60px -20px rgba(0,0,0,0.55), 0 2px 0 rgba(255,255,255,0.04) inset; max-width: 1040px; margin: 0 auto;">
-            <div style="text-align: center; padding: 28px 20px;">
-              
-              <p class="font-display font-bold" style="color: var(--color-ink); font-size: 1rem; margin: 12px 0 6px;">Review widget goes here</p>
-              <p class="text-sm" style="color: var(--color-muted);">Paste the GHL review widget embed to show live customer reviews.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <div class="divider"></div>
-    -->
-    <!-- END OPTIONAL MODULE: Review widget -->
-
-    <!-- ============================================================
-         8. FAQ — accordion (matches service-page accordion styling)
-    ============================================================ -->
-    <section id="faq" class="section-dark atmo wash-ember-tl py-24" aria-label="Home services FAQ for [City] and the [Region]">
-      <div class="max-w-4xl mx-auto px-5">
-        <div class="text-center mb-12 fade-up">
-          <div class="flex justify-center mb-3"><div class="section-title-accent"></div></div>
-          <p style="font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 14px;">Good to Know</p>
-          <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-4" style="letter-spacing: -0.03em;">
-            Common Questions
-          </h2>
-        </div>
-
-        <div class="space-y-4 fade-up" style="transition-delay: 0.06s;">
-
-          <details class="rounded-2xl border overflow-hidden" style="border-color: rgba(var(--color-dark-rgb), 0.09); background: var(--color-bg);" open>
-            <summary class="flex items-center justify-between gap-4 px-7 py-5 cursor-pointer select-none list-none font-display font-bold text-lg" style="color: var(--color-ink);">
-              What areas do you serve?
-              <svg class="faq-chevron flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </summary>
-            <div class="px-7 pb-6 text-sm" style="color: var(--color-muted); line-height: 1.75; border-top: 1px solid rgba(var(--color-dark-rgb), 0.06);">
-              <div class="pt-4">We serve [City] and the surrounding [Region], including [City 2], [City 3], [City 4], [City 5], and [City 6]. Mobile service comes to your home, office, or job site.</div>
-            </div>
-          </details>
-
-          <details class="rounded-2xl border overflow-hidden" style="border-color: rgba(var(--color-dark-rgb), 0.09); background: var(--color-bg);">
-            <summary class="flex items-center justify-between gap-4 px-7 py-5 cursor-pointer select-none list-none font-display font-bold text-lg" style="color: var(--color-ink);">
-              How fast can you get to my job?
-              <svg class="faq-chevron flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </summary>
-            <div class="px-7 pb-6 text-sm" style="color: var(--color-muted); line-height: 1.75; border-top: 1px solid rgba(var(--color-dark-rgb), 0.06);">
-              <div class="pt-4">Most jobs are same-day. Call in the morning and our team can usually take care of it that afternoon, depending on what the job needs.</div>
-            </div>
-          </details>
-
-          <details class="rounded-2xl border overflow-hidden" style="border-color: rgba(var(--color-dark-rgb), 0.09); background: var(--color-bg);">
-            <summary class="flex items-center justify-between gap-4 px-7 py-5 cursor-pointer select-none list-none font-display font-bold text-lg" style="color: var(--color-ink);">
-              Do you offer free estimates?
-              <svg class="faq-chevron flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </summary>
-            <div class="px-7 pb-6 text-sm" style="color: var(--color-muted); line-height: 1.75; border-top: 1px solid rgba(var(--color-dark-rgb), 0.06);">
-              <div class="pt-4">Yes. Every job gets a clear, upfront quote before any work begins — no hidden fees and no surprises at the end.</div>
-            </div>
-          </details>
-
-          <details class="rounded-2xl border overflow-hidden" style="border-color: rgba(var(--color-dark-rgb), 0.09); background: var(--color-bg);">
-            <summary class="flex items-center justify-between gap-4 px-7 py-5 cursor-pointer select-none list-none font-display font-bold text-lg" style="color: var(--color-ink);">
-              Do you come to me?
-              <svg class="faq-chevron flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </summary>
-            <div class="px-7 pb-6 text-sm" style="color: var(--color-muted); line-height: 1.75; border-top: 1px solid rgba(var(--color-dark-rgb), 0.06);">
-              <div class="pt-4">We do. Mobile service is available across [City], [City 2], [City 3], [City 4], [City 5], and [City 6] — so most jobs happen wherever works for you.</div>
-            </div>
-          </details>
-
-          <details class="rounded-2xl border overflow-hidden" style="border-color: rgba(var(--color-dark-rgb), 0.09); background: var(--color-bg);">
-            <summary class="flex items-center justify-between gap-4 px-7 py-5 cursor-pointer select-none list-none font-display font-bold text-lg" style="color: var(--color-ink);">
-              How much will my job cost?
-              <svg class="faq-chevron flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </summary>
-            <div class="px-7 pb-6 text-sm" style="color: var(--color-muted); line-height: 1.75; border-top: 1px solid rgba(var(--color-dark-rgb), 0.06);">
-              <div class="pt-4">Every job is quoted up front. We look at what you need, explain your options, and give you a clear price before any work begins.</div>
-            </div>
-          </details>
-
-          <details class="rounded-2xl border overflow-hidden" style="border-color: rgba(var(--color-dark-rgb), 0.09); background: var(--color-bg);">
-            <summary class="flex items-center justify-between gap-4 px-7 py-5 cursor-pointer select-none list-none font-display font-bold text-lg" style="color: var(--color-ink);">
-              How do I get started?
-              <svg class="faq-chevron flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </summary>
-            <div class="px-7 pb-6 text-sm" style="color: var(--color-muted); line-height: 1.75; border-top: 1px solid rgba(var(--color-dark-rgb), 0.06);">
-              <div class="pt-4">Call or text us, or fill out the quote form below. Tell us what you need and we'll get you a price and a time that works.</div>
-            </div>
-          </details>
-
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ============================================================
-         9. CONTACT — quote form (target of every "Get a Free Quote" CTA)
-    ============================================================ -->
-    <section id="contact" class="section-mid atmo wash-ember-tr py-20" aria-label="Request service or get a free quote">
-      <div class="max-w-6xl mx-auto px-5">
-
-        <div class="text-center mb-12 fade-up">
-          <div class="flex justify-center mb-3"><div class="section-title-accent"></div></div>
-          <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-4" style="letter-spacing: -0.03em;">
-            Request Service or<br />Get a Free Quote
-          </h2>
-          <p class="text-muted text-lg max-w-xl mx-auto" style="line-height: 1.7;">
-            The fastest way to get started is to call. Our team picks up, answers your questions, and can usually get you on the schedule same day. Prefer to fill out the form? We'll get back to you fast.
-          </p>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-12 fade-up" style="transition-delay: 0.06s;">
-
-          <!-- Contact info -->
-          <div>
-            <div class="area-card h-full">
-              <h3 class="font-display font-bold text-white text-xl mb-6">Get in Touch</h3>
-
-              <div class="space-y-5">
-                <a href="tel:+15550000000" class="flex items-start gap-4 group">
-                  <div class="icon-wrap flex-shrink-0" style="margin-bottom: 0;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold uppercase tracking-widest mb-1" style="color: var(--color-accent); font-family: 'Barlow', sans-serif;">Call or Text</div>
-                    <div class="font-display font-bold text-white text-lg group-hover:text-accent transition-colors duration-150">(555) 000-0000</div>
-                  </div>
-                </a>
-
-                <a href="mailto:hello@yourbusiness.com" class="flex items-start gap-4 group">
-                  <div class="icon-wrap flex-shrink-0" style="margin-bottom: 0;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold uppercase tracking-widest mb-1" style="color: var(--color-accent); font-family: 'Barlow', sans-serif;">Email Us</div>
-                    <div class="font-display font-bold text-white text-base group-hover:underline">hello@yourbusiness.com</div>
-                  </div>
-                </a>
-
-                <div class="flex items-start gap-4">
-                  <div class="icon-wrap flex-shrink-0" style="margin-bottom: 0;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold uppercase tracking-widest mb-1" style="color: var(--color-accent); font-family: 'Barlow', sans-serif;">Visit Us</div>
-                    <div class="font-display font-bold text-white text-base">[Street Address]</div>
-                    <div class="text-muted text-sm">[City], [ST] [ZIP]</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-8 pt-6 border-t" style="border-color: rgba(var(--color-dark-rgb), 0.14);">
-                <p class="text-muted text-sm" style="line-height: 1.7;">Serving [City], [City 2], [City 3], [City 4], [City 5], [City 6], and surrounding [Region] communities.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- GHL Form -->
-          <div class="area-card" style="background: rgba(var(--color-dark-rgb), 0.04); min-height: 720px; padding: 0; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-            <!-- GHL CONTACT FORM EMBED GOES HERE -->
-            <div style="text-align: center; padding: 48px 32px; color: var(--color-muted);">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 16px; opacity: 0.75;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
-              <p class="font-display font-bold" style="color: var(--color-ink); font-size: 1rem; margin-bottom: 6px;">Contact form goes here</p>
-              <p class="text-sm" style="color: var(--color-muted);">Paste the GHL contact form embed to activate this form.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Map -->
-        <div class="fade-up mt-12" style="transition-delay: 0.12s;">
-          <div style="border-radius: 16px; overflow: hidden; border: 1px solid rgba(var(--color-dark-rgb), 0.14); box-shadow: 0 24px 60px -24px rgba(var(--color-dark-rgb), 0.45); background: rgba(var(--color-dark-rgb), 0.04); height: 450px; display: flex; align-items: center; justify-content: center;">
-            <!-- GOOGLE MAPS EMBED GOES HERE -->
-            <div style="text-align: center; padding: 40px; color: var(--color-muted);">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 16px; opacity: 0.75;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <p class="font-display font-bold" style="color: var(--color-ink); font-size: 1rem; margin-bottom: 6px;">Google Map goes here</p>
-              <p class="text-sm" style="color: var(--color-muted);">Paste the client's Google Maps embed for their service area.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ============================================================
-         10. FINAL CTA — standard pattern: cta-background.jpg + dark overlay
-    ============================================================ -->
-    <section class="dark-section relative py-24 overflow-hidden" aria-label="Final call to action">
-      <!-- OFF-LIMITS: cta-background — dedicated named file only, never a content photo -->
-      <div class="absolute inset-0" style="background: url('https://placehold.co/1920x1080') center center / cover no-repeat;"></div>
-      <div class="absolute inset-0" style="background: rgba(var(--color-dark-rgb), 0.62);"></div>
-      <div class="dark-cta-ramp"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 80% at 50% 40%, rgba(var(--color-dark-rgb), 0.44) 0%, transparent 65%);"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse 50% 45% at 0% 100%, rgba(var(--color-accent-deep-rgb), 0.16) 0%, transparent 55%);"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse 50% 45% at 100% 100%, rgba(var(--color-accent-deep-rgb), 0.12) 0%, transparent 55%);"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse 45% 35% at 50% 78%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 55%);"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse 120% 110% at 50% 50%, transparent 35%, rgba(0,0,0,0.36) 100%); pointer-events: none;"></div>
-
-      <div class="relative z-10 max-w-3xl mx-auto px-5 text-center fade-up">
-        <div class="flex justify-center mb-3"><div class="section-title-accent"></div></div>
-        <h2 class="font-display text-4xl lg:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.03em; line-height: 1.1;">
-          Ready When<br />You Are.<br /><span style="color: var(--color-accent-bright);">Get It Done Today.</span>
-        </h2>
-        <p class="text-muted text-lg mb-10 max-w-xl mx-auto" style="line-height: 1.7;">
-          Don't put it off any longer. Call Your Business Name — we offer same-day service across [City] and the [Region], we come to you, and every job is done with the same care.
-        </p>
-        <div class="flex flex-wrap gap-4 justify-center">
-          <a href="tel:+15550000000" class="btn-primary text-base px-8 py-4">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Call Now — (555) 000-0000
-          </a>
-          <a href="/#contact" class="btn-outline text-base px-8 py-4">
-            Get a Free Quote
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            <span class="ledger__desc">Supports cellular energy and mental clarity. For healthy aging, focus, and overall wellness.</span>
+            <span class="ledger__price">$65</span>
           </a>
         </div>
-        <div class="flex flex-wrap items-center justify-center gap-5 mt-10">
-          <span class="flex items-center gap-1.5 text-muted text-sm">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-bright)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Free estimates
-          </span>
-          <span style="color: rgba(255,255,255,0.20);">·</span>
-          <span class="flex items-center gap-1.5 text-muted text-sm">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-bright)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Fair, honest pricing
-          </span>
-          <span style="color: rgba(255,255,255,0.20);">·</span>
-          <span class="flex items-center gap-1.5 text-muted text-sm">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-bright)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Mobile service
-          </span>
-          <span style="color: rgba(255,255,255,0.20);">·</span>
-          <span class="flex items-center gap-1.5 text-muted text-sm">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-bright)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Same-day availability
-          </span>
+
+        <div class="btn-row mt-10 fade-up">
+          <a href="tel:+19563227662" class="btn btn-primary" data-phone-href>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call to Book
+          </a>
+          <a href="/iv-menu/" class="btn btn-outline btn-outline--dark">
+            See the full menu
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WHY PHYSICIAN-SUPERVISED MATTERS — split, portrait right.
+         Only the confirmed credential. No on-site / who-administers /
+         screening claims (all [NEEDS INPUT]).
+    ============================================================ -->
+    <section class="section" id="physician" aria-labelledby="physician-title">
+      <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-16 items-center">
+        <div class="lg:col-span-7 flow fade-up" style="--flow: 1.5rem;">
+          <p class="eyebrow">Why it matters</p>
+          <h2 id="physician-title" class="display-lg">Why physician supervision matters.</h2>
+          <p class="copy">An IV drip puts fluids straight into a vein. That is a medical procedure, and it deserves a physician's oversight. Thrive IV Solutions is a physician-supervised clinic in Edinburg, TX.</p>
+          <p class="copy">The physician is <strong>Dr. R. Brookshire, a board-certified vascular surgeon.</strong> Vascular surgery is the specialty that focuses on blood vessels, including the veins an IV uses.</p>
+
+          <dl class="spec">
+            <div class="spec__row">
+              <dt>Oversight</dt>
+              <dd>Dr. R. Brookshire, board-certified vascular surgeon</dd>
+            </div>
+            <div class="spec__row">
+              <dt>Prices</dt>
+              <dd>Whole dollars, listed on every drip</dd>
+            </div>
+            <div class="spec__row">
+              <dt>Sessions</dt>
+              <dd>About 30 to 45 minutes</dd>
+            </div>
+            <div class="spec__row">
+              <dt>Location</dt>
+              <dd>2511 Cornerstone Blvd, Edinburg, TX. Serving the Rio Grande Valley.</dd>
+            </div>
+          </dl>
+
+          <a href="/about/" class="link-arrow">
+            Meet Dr. Brookshire
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="lg:col-span-4 lg:col-start-9 fade-up" data-delay="1">
+          <!-- [NEEDS INPUT — Dr. Brookshire headshot; reuse the STVI photo only with client permission]. Placeholder at final 3:4 size. -->
+          <figure class="photo-frame photo-frame--portrait">
+            <img src="https://placehold.co/900x1200" alt="Dr. R. Brookshire, the board-certified vascular surgeon who oversees IV therapy at Thrive IV Solutions in Edinburg, TX" width="900" height="1200" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WHAT TO EXPECT TEASER — mint wash, photo left. Confirmed care
+         advice only (before-visit list + 30–45 min).
+    ============================================================ -->
+    <section class="section section--wash" id="prepare" aria-labelledby="prepare-title">
+      <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-16 items-center">
+        <div class="lg:col-span-6 lg:col-start-7 lg:order-2 flow fade-up" style="--flow: 1.5rem;">
+          <p class="eyebrow">What to expect</p>
+          <h2 id="prepare-title" class="display-lg">Plan on 30 to 45 minutes.</h2>
+          <p class="copy">That is about how long a session takes. A little prep before you come in makes the visit easier.</p>
+
+          <h3 class="display-md">Before your visit</h3>
+          <ul class="checklist" style="margin-block-start: 0.85rem;">
+            <li>Eat a snack.</li>
+            <li>Drink water ahead of time.</li>
+            <li>Wear loose, comfortable clothing with easy sleeve access.</li>
+            <li>Skip antihistamines and decongestants beforehand.</li>
+          </ul>
+
+          <a href="/what-to-expect/" class="link-arrow">
+            See the full guide, before and after your visit
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="lg:col-span-5 lg:order-1 fade-up" data-delay="1">
+          <!-- [NEEDS INPUT — treatment room photo]. Placeholder at final 4:3 size. -->
+          <figure class="photo-frame">
+            <img src="https://placehold.co/1200x900" alt="Treatment chair in the IV therapy room at Thrive IV Solutions in Edinburg, TX" width="1200" height="900" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FINAL CTA — cta-background slot ONLY (brand_assets/cta-background.*)
+         [NEEDS INPUT — cta-background file]. Placeholder until then.
+    ============================================================ -->
+    <section class="section section--dark cta" id="book" aria-labelledby="cta-title">
+      <img class="cta__bg" src="https://placehold.co/1920x1080" alt="" width="1920" height="1080" loading="lazy" decoding="async" aria-hidden="true" />
+      <div class="cta__overlay" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="cta__inner fade-up">
+          <p class="eyebrow">Feel Better.</p>
+          <h2 id="cta-title" class="display-xl">Hydration That Works.<br />So You Can <em>Thrive.</em></h2>
+          <p>Call to book your IV session in Edinburg. Open Monday through Friday, 9 AM to 5 PM.</p>
+          <a href="tel:+19563227662" class="btn btn-primary btn-lg" data-phone-href>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call to Book
+          </a>
+          <a href="tel:+19563227662" class="cta__phone" data-phone-href data-phone>(956) 322-7662</a>
+          <p class="cta__meta">Mon–Fri 9:00 AM–5:00 PM · Sat–Sun closed<br />2511 Cornerstone Blvd, Ste 2511, Edinburg, TX 78539</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
-  <footer class="dark-section pt-16 pb-8 border-t" style="border-color: rgba(255,255,255,0.08);" aria-label="Footer">
-    <div class="max-w-6xl mx-auto px-5">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-
-        <!-- Brand -->
-        <div class="col-span-2 md:col-span-1">
-          <!-- LOGO PLACEHOLDER — swap the <span> for <img class="footer-logo" ...>; height comes from --footer-logo-height in brand.css -->
-          <a href="/" class="flex items-center mb-2" aria-label="Your Business Name home">
-            <span class="footer-wordmark">Your Business Name</span>
+<!-- ============================================================
+     SHARED FOOTER — canonical copy lives in _partials/footer.html.
+     Paste verbatim into every EN page. Per page, change ONLY the
+     Español href → the equivalent /es/ page.
+     Disclaimer: the confirmed fragment only, inside the pending
+     markers. Do not add medical wording until the client's full
+     text arrives. ES translation only after EN is final.
+     ============================================================ -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="wrap">
+      <div class="grid gap-10 md:grid-cols-12">
+        <div class="md:col-span-5 flow" style="--flow: 1.1rem;">
+          <a href="/" class="footer-logo inline-flex" aria-label="Thrive IV Solutions home">
+            <img src="/brand_assets/logo-white.png" alt="Thrive IV Solutions" width="1293" height="401" loading="lazy" decoding="async" />
           </a>
-          <p style="font-family: 'Barlow', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--color-accent-bright); margin-bottom: 14px; opacity: 0.85;">Trusted Local Home Services</p>
-          <p class="text-muted text-sm mb-5" style="line-height: 1.7;">Professional home services you can count on — serving [City] and the surrounding [Region].</p>
-          <div class="space-y-2">
-            <a href="tel:+15550000000" class="flex items-center gap-2 text-white text-sm font-medium hover:opacity-80 transition-opacity duration-150">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-bright)" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              (555) 000-0000
-            </a>
-            <a href="mailto:hello@yourbusiness.com" class="flex items-center gap-2 text-muted text-sm hover:text-white transition-colors duration-150">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-bright)" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              hello@yourbusiness.com
-            </a>
-          </div>
+          <p class="max-w-md">Physician-supervised IV therapy in Edinburg, TX. Overseen by Dr. R. Brookshire, a board-certified vascular surgeon.</p>
         </div>
 
-        <!-- Services -->
-        <div>
-          <h2 class="font-display font-bold text-white text-sm uppercase tracking-widest mb-4">Services</h2>
-          <ul class="space-y-2.5">
-            <li><a href="/services/service-one.html"        class="text-muted text-sm hover:text-white transition-colors duration-150">Service One</a></li>
-            <li><a href="/services/service-two.html"  class="text-muted text-sm hover:text-white transition-colors duration-150">Service Two</a></li>
-            <li><a href="/services/service-three.html"         class="text-muted text-sm hover:text-white transition-colors duration-150">Service Three</a></li>
-            <li><a href="/services/service-four.html"     class="text-muted text-sm hover:text-white transition-colors duration-150">Service Four</a></li>
-            <li><a href="/services/service-five.html"            class="text-muted text-sm hover:text-white transition-colors duration-150">Service Five</a></li>
-            <li><a href="/services/service-six.html"   class="text-muted text-sm hover:text-white transition-colors duration-150">Service Six</a></li>
+        <div class="md:col-span-4">
+          <h2>Visit</h2>
+          <address class="flow" style="--flow: 0.6rem;">
+            <p>Thrive IV Solutions<br />2511 Cornerstone Blvd, Ste 2511<br />Edinburg, TX 78539</p>
+            <p><a href="tel:+19563227662" class="footer-phone" data-phone-href data-phone>(956) 322-7662</a></p>
+            <p>Mon–Fri 9:00 AM–5:00 PM<br />Sat–Sun closed</p>
+          </address>
+        </div>
+
+        <div class="md:col-span-3">
+          <h2>Pages</h2>
+          <ul class="flex flex-col" role="list">
+            <li><a href="/" class="footer-link">Home</a></li>
+            <li><a href="/iv-menu/" class="footer-link">IV &amp; Wellness Menu</a></li>
+            <li><a href="/what-to-expect/" class="footer-link">What to Expect</a></li>
+            <li><a href="/about/" class="footer-link">About</a></li>
+            <li><a href="/contact/" class="footer-link">Contact</a></li>
           </ul>
+          <a href="/es/" class="lang-toggle mt-4" lang="es" hreflang="es">Español</a>
         </div>
-
-        <!-- Company -->
-        <div>
-          <h2 class="font-display font-bold text-white text-sm uppercase tracking-widest mb-4">Company</h2>
-          <ul class="space-y-2.5">
-            <li><a href="/about.html"   class="text-muted text-sm hover:text-white transition-colors duration-150">About Us</a></li>
-            <!-- OPTIONAL MODULE LINK (footer, #reviews): re-enable with the Review widget module: <li><a href="/#reviews"      class="text-muted text-sm hover:text-white transition-colors duration-150">Reviews</a></li> -->
-            <!-- OPTIONAL MODULE LINK (footer, #insurance): re-enable with the Insurance module: <li><a href="/#insurance"    class="text-muted text-sm hover:text-white transition-colors duration-150">Insurance Partners</a></li> -->
-            <li><a href="/#service-area" class="text-muted text-sm hover:text-white transition-colors duration-150">Service Areas</a></li>
-            <li><a href="/#contact"      class="text-muted text-sm hover:text-white transition-colors duration-150">Contact</a></li>
-            <li><a href="#"             class="text-muted text-sm hover:text-white transition-colors duration-150">Privacy Policy</a></li>
-          </ul>
-        </div>
-
-        <!-- Service Area -->
-        <div>
-          <h2 class="font-display font-bold text-white text-sm uppercase tracking-widest mb-4">Areas We Serve</h2>
-          <ul class="space-y-2.5">
-            <li><a href="/areas/city-one.html" class="text-muted text-sm hover:text-white transition-colors duration-150">[City]</a></li>
-            <li><a href="/areas/city-two.html" class="text-muted text-sm hover:text-white transition-colors duration-150">[City 2]</a></li>
-            <li><a href="/areas/city-three.html" class="text-muted text-sm hover:text-white transition-colors duration-150">[City 3]</a></li>
-            <li><a href="/areas/city-four.html" class="text-muted text-sm hover:text-white transition-colors duration-150">[City 4]</a></li>
-            <li><a href="/areas/city-five.html" class="text-muted text-sm hover:text-white transition-colors duration-150">[City 5]</a></li>
-            <li><a href="/areas/city-six.html" class="text-muted text-sm hover:text-white transition-colors duration-150">[City 6]</a></li>
-          </ul>
-        </div>
-
       </div>
 
-      <div class="divider mb-6"></div>
+      <div class="footer-rule" role="presentation"></div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p class="text-muted text-xs text-center sm:text-left">
-          © 2026 Your Business Name. All rights reserved. Serving [City] &amp; the [Region], [ST].
-        </p>
-        <div class="flex items-center gap-4">
-          <a href="#" class="text-xs text-muted hover:text-white transition-colors duration-150">Privacy Policy</a>
-          <span style="color: rgba(255,255,255,0.20);">·</span>
-          <a href="#" class="text-xs text-muted hover:text-white transition-colors duration-150">Terms</a>
+      <div class="grid gap-6 md:grid-cols-12 md:items-end">
+        <div class="md:col-span-8 flow" style="--flow: 0.85rem;">
+          <!-- DISCLAIMER: pending full client text -->
+          <p class="footer-disclaimer">Not a substitute for medical care. Consult your healthcare provider if pregnant…</p>
+          <!-- /DISCLAIMER: pending full client text -->
+          <p class="footer-sister">Thrive IV Solutions is led by Dr. R. Brookshire, who also leads South Texas Vascular Institute.</p>
+          <!-- [NEEDS INPUT — STVI URL]: once confirmed, wrap "South Texas Vascular Institute" above in a single <a href="…" rel="noopener">. No other STVI branding anywhere. -->
+        </div>
+        <div class="md:col-span-4 md:text-right">
+          <p class="footer-copy">© 2026 Thrive IV Solutions. All rights reserved.</p>
         </div>
       </div>
     </div>
   </footer>
 
-  <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 10);
-    }, { passive: true });
-
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    hamburger.addEventListener('click', () => {
-      const open = mobileMenu.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', open);
-      hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    });
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-    });
-
-    document.querySelectorAll('.mobile-services-toggle').forEach(toggle => {
-      const submenu = document.getElementById(toggle.getAttribute('aria-controls'));
-      if (submenu) {
-        toggle.addEventListener('click', () => {
-          const open = submenu.classList.toggle('open');
-          toggle.setAttribute('aria-expanded', open);
-        });
-      }
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  </script>
-
   <!-- GHL CHAT WIDGET SCRIPT GOES HERE -->
-
   <!-- GHL EXTERNAL TRACKING SCRIPT GOES HERE -->
-
-  <!-- GHL FORM EMBED SCRIPT GOES HERE -->
-
 </body>
 </html>
