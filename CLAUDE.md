@@ -325,8 +325,13 @@ body text, descriptive alt text with service + location context.
 
 ## Hero & asset patterns
 
-- Hero and final-CTA backgrounds use ONLY `brand_assets/hero-background.*` and
-  `brand_assets/cta-background.*`. Until those exist: `https://placehold.co/1920x1080`.
+- Hero and final-CTA backgrounds use ONLY the named slot files in `brand_assets/`.
+  They are **art-directed**: a 16:9 desktop file (`hero-background.*`, `cta-background.*`,
+  1920 wide) plus a 9:16 mobile file (`hero-background-mobile.*`, `cta-background-mobile.*`,
+  1080×1920 max), each as WebP + JPG, served through `<picture>` with a
+  `(max-width: 767px)` media source for the mobile files. Mobile framing: subject in the
+  lower part of the hero, text over the calm upper area (`object-position` per breakpoint
+  in `brand.css`). Originals stay in `brand_assets/_source/` (git- and Vercel-ignored).
   Never promote a content photo into these slots.
 - Hero: full-bleed static image, left-anchored text (max-width 620px on the shared
   container edge), navy overlay (~0.7) + top scrim + vignette + text-shadows. Home hero
@@ -338,8 +343,9 @@ body text, descriptive alt text with service + location context.
   final size: `placehold.co/1200x1500` (4:5) and `placehold.co/900x1200` (portrait).
 - Photo tiers: Home 3 · Menu 1 per drip (4, or placeholders) · What to Expect 1 · About
   1 portrait of Dr. Brookshire (`aspect-[3/4]`, `object-position: center top`) · Contact 0.
-- Dr. Brookshire's headshot: `[NEEDS INPUT — reuse the STVI headshot only with client
-  permission; supply the file into this repo's brand_assets/]`.
+- Dr. Brookshire's headshot: `brand_assets/dr-brookshire.*` (1200×1600) and
+  `dr-brookshire-600.*` (600×800), 3:4, metadata stripped, served via `srcset`. It is also
+  the Physician `image` in JSON-LD.
 - Excluded photo types: identifiable patients without consent, visible needle insertion
   close-ups, anything clinical-gory, blood, stock photos of bars/drinking.
 - Document exact filenames from `ls brand_assets/`. Never assume names.
@@ -441,9 +447,12 @@ native Spanish read (disclaimer + care advice minimum) · confirmation of what
 "physician-supervised" means in practice (who administers, screening, on-site presence) ·
 decision on dedicated Thrive phone line.
 
-**Backfillable:** vector/SVG logo (current PNG is usable) · hero/cta backgrounds · drip photos · Dr. Brookshire
-headshot + bio details · email · whether the phone receives texts · GHL form ·
-parking/suite note · `areaServed` city list · `geo` coordinates · review status.
+**Backfillable:** vector/SVG logo (current PNG is usable) · drip photos · Dr. Brookshire
+bio details · email · whether the phone receives texts · GHL form · parking/suite note ·
+`areaServed` city list · `geo` coordinates · review status.
+
+**Open decisions:** lab-coat embroidery in the headshot (STVI name + full name
+"Ralph H. Brookshire D.O.") pending client OK; otherwise crop tighter.
 
 **Separate-GBP note (for Juan, not Code):** Thrive sharing STVI's address, suite, and
 phone risks Google merging or confusing the two Business Profiles. A dedicated Thrive phone
