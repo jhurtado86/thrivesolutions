@@ -3,3 +3,8 @@ SEO-CONTENT-PROMPT.md
 serve.mjs
 screenshot.mjs
 temporary screenshots/
+package.json
+package-lock.json
+node_modules/
+_partials/
+.claude/

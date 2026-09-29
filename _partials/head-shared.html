@@ -1,0 +1,19 @@
+<!-- ============================================================
+     SHARED HEAD — canonical copy lives in _partials/head-shared.html.
+     Paste verbatim into every page, AFTER the per-page meta
+     (title, description, canonical, hreflang, OG/Twitter).
+     Order matters: Tailwind CDN → /site.js (theme + phone token) → /brand.css.
+     ============================================================ -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand_assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand_assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand_assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0B1B3A" /><!-- = --color-primary; meta tags cannot read CSS tokens -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..600;1,9..144,500..600&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/site.js"></script>
+  <link rel="stylesheet" href="/brand.css" />

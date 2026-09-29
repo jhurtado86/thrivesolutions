@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /thank-you.html
 
-Sitemap: https://yourbusiness.com/sitemap.xml
+Sitemap: https://www.thriveivsolution.com/sitemap.xml
