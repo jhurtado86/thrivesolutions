@@ -19,9 +19,9 @@ const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox']
 const page = await browser.newPage();
 await page.setViewport({ width, height: 900, deviceScaleFactor: 1, isMobile: width < 768 });
 await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
-// Force all fade-up elements visible for screenshot
+// Force every reveal (and the hero background settle) to its final state for the capture
 await page.evaluate(() => {
-  document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+  document.querySelectorAll('.reveal, .hero__bg').forEach(el => el.classList.add('is-in'));
 });
 // Auto-scroll to the bottom so lazy-loaded (loading="lazy") images below the initial
 // viewport are actually fetched and rendered, then return to the top so the full-page

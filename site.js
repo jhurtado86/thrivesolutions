@@ -14,11 +14,17 @@
    2) Tailwind theme.extend — maps class names onto /brand.css tokens.
       Loaded synchronously right after the Tailwind CDN script.
 
-   3) Shared behaviors — header scroll state, mobile drawer,
-      reveal-on-scroll. Transform/opacity only; reduced motion respected.
+   3) Shared behaviors — header transparent→solid swap (~40px),
+      mobile drawer, and ONE IntersectionObserver for every reveal
+      (.reveal → .is-in; data-stagger children get ~80ms steps).
+      Transform/opacity only; reduced motion respected.
    ============================================================ */
 (function () {
   'use strict';
+
+  /* Motion gate: the hidden pre-reveal state exists only under html.js,
+     so content is fully visible with JavaScript off. */
+  document.documentElement.classList.add('js');
 
   /* ---- 1) Phone token ---- */
   var PHONE = Object.freeze({
@@ -75,10 +81,10 @@
     document.querySelectorAll('[data-phone]').forEach(function (el) { el.textContent = PHONE.display; });
     document.querySelectorAll('[data-phone-href]').forEach(function (el) { el.setAttribute('href', 'tel:' + PHONE.e164); });
 
-    /* Header: hairline glow once the page has scrolled. */
+    /* Header: transparent over the hero, solid navy after ~40px of scroll. */
     var header = document.getElementById('site-header');
     if (header) {
-      var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 8); };
+      var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 40); };
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
     }
@@ -89,6 +95,7 @@
     if (toggle && drawer) {
       var setOpen = function (open) {
         drawer.classList.toggle('is-open', open);
+        if (header) header.classList.toggle('is-drawer-open', open);
         toggle.setAttribute('aria-expanded', String(open));
         toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       };
@@ -98,17 +105,20 @@
       window.matchMedia('(min-width: 1024px)').addEventListener('change', function (e) { if (e.matches) setOpen(false); });
     }
 
-    /* Reveal on scroll (transform + opacity only). */
-    var reveals = document.querySelectorAll('.fade-up');
+    /* Reveals: one observer for every .reveal plus the hero background settle. */
+    document.querySelectorAll('[data-stagger]').forEach(function (group) {
+      group.querySelectorAll('.reveal').forEach(function (el, i) { el.style.setProperty('--delay', (i * 80) + 'ms'); });
+    });
+    var reveals = document.querySelectorAll('.reveal, .hero__bg');
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!('IntersectionObserver' in window) || reduce) {
-      reveals.forEach(function (el) { el.classList.add('visible'); });
+      reveals.forEach(function (el) { el.classList.add('is-in'); });
     } else {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+          if (entry.isIntersecting) { entry.target.classList.add('is-in'); io.unobserve(entry.target); }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
       reveals.forEach(function (el) { io.observe(el); });
     }
   });

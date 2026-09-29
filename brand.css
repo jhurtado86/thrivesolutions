@@ -1,6 +1,6 @@
 /* ============================================================
    brand.css — Thrive IV Solutions
-   Single source of truth for color, type, spacing, radii, depth,
+   Single source of truth for color, type, layout, radii, depth,
    and motion. /site.js maps Tailwind class names onto these
    tokens. Never hardcode a hex on a page.
 
@@ -52,12 +52,13 @@
   --leading-body: 1.65;
   --measure:      60ch;
 
-  /* — Spacing — */
+  /* — Layout: ONE shared container, one left edge for logo + hero text — */
+  --container:        80rem;                       /* 1280px, side padding included */
+  --gutter:           clamp(1.25rem, 4vw, 2.5rem); /* 20–40px */
+  --container-narrow: 46rem;
+  --hero-text:        620px;
   --space-section:    clamp(4.5rem, 9vw, 8rem);
   --space-section-sm: clamp(3rem, 6vw, 5rem);
-  --gutter:           clamp(1.25rem, 4vw, 2.5rem);
-  --container:        72rem;
-  --container-narrow: 46rem;
   --flow:             1.25rem;
 
   /* — Radii (softer = wellness) — */
@@ -73,15 +74,19 @@
   --shadow-cta:      0 8px 24px -8px rgba(0, 86, 252, 0.55), 0 2px 6px rgba(0, 86, 252, 0.22);
   --shadow-cta-hover:0 16px 36px -10px rgba(0, 86, 252, 0.65), 0 4px 10px rgba(0, 86, 252, 0.25);
   --shadow-on-dark:  0 2px 4px rgba(0, 0, 0, 0.25), 0 30px 60px -20px rgba(0, 0, 0, 0.60);
+  --shadow-header:   0 1px 0 rgba(255, 255, 255, 0.06), 0 10px 30px -10px rgba(11, 27, 58, 0.55);
 
   /* — Motion: transform + opacity only — */
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);   /* hover, press, icon nudges */
+  --ease-reveal: cubic-bezier(0.22, 1.2, 0.36, 1);    /* soft spring for reveals */
   --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
   --dur-fast:    180ms;
   --dur-base:    280ms;
-  --dur-slow:    650ms;
+  --dur-reveal:  650ms;
+  --dur-settle:  2500ms;
+  --stagger:     90ms;
 
-  /* — Logo sizing (never upscale past the source) — */
+  /* — Logo / header sizing (never upscale past the source) — */
   --nav-height:              76px;
   --nav-height-mobile:       64px;
   --nav-logo-height:         40px;
@@ -167,9 +172,9 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 }
 .btn svg { flex: none; }
 .btn:active { transform: translateY(0) scale(0.98); }
-.btn-lg { min-height: 56px; padding: 0 2rem; font-size: 1.125rem; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 0.85rem 1rem; }
 @media (max-width: 480px) { .btn-row .btn { width: 100%; } }
+.btn-lg { min-height: 56px; padding: 0 2rem; font-size: 1.125rem; }
 .btn-sm { min-height: 48px; padding: 0 1.15rem; font-size: 0.9375rem; border-radius: 10px; }
 
 .btn-primary {
@@ -195,15 +200,18 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 .btn-outline--dark { color: var(--color-on-dark); border-color: rgba(255, 255, 255, 0.32); }
 .btn-outline--dark:hover { border-color: var(--color-accent); color: var(--color-on-dark); }
 
+/* Arrow icons nudge right on hover (buttons + text links) */
+.icon-arrow { transition: transform var(--dur-base) var(--ease-spring); }
+.btn:hover .icon-arrow, .link-arrow:hover .icon-arrow { transform: translateX(4px); }
+.btn:active .icon-arrow, .link-arrow:active .icon-arrow { transform: translateX(2px); }
+
 .link-arrow {
   display: inline-flex; align-items: center; gap: 0.5rem;
   min-height: 48px; font-weight: 600; color: var(--color-blue);
   text-underline-offset: 5px; text-decoration-thickness: 1.5px;
 }
-.link-arrow svg { flex: none; transition: transform var(--dur-base) var(--ease-spring); }
+.link-arrow svg { flex: none; }
 .link-arrow:hover { text-decoration: underline; }
-.link-arrow:hover svg { transform: translateX(4px); }
-.link-arrow:active svg { transform: translateX(2px); }
 
 /* ============================================================
    Sections + atmosphere
@@ -215,7 +223,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 .section--dark {
   background: var(--color-primary);
   color: var(--color-on-dark);
-  position: relative; isolation: isolate; overflow: hidden;
+  position: relative; isolation: isolate; overflow: clip; /* clip, not hidden: keeps position: sticky working inside */
   --focus-ring: var(--color-accent);
 }
 .section--dark .eyebrow { color: var(--color-accent); }
@@ -239,20 +247,23 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 }
 
 /* ============================================================
-   Header — sticky navy, persistent click-to-call
+   Header — fixed, transparent over the hero, solid navy on scroll.
+   The solid surface is a ::before layer that fades in (opacity
+   only, no layout shift). Heroes carry top padding = nav height.
    ============================================================ */
 .site-header {
-  position: sticky; top: 0; z-index: 50;
-  background: var(--color-primary);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   color: var(--color-on-dark);
+  isolation: isolate;
   --focus-ring: var(--color-accent);
 }
-.site-header::after {
-  content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(var(--color-blue-bright-rgb), 0.55) 30%, rgba(var(--color-accent-rgb), 0.55) 70%, transparent);
-  opacity: 0; transition: opacity var(--dur-base) var(--ease-out); pointer-events: none;
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--color-dark);
+  box-shadow: var(--shadow-header);
+  opacity: 0; transition: opacity var(--dur-reveal) var(--ease-out);
 }
-.site-header.is-scrolled::after { opacity: 1; }
+.site-header.is-scrolled::before, .site-header.is-drawer-open::before { opacity: 1; }
 .site-header__row {
   height: var(--nav-height-mobile);
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
@@ -264,7 +275,8 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 .nav-link {
   position: relative; display: inline-flex; align-items: center; min-height: 48px;
-  font-size: 1rem; font-weight: 500; color: rgba(255, 255, 255, 0.80);
+  font-size: 1rem; font-weight: 500; color: rgba(255, 255, 255, 0.84);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .nav-link::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 8px; height: 2px;
@@ -279,8 +291,8 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 .lang-toggle {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
   min-height: 48px; padding: 0 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.24); border-radius: var(--radius-pill);
-  font-size: 0.9375rem; font-weight: 500; color: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.28); border-radius: var(--radius-pill);
+  font-size: 0.9375rem; font-weight: 500; color: rgba(255, 255, 255, 0.88);
   transition: transform var(--dur-fast) var(--ease-spring);
 }
 .lang-toggle:hover { border-color: var(--color-accent); color: var(--color-on-dark); transform: translateY(-1px); }
@@ -289,10 +301,10 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 .nav-toggle {
   display: inline-flex; align-items: center; justify-content: center;
   width: 48px; height: 48px; border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.18); background: transparent; color: var(--color-on-dark);
+  border: 1px solid rgba(255, 255, 255, 0.24); background: transparent; color: var(--color-on-dark);
   cursor: pointer; transition: transform var(--dur-fast) var(--ease-spring);
 }
-.nav-toggle:hover { border-color: rgba(255, 255, 255, 0.45); }
+.nav-toggle:hover { border-color: rgba(255, 255, 255, 0.5); }
 .nav-toggle:active { transform: scale(0.96); }
 .nav-toggle .icon-close { display: none; }
 .nav-toggle[aria-expanded="true"] .icon-open { display: none; }
@@ -300,7 +312,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 .mobile-drawer {
   position: absolute; left: 0; right: 0; top: 100%;
-  background: var(--color-primary-mid);
+  background: var(--color-dark);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: var(--shadow-on-dark);
   padding: 0.75rem var(--gutter) 1.5rem;
@@ -308,7 +320,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out), visibility 0s linear var(--dur-base);
 }
 .mobile-drawer.is-open { transform: translateY(0); opacity: 1; visibility: visible; transition-delay: 0s; }
-.mobile-drawer .nav-link { display: flex; min-height: 52px; font-size: 1.0625rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.mobile-drawer .nav-link { display: flex; min-height: 52px; font-size: 1.0625rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); text-shadow: none; }
 .mobile-drawer .nav-link::after { display: none; }
 .mobile-drawer__actions { display: flex; flex-direction: column; gap: 0.75rem; padding-top: 1rem; }
 
@@ -320,35 +332,42 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 }
 
 /* ============================================================
-   Hero — full-bleed static image, navy overlay, left-anchored
+   Hero — full-bleed static image, navy overlay + top scrim,
+   left-anchored text on the shared container edge
    ============================================================ */
 .hero {
-  position: relative; isolation: isolate; overflow: hidden;
+  position: relative; isolation: isolate; overflow: clip;
   min-height: 85vh; min-height: 85svh;
+  padding-top: var(--nav-height-mobile);
   display: flex; align-items: center;
   background: var(--color-primary); color: var(--color-on-dark);
   --focus-ring: var(--color-accent);
 }
 .hero--inner { min-height: 50vh; min-height: 50svh; }
-.hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: -4; }
+.hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: -5; transform-origin: center; }
 .hero__overlay {
-  position: absolute; inset: 0; z-index: -3; pointer-events: none;
+  position: absolute; inset: 0; z-index: -4; pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(var(--color-primary-rgb), 0.78) 0%, rgba(var(--color-primary-rgb), 0.62) 45%, rgba(var(--color-primary-rgb), 0.84) 100%),
+    linear-gradient(180deg, rgba(var(--color-primary-rgb), 0.70) 0%, rgba(var(--color-primary-rgb), 0.62) 45%, rgba(var(--color-primary-rgb), 0.84) 100%),
     radial-gradient(ellipse 70% 110% at 0% 50%, rgba(var(--color-primary-rgb), 0.85) 0%, transparent 65%);
 }
 .hero__wash {
-  position: absolute; inset: 0; z-index: -2; pointer-events: none;
+  position: absolute; inset: 0; z-index: -3; pointer-events: none;
   background:
     radial-gradient(ellipse 50% 60% at 100% 0%, rgba(var(--color-blue-bright-rgb), 0.18) 0%, transparent 60%),
     radial-gradient(ellipse 40% 40% at 85% 100%, rgba(var(--color-accent-rgb), 0.10) 0%, transparent 60%);
 }
 .hero__vignette {
-  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  position: absolute; inset: 0; z-index: -2; pointer-events: none;
   background: radial-gradient(ellipse 120% 100% at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.45) 100%);
 }
+/* Top-down navy scrim: keeps the white logo + links readable over any photo */
+.hero__scrim {
+  position: absolute; left: 0; right: 0; top: 0; height: 240px; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(var(--color-primary-rgb), 0.88) 0%, rgba(var(--color-primary-rgb), 0.45) 45%, rgba(var(--color-primary-rgb), 0) 100%);
+}
 .hero__inner { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
-.hero__text { max-width: 42rem; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 32px rgba(0, 0, 0, 0.30); }
+.hero__text { max-width: var(--hero-text); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 32px rgba(0, 0, 0, 0.30); }
 .hero .eyebrow { color: var(--color-accent); }
 .hero .display-xl em { color: var(--color-accent); }
 .hero__lead { font-size: clamp(1.125rem, 1.5vw, 1.3125rem); line-height: 1.6; color: rgba(255, 255, 255, 0.86); max-width: 36rem; }
@@ -356,40 +375,63 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 0.85rem 1rem; }
 .hero__meta { font-size: 0.9375rem; color: var(--color-on-dark-muted); display: flex; flex-wrap: wrap; gap: 0.35rem 0; }
 .hero__meta > span { display: block; width: 100%; }
-@media (min-width: 640px) { .hero__meta > span { display: inline; width: auto; } }
 .hero__meta a { color: var(--color-on-dark); font-weight: 600; text-underline-offset: 4px; display: inline-block; padding-block: 0.75rem; margin-block: -0.75rem; }
 .hero__meta a:hover { text-decoration: underline; }
 .hero__meta .dot { display: none; margin-inline: 0.6rem; color: var(--color-on-dark-faint); }
-@media (min-width: 640px) { .hero__meta .dot { display: inline; } }
+@media (min-width: 640px) {
+  .hero__meta > span { display: inline; width: auto; }
+  .hero__meta .dot { display: inline; }
+}
+@media (min-width: 1024px) { .hero { padding-top: var(--nav-height); } }
 .hero__line { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--gradient-drop-line); opacity: 0.9; }
 
 /* ============================================================
-   Trust row — one understated row of three, hairline-bound
+   Trust row — three badges, equal columns, centered as a group
    ============================================================ */
 .trust { border-bottom: 1px solid var(--color-line); background: var(--color-bg); }
-.trust__list { list-style: none; margin: 0; display: grid; grid-template-columns: 1fr; }
+.trust__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
 .trust__item {
-  display: flex; align-items: center; gap: 0.9rem;
+  display: flex; align-items: center; justify-content: center; gap: 0.9rem;
   padding: 1.1rem 0; font-size: 1rem; font-weight: 600; letter-spacing: 0.01em; color: var(--color-ink);
-  border-bottom: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line); text-align: center;
 }
 .trust__item:last-child { border-bottom: 0; }
 .trust__item svg { flex: none; width: 22px; height: 22px; color: var(--color-accent-mid); }
 @media (min-width: 768px) {
-  .trust__list { grid-template-columns: repeat(3, 1fr); }
-  .trust__item { justify-content: center; padding: 1.35rem 1rem; border-bottom: 0; border-left: 1px solid var(--color-line); }
+  .trust__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .trust__item { padding: 1.35rem 1rem; border-bottom: 0; border-left: 1px solid var(--color-line); }
   .trust__item:first-child { border-left: 0; }
+}
+
+/* ============================================================
+   Menu preview — sticky 4:5 image left (~40%), intro + ledger
+   right (~60%). Mobile: intro → image → ledger (DOM order).
+   ============================================================ */
+.menu-grid { display: grid; gap: 2.5rem; }
+@media (min-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    grid-template-areas: "media intro" "media ledger";
+    column-gap: clamp(3rem, 5vw, 5rem); row-gap: 3rem;
+    align-items: start;
+  }
+  .menu-grid__intro  { grid-area: intro; }
+  .menu-grid__media  { grid-area: media; align-self: stretch; }
+  .menu-grid__ledger { grid-area: ledger; }
+  .photo-frame.menu-grid__sticky { position: sticky; top: calc(var(--nav-height) + 1.5rem); }
 }
 
 /* ============================================================
    Menu ledger — the signature. Reads like a clinical order sheet,
    not a card grid. Prices in mint Fraunces, on navy only.
+   Row stack: name + type label on top, description below,
+   price right-aligned on the name line.
    ============================================================ */
 .ledger { border-top: 1px solid var(--color-line-dark); }
 .ledger__row {
   position: relative; isolation: isolate;
   display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "head price" "desc desc";
-  gap: 0.35rem 1.25rem; align-items: start;
+  gap: 0.45rem 1.25rem; align-items: baseline;
   padding: 1.5rem 0; border-bottom: 1px solid var(--color-line-dark);
   color: var(--color-on-dark);
 }
@@ -400,23 +442,21 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 }
 .ledger__row:hover::before, .ledger__row:focus-visible::before { opacity: 1; }
 .ledger__row:focus-visible { outline-offset: -3px; border-radius: var(--radius-md); }
-.ledger__head { grid-area: head; display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
+.ledger__head { grid-area: head; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.85rem; min-width: 0; }
 .ledger__name {
   font-family: var(--font-display); font-weight: 500; letter-spacing: -0.015em; line-height: 1.15;
   font-size: clamp(1.375rem, 2.1vw, 1.75rem);
   display: inline-flex; align-items: center; gap: 0.5rem;
-  transition: transform var(--dur-base) var(--ease-spring);
 }
 .ledger__name svg { flex: none; opacity: 0; transform: translateX(-6px); transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-spring); color: var(--color-accent); }
 .ledger__row:hover .ledger__name svg { opacity: 1; transform: translateX(0); }
 .ledger__type { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-on-dark-faint); }
 .ledger__desc { grid-area: desc; color: var(--color-on-dark-muted); font-size: 1.125rem; line-height: 1.55; max-width: 56ch; }
 .ledger__price {
-  grid-area: price; justify-self: end; align-self: start;
+  grid-area: price; justify-self: end;
   font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; line-height: 1;
   font-size: clamp(1.75rem, 2.6vw, 2.25rem); color: var(--color-accent);
   font-variant-numeric: tabular-nums lining-nums;
-  padding-top: 0.1rem;
 }
 .ledger__group {
   display: flex; align-items: center; gap: 0.85rem;
@@ -425,14 +465,6 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 }
 .ledger__group::after { content: ""; flex: 1; height: 1px; background: var(--color-line-dark); }
 .ledger__group + .ledger__row { border-top: 1px solid var(--color-line-dark); }
-@media (min-width: 1024px) {
-  .ledger__row {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.6fr) auto;
-    grid-template-areas: "head desc price";
-    gap: 0 2.5rem; padding: 1.85rem 0;
-  }
-  .ledger__desc { padding-top: 0.35rem; }
-}
 
 /* ============================================================
    Spec list — facts as label / value, hairline-separated
@@ -455,11 +487,12 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 }
 
 /* ============================================================
-   Uniform photo container — one ratio site-wide (4:3),
-   portrait variant (3:4, top-anchored) for Dr. Brookshire only
+   Uniform photo container — ONE ratio site-wide (4:5), filling
+   its full column. Portrait variant (3:4, top-anchored) is for
+   Dr. Brookshire only.
    ============================================================ */
 .photo-frame {
-  position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden;
+  position: relative; width: 100%; aspect-ratio: 4 / 5; overflow: hidden;
   border-radius: var(--radius-md); background: var(--color-accent-wash);
   box-shadow: var(--shadow-elevated);
   margin: 0;
@@ -504,17 +537,30 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 .footer-disclaimer { font-size: 0.9375rem; line-height: 1.6; color: var(--color-on-dark-muted); max-width: 70ch; }
 .footer-disclaimer strong { color: var(--color-on-dark); font-weight: 600; }
 .footer-sister { font-size: 0.9375rem; color: var(--color-on-dark-muted); }
+.footer-sister a { color: var(--color-on-dark); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255, 255, 255, 0.35); display: inline-block; padding-block: 0.75rem; margin-block: -0.75rem; }
+.footer-sister a:hover { text-decoration-color: var(--color-accent); }
 .footer-copy { font-size: 0.875rem; color: var(--color-on-dark-faint); }
 
 /* ============================================================
-   Motion: reveal on scroll (transform + opacity only)
+   Motion system — transform + opacity only, one observer in
+   site.js. The hidden pre-reveal state exists ONLY under html.js
+   (set first thing by site.js), so content is visible with JS off.
    ============================================================ */
-.fade-up { opacity: 0; transform: translateY(22px); transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out); }
-.fade-up.visible { opacity: 1; transform: none; }
-.fade-up[data-delay="1"] { transition-delay: 90ms; }
-.fade-up[data-delay="2"] { transition-delay: 180ms; }
-.fade-up[data-delay="3"] { transition-delay: 270ms; }
-.fade-up[data-delay="4"] { transition-delay: 360ms; }
+.js .reveal {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-reveal);
+  transition-delay: var(--delay, 0ms);
+}
+.js .reveal--scale { transform: scale(1.03); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+.reveal[data-delay="1"] { --delay: calc(var(--stagger) * 1); }
+.reveal[data-delay="2"] { --delay: calc(var(--stagger) * 2); }
+.reveal[data-delay="3"] { --delay: calc(var(--stagger) * 3); }
+.reveal[data-delay="4"] { --delay: calc(var(--stagger) * 4); }
+.reveal[data-delay="5"] { --delay: calc(var(--stagger) * 5); }
+/* Hero background: slow settle from 1.06 to 1.0 */
+.js .hero__bg { transform: scale(1.06); transition: transform var(--dur-settle) var(--ease-out); }
+.js .hero__bg.is-in { transform: scale(1); }
 
 .skip-link {
   position: absolute; top: 0; left: -9999px; z-index: 100;
@@ -527,6 +573,8 @@ section[id] { scroll-margin-top: calc(var(--nav-height) + 12px); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .fade-up { opacity: 1; transform: none; transition: none; }
-  .btn, .btn-primary::after, .nav-link::after, .footer-link::after, .lang-toggle, .link-arrow svg, .ledger__row::before, .ledger__name svg, .mobile-drawer, .site-header::after { transition: none; }
+  .js .reveal, .js .reveal--scale { opacity: 1; transform: none; transition: none; }
+  .js .hero__bg { transform: none; transition: none; }
+  .btn, .btn-primary::after, .nav-link::after, .footer-link::after, .lang-toggle, .icon-arrow,
+  .ledger__row::before, .ledger__name svg, .mobile-drawer, .site-header::before, .nav-toggle { transition: none; }
 }
