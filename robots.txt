@@ -1,6 +1,19 @@
+# PRE-LAUNCH LOCK (client-review deploy, not launch): every crawler is blocked here and by the
+# X-Robots-Tag: noindex, nofollow header in vercel.json. See "RESTORE AT LAUNCH" below.
 User-agent: *
-Allow: /
-Disallow: /thank-you/
-Disallow: /es/thank-you/
+Disallow: /
 
 Sitemap: https://www.thriveivsolution.com/sitemap.xml
+
+# ============================================================
+# RESTORE AT LAUNCH — replace everything above this block with the
+# exact launch version below (uncommented), and remove the
+# X-Robots-Tag header from vercel.json at the same time.
+# ============================================================
+# User-agent: *
+# Allow: /
+# Disallow: /thank-you/
+# Disallow: /es/thank-you/
+#
+# Sitemap: https://www.thriveivsolution.com/sitemap.xml
+# ============================================================

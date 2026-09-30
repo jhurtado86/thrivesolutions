@@ -476,7 +476,9 @@ the single badge row) · mega-menu · any home-services artifact (emergency 24/7
 **Launch-blocking:** full disclaimer text · og-image ·
 native Spanish read (disclaimer + care advice minimum) · confirmation of what
 "physician-supervised" means in practice (who administers, screening, on-site presence) ·
-decision on dedicated Thrive phone line.
+decision on dedicated Thrive phone line · **Remove pre-launch noindex lock** (vercel.json
+`X-Robots-Tag` header + robots.txt `Disallow: /`, restore the launch robots.txt from its
+"RESTORE AT LAUNCH" block) — Prompt 5 must confirm before the domain is connected.
 
 **Backfillable:** vector/SVG logo (current PNG is usable) ·
 higher-res content-photo sources (current ones are 768px tall) · Dr. Brookshire
