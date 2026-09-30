@@ -341,7 +341,7 @@ body text, descriptive alt text with service + location context.
   (3:4, `object-position: center top`). Photo sections are true 50/50 splits with the image
   filling its full column width; never a small floating image box. Placeholders at the
   final size: `placehold.co/1200x1500` (4:5) and `placehold.co/900x1200` (portrait).
-- Photo tiers: Home 3 · Menu 1 per drip (4, or placeholders) · What to Expect 1 · About
+- Photo tiers (all slots filled as of 2026-09-29): Home 3 · Menu 1 per drip (4) · What to Expect 1 · About
   1 portrait of Dr. Brookshire (`aspect-[3/4]`, `object-position: center top`) · Contact 0.
 - Dr. Brookshire's headshot: `brand_assets/dr-brookshire.*` (1200×1600) and
   `dr-brookshire-600.*` (600×800), 3:4, metadata stripped, served via `srcset`. It is also
@@ -351,17 +351,19 @@ body text, descriptive alt text with service + location context.
   `<picture>` + `srcset`; originals in `brand_assets/_source/`):
   `home-visit.*` (Home, 30–45 min section) · `drip-recovery.*` (Menu `#recovery-pack`) ·
   `drip-hydration.*` (Menu `#basic-hydration`) · `drip-hangover.*` (Menu `#hangover-help`) ·
-  `expect-prep.*` (What to Expect sticky). The sources are only 768px tall, so the
-  1200×1500 files are ~2x upscales; ask for originals at least 1500px tall for crisp
-  retina rendering `[NEEDS INPUT — higher-res sources]`.
-  REJECTED and left unprocessed in `_source/`: `home-menu.jpg` (readable "STERILE saline /
-  Batch / Exp" labels on every bag) and `drip-nad.jpg` (readable "ALCOHOL PREP PAD" packet
-  text + an exposed syringe needle). The Home menu sticky and the Menu NAD+ slot keep
-  `placehold.co` until replacements arrive `[NEEDS INPUT — home-menu + drip-nad replacements]`.
-- Excluded photo types: identifiable patients without consent, visible needle insertion
-  close-ups, exposed needles, people/hands/faces, readable text or labels (batch numbers,
-  expiry dates, product packaging), anything clinical-gory, blood, stock photos of
-  bars/drinking.
+  `expect-prep.*` (What to Expect sticky) · `home-menu.*` (Home menu sticky) ·
+  `drip-nad.*` (Menu `#nad-plus`). The sources are only 768px tall, so the 1200×1500
+  files are ~2x upscales; ask for originals at least 1500px tall for crisp retina
+  rendering `[NEEDS INPUT — higher-res sources]`.
+- **Client-approved exceptions (2026-09-29).** `home-menu.*` shows printed bag labels
+  ("STERILE saline / Batch #4321 / Exp 12/26") and `drip-nad.*` shows a readable
+  "ALCOHOL PREP PAD" packet and an uncapped syringe. Both were placed as-is at the
+  client's request (EN + ES). Do NOT flag them in audits. Heads-up only: the printed
+  "Exp 12/26" on the bags reads as expired after December 2026.
+- Excluded photo types (for any NEW photo; the two approved exceptions above stand):
+  identifiable patients without consent, visible needle insertion close-ups, exposed
+  needles, people/hands/faces, readable text or labels (batch numbers, expiry dates,
+  product packaging), anything clinical-gory, blood, stock photos of bars/drinking.
 - Document exact filenames from `ls brand_assets/`. Never assume names.
 
 ---
@@ -461,8 +463,7 @@ native Spanish read (disclaimer + care advice minimum) · confirmation of what
 "physician-supervised" means in practice (who administers, screening, on-site presence) ·
 decision on dedicated Thrive phone line.
 
-**Backfillable:** vector/SVG logo (current PNG is usable) · replacement photos for the Home
-menu sticky and the NAD+ slot (delivered files rejected, see Hero & asset patterns) ·
+**Backfillable:** vector/SVG logo (current PNG is usable) ·
 higher-res content-photo sources (current ones are 768px tall) · Dr. Brookshire
 bio details · email · whether the phone receives texts · GHL form · parking/suite note ·
 `areaServed` city list · `geo` coordinates · review status.
