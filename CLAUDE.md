@@ -25,7 +25,7 @@ value that needs a human check before launch.
 | Domain | `thriveivsolution.com`. Build every absolute URL on the canonical host `https://www.thriveivsolution.com`. |
 | Canonical host | `https://www.thriveivsolution.com` (Vercel Primary; the bare domain redirects to www). Set as Vercel Primary on day one. |
 | Region | Rio Grande Valley, South Texas |
-| Booking | Call now. Text only if confirmed (see Phone rule). GHL form `[NEEDS INPUT — maybe later]`. |
+| Booking | **Call to Book** (primary, phone token) + GHL form **"Website Form"** (secondary; form id `mUgMTmM7gOJPfxkxDgTe`, submit button "Request My Appointment") embedded at `/contact/#request`. GHL chat widget (id `6ab54a47228e01cbcee955b1`) site-wide. ES form: `[NEEDS INPUT — Spanish duplicate pending; the EN form is used on /es/contact/ meanwhile]`. Text only if confirmed (see Phone rule). |
 
 **Phone rule.** (956) 322-7662 is shared with STVI for now. Define it ONCE as a constant
 (display string + E.164) and reference it everywhere, so a future dedicated Thrive line
@@ -215,9 +215,15 @@ resolve `/folder/` → `folder/index.html` locally. `vercel.json` sets `cleanUrl
 | What to Expect / FAQ | `/what-to-expect/` | `/es/what-to-expect/` |
 | About | `/about/` | `/es/about/` |
 | Contact / Book | `/contact/` | `/es/contact/` |
+| Thank you (form redirect, noindex) | `/thank-you/` | `/es/thank-you/` |
 
 - ES pages use the same English slugs under `/es/` (routing stays simple).
-- **No thank-you page** until a GHL form exists. When a form is added, the thank-you trio applies (noindex/nofollow + excluded from sitemap + Disallow in robots.txt).
+- **Thank-you pages** (added 2026-09-29) are the GHL "Website Form" redirect targets. The
+  thank-you trio is applied to both as one unit: `<meta name="robots" content="noindex,
+  nofollow">` + excluded from `sitemap.xml` + `Disallow` in `robots.txt`. No hreflang, no
+  JSON-LD. Content: short confirmation, "We'll call you within one business day," hours,
+  Call button, link home. The redirect URL itself is set in GHL (form settings), not in
+  markup; with one shared form it can point at only one thank-you page (EN).
 - **No city pages, no individual drip pages, no gallery.** Local reach comes from schema `areaServed`. Drips link by anchor (`/iv-menu/#hangover-help`).
 
 ### Nav (simple, no mega-menu)
@@ -237,7 +243,10 @@ pages use the same pattern over their shorter heroes.
 Logo (small) · NAP · hours · the 5 page links · language toggle · the disclaimer ·
 one line: "Thrive IV Solutions is led by Dr. R. Brookshire, who also leads
 South Texas Vascular Institute." with a single link to STVI (`https://stvi.tech`, on the
-practice name). No other STVI branding anywhere.
+practice name). No other STVI branding anywhere. Then, just before `</body>` on every
+page (10 + the 2 thank-you pages): the GHL chat widget `<script … defer>` (canonical copy
+in `_partials/footer.html`, identical tag everywhere, deferred so it never blocks
+rendering), followed by the `GHL EXTERNAL TRACKING SCRIPT` placeholder comment.
 
 ---
 
@@ -261,12 +270,13 @@ credential · CTAs: Call to Book (primary), See the Menu (secondary). Then: trus
 menu preview (all 4 items with prices, linking to anchors; sticky-image layout, see Layout) · "Why physician-supervised
 matters" section (plain-language, no claims beyond the Positioning rules) · short What to
 Expect teaser (30–45 min, what to bring) · final CTA ("Hydration That Works. So You Can
-Thrive." + call button + hours).
+Thrive." + call button + "Request online" link to `/contact/#request` + hours).
 
 **IV & Wellness Menu.** H1 around "IV hydration menu and prices." Four item blocks with
 anchor IDs, name, price, confirmed description, "best for" line, and a Call to Book
 button. NAD+ visually set apart as an injection. Short "Not sure which one?" section
-routing to a call. Disclaimer visible near the menu.
+routing to a call, with a "Request online" link to `/contact/#request` beside it.
+Disclaimer visible near the menu.
 
 **What to Expect / FAQ.** Before / during (~30–45 min) / after, from the care advice.
 Disclaimer callout. FAQ (min 6, only from confirmed facts): how long a session takes,
@@ -277,9 +287,14 @@ where you're located, whether NAD+ is an IV (no — injection).
 clinic. Bio details beyond the credential are `[NEEDS INPUT]`. Do not invent training,
 years, schools, or staff. No team section until staff are confirmed.
 
-**Contact / Book.** Call to Book (big), address, hours, Google Maps embed (public address
-confirmed), parking/suite note `[NEEDS INPUT]`. `<!-- GHL CONTACT FORM EMBED -->` placeholder
-left in markup, commented out, not rendered.
+**Contact / Book.** Call to Book (big) in the hero · section `#request` ("Request an
+Appointment" / "Solicite una cita"): Call to Book block beside the GHL "Website Form" inline
+embed (side by side on desktop, form below the call block on mobile). The embed is pasted
+verbatim (iframe + `form_embed.js`, the script once per page) inside `.form-frame`, a
+container with `min-height: 730px` so the page does not jump while the form loads; only the
+container is styled. `/es/contact/` uses the same EN form until the Spanish duplicate exists
+`[NEEDS INPUT]`. Then address, hours, Google Maps embed (public address confirmed),
+parking/suite note `[NEEDS INPUT]`, and the "Before you call" links.
 
 ---
 
@@ -465,7 +480,8 @@ decision on dedicated Thrive phone line.
 
 **Backfillable:** vector/SVG logo (current PNG is usable) ·
 higher-res content-photo sources (current ones are 768px tall) · Dr. Brookshire
-bio details · email · whether the phone receives texts · GHL form · parking/suite note ·
+bio details · email · whether the phone receives texts · Spanish duplicate of the GHL
+form · parking/suite note ·
 `areaServed` city list · `geo` coordinates · review status.
 
 **Open decisions:** lab-coat embroidery in the headshot (STVI name + full name
