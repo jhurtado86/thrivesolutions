@@ -346,8 +346,22 @@ body text, descriptive alt text with service + location context.
 - Dr. Brookshire's headshot: `brand_assets/dr-brookshire.*` (1200×1600) and
   `dr-brookshire-600.*` (600×800), 3:4, metadata stripped, served via `srcset`. It is also
   the Physician `image` in JSON-LD.
+- Content photos (delivered 2026-09-29; processed like the headshot: 4:5 crop, `name.*`
+  at 1200×1500 + `name-600.*` at 600×750, JPG + WebP, metadata stripped, served via
+  `<picture>` + `srcset`; originals in `brand_assets/_source/`):
+  `home-visit.*` (Home, 30–45 min section) · `drip-recovery.*` (Menu `#recovery-pack`) ·
+  `drip-hydration.*` (Menu `#basic-hydration`) · `drip-hangover.*` (Menu `#hangover-help`) ·
+  `expect-prep.*` (What to Expect sticky). The sources are only 768px tall, so the
+  1200×1500 files are ~2x upscales; ask for originals at least 1500px tall for crisp
+  retina rendering `[NEEDS INPUT — higher-res sources]`.
+  REJECTED and left unprocessed in `_source/`: `home-menu.jpg` (readable "STERILE saline /
+  Batch / Exp" labels on every bag) and `drip-nad.jpg` (readable "ALCOHOL PREP PAD" packet
+  text + an exposed syringe needle). The Home menu sticky and the Menu NAD+ slot keep
+  `placehold.co` until replacements arrive `[NEEDS INPUT — home-menu + drip-nad replacements]`.
 - Excluded photo types: identifiable patients without consent, visible needle insertion
-  close-ups, anything clinical-gory, blood, stock photos of bars/drinking.
+  close-ups, exposed needles, people/hands/faces, readable text or labels (batch numbers,
+  expiry dates, product packaging), anything clinical-gory, blood, stock photos of
+  bars/drinking.
 - Document exact filenames from `ls brand_assets/`. Never assume names.
 
 ---
@@ -447,7 +461,9 @@ native Spanish read (disclaimer + care advice minimum) · confirmation of what
 "physician-supervised" means in practice (who administers, screening, on-site presence) ·
 decision on dedicated Thrive phone line.
 
-**Backfillable:** vector/SVG logo (current PNG is usable) · drip photos · Dr. Brookshire
+**Backfillable:** vector/SVG logo (current PNG is usable) · replacement photos for the Home
+menu sticky and the NAD+ slot (delivered files rejected, see Hero & asset patterns) ·
+higher-res content-photo sources (current ones are 768px tall) · Dr. Brookshire
 bio details · email · whether the phone receives texts · GHL form · parking/suite note ·
 `areaServed` city list · `geo` coordinates · review status.
 
