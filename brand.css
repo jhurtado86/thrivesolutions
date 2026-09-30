@@ -573,6 +573,9 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 /* Item block: price right-aligned on the name line (same rule as the ledger) */
 .item__title { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 1.5rem; }
+/* Long names (e.g. ES "Paquete de Recuperación") wrap inside the heading; the price stays on the name line */
+.item__title > h2 { flex: 1 1 12ch; min-width: 0; }
+.item__title > .item__price { flex: 0 0 auto; }
 .item__price {
   font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; line-height: 1;
   font-size: clamp(2rem, 3vw, 2.5rem); color: var(--color-ink);

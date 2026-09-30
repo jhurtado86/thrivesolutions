@@ -93,11 +93,15 @@
     var toggle = document.getElementById('nav-toggle');
     var drawer = document.getElementById('mobile-drawer');
     if (toggle && drawer) {
+      /* Labels come from data-label-open / data-label-close so ES pages keep
+         Spanish accessible names; EN pages fall back to the defaults. */
+      var labelOpen  = toggle.getAttribute('data-label-open')  || 'Open menu';
+      var labelClose = toggle.getAttribute('data-label-close') || 'Close menu';
       var setOpen = function (open) {
         drawer.classList.toggle('is-open', open);
         if (header) header.classList.toggle('is-drawer-open', open);
         toggle.setAttribute('aria-expanded', String(open));
-        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        toggle.setAttribute('aria-label', open ? labelClose : labelOpen);
       };
       toggle.addEventListener('click', function () { setOpen(!drawer.classList.contains('is-open')); });
       drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
