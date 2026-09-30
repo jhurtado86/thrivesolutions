@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- All 10 pages (5 EN + 5 ES) on the canonical host only. Every <url> carries
-     xhtml:link hreflang alternates (en, es, x-default → EN). No thank-you page
-     exists yet; when a GHL form is added, its thank-you page stays out of here. -->
+<!-- All 10 indexable pages (5 EN + 5 ES) on the canonical host only. Every <url>
+     carries xhtml:link hreflang alternates (en, es, x-default → EN). /thank-you/ and
+     /es/thank-you/ are noindex form-redirect pages and are excluded on purpose. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
