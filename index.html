@@ -296,9 +296,12 @@
         </div>
 
         <div class="menu-grid__media">
-          <!-- [NEEDS INPUT — home-menu photo]. The delivered home-menu.jpg was rejected: readable "STERILE saline / Batch / Exp" labels on every bag. A replacement with no readable labels is pending. Placeholder at the final 4:5 size. Sticky below the header on desktop. -->
+          <!-- home-menu.* is a client-approved exception (2026-09-29) to the readable-label exclusion: the bags carry printed labels. Sticky below the header on desktop. -->
           <figure class="photo-frame menu-grid__sticky reveal reveal--scale">
-            <img src="https://placehold.co/1200x1500" alt="IV drip bag hung and ready for a hydration session at Thrive IV Solutions in Edinburg, TX" width="1200" height="1500" loading="lazy" decoding="async" />
+            <picture>
+              <source type="image/webp" srcset="/brand_assets/home-menu-600.webp 600w, /brand_assets/home-menu.webp 1200w" sizes="(min-width: 1024px) 40vw, 100vw" />
+              <img src="/brand_assets/home-menu.jpg" srcset="/brand_assets/home-menu-600.jpg 600w, /brand_assets/home-menu.jpg 1200w" sizes="(min-width: 1024px) 40vw, 100vw" alt="Three IV fluid bags hanging from a pole in front of a bright window, ready for a hydration session at Thrive IV Solutions in Edinburg, TX" width="1200" height="1500" loading="lazy" decoding="async" />
+            </picture>
           </figure>
         </div>
 
