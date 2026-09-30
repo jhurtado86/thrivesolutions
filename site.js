@@ -109,6 +109,17 @@
       window.matchMedia('(min-width: 1024px)').addEventListener('change', function (e) { if (e.matches) setOpen(false); });
     }
 
+    /* GHL request form (contact pages): the chat widget sits bottom-right and its teaser
+       popup reaches into the form column, so hide it while the form is on screen and it
+       can never cover the SEND button. The rule lives in brand.css (html.is-form-in-view). */
+    var formFrame = document.querySelector('.form-frame');
+    if (formFrame && 'IntersectionObserver' in window) {
+      var formIo = new IntersectionObserver(function (entries) {
+        document.documentElement.classList.toggle('is-form-in-view', entries[0].isIntersecting);
+      }, { threshold: 0 });
+      formIo.observe(formFrame);
+    }
+
     /* Reveals: one observer for every .reveal plus the hero background settle. */
     document.querySelectorAll('[data-stagger]').forEach(function (group) {
       group.querySelectorAll('.reveal').forEach(function (el, i) { el.style.setProperty('--delay', (i * 80) + 'ms'); });

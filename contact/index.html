@@ -214,10 +214,57 @@
       </div>
     </section>
 
-    <!-- GHL CONTACT FORM EMBED
-         Not rendered until the client's GoHighLevel form exists. When it does:
-         add a section here with the embed, build /thank-you/ with
-         noindex/nofollow, exclude it from sitemap.xml, and Disallow it in robots.txt. -->
+    <!-- ============================================================
+         REQUEST AN APPOINTMENT — Call to Book block + GHL "Website Form".
+         Desktop: call block left, form right. Mobile: call block, then form.
+         The embed is verbatim from GHL (script once per page); only
+         .form-frame is styled. On submit, GHL redirects to /thank-you/
+         (the redirect URL is set in GHL, not here).
+    ============================================================ -->
+    <section class="section section--dark" id="request" aria-labelledby="request-title">
+      <div class="wrap grid gap-12 lg:grid-cols-2 lg:gap-20 items-start">
+        <div class="flow reveal" style="--flow: 1.5rem;">
+          <p class="eyebrow">Book</p>
+          <h2 id="request-title" class="display-lg">Request an Appointment</h2>
+          <p class="lead">Call to book now, or send the form and we'll call you within one business day.</p>
+          <div class="btn-row items-center">
+            <a href="tel:+19563227662" class="btn btn-primary btn-lg" data-phone-href>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.54 6.54l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call to Book
+            </a>
+            <a href="tel:+19563227662" class="cta__phone" data-phone-href data-phone>(956) 322-7662</a>
+          </div>
+          <dl class="spec">
+            <div class="spec__row"><dt>Hours</dt><dd>Mon–Fri 9:00 AM–5:00 PM<br />Sat–Sun closed</dd></div>
+            <div class="spec__row"><dt>Next step</dt><dd>We'll call you within one business day.</dd></div>
+          </dl>
+        </div>
+        <div class="reveal" data-delay="1">
+          <div class="form-frame">
+            <iframe
+    src="https://api.leadconnectorhq.com/widget/form/mUgMTmM7gOJPfxkxDgTe"
+    style="width:100%;height:100%;border:none;border-radius:10px"
+    id="inline-mUgMTmM7gOJPfxkxDgTe"
+    data-layout="{'id':'INLINE'}"
+    data-trigger-type="alwaysShow"
+    data-trigger-value=""
+    data-activation-type="alwaysActivated"
+    data-activation-value=""
+    data-deactivation-type="neverDeactivate"
+    data-deactivation-value=""
+    data-form-name="Website Form"
+    data-height="730"
+    data-layout-iframe-id="inline-mUgMTmM7gOJPfxkxDgTe"
+    data-form-id="mUgMTmM7gOJPfxkxDgTe"
+    data-cookie-consent="true"
+    data-cookie-consent-provider="auto"
+    title="Website Form"
+></iframe>
+          </div>
+          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+        </div>
+      </div>
+    </section>
 
     <!-- ============================================================
          BEFORE YOU CALL — two routes into the site
@@ -300,7 +347,10 @@
     </div>
   </footer>
 
-  <!-- GHL CHAT WIDGET SCRIPT GOES HERE -->
+  <!-- GHL CHAT WIDGET — canonical copy lives in _partials/footer.html; identical tag on every page. Deferred so it never blocks rendering. -->
+  <script src="https://widgets.leadconnectorhq.com/loader.js"
+    data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+    data-widget-id="6ab54a47228e01cbcee955b1" defer></script>
   <!-- GHL EXTERNAL TRACKING SCRIPT GOES HERE -->
 </body>
 </html>
