@@ -1,7 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Stub: URLs are added when all 10 EN + ES pages exist. Every <url> carries
-     xhtml:link hreflang alternates (en, es, x-default). Canonical host only:
-     https://www.thriveivsolution.com -->
+<!-- All 10 pages (5 EN + 5 ES) on the canonical host only. Every <url> carries
+     xhtml:link hreflang alternates (en, es, x-default → EN). No thank-you page
+     exists yet; when a GHL form is added, its thank-you page stays out of here. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home -->
+  <url>
+    <loc>https://www.thriveivsolution.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.thriveivsolution.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.thriveivsolution.com/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.thriveivsolution.com/" />
+  </url>
+  <url>
+    <loc>https://www.thriveivsolution.com/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.thriveivsolution.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.thriveivsolution.com/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.thriveivsolution.com/" />
+  </url>
+
+  <!-- IV & Wellness Menu -->
+  <url>
+    <loc>https://www.thriveivsolution.com/iv-menu/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.thriveivsolution.com/iv-menu/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.thriveivsolution.com/es/iv-menu/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.thriveivsolution.com/iv-menu/" />
+  </url>
+  <url>
+    <loc>https://www.thriveivsolution.com/es/iv-menu/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.thriveivsolution.com/iv-menu/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.thriveivsolution.com/es/iv-menu/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.thriveivsolution.com/iv-menu/" />
+  </url>
+
+  <!-- What to Expect -->
+  <url>
+    <loc>https://www.thriveivsolution.com/what-to-expect/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.thriveivsolution.com/what-to-expect/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.thriveivsolution.com/es/what-to-expect/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.thriveivsolution.com/what-to-expect/" />
+  </url>
+  <url>
+    <loc>https://www.thriveivsolution.com/es/what-to-expect/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.thriveivsolution.com/what-to-expect/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.thriveivsolution.com/es/what-to-expect/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.thriveivsolution.com/what-to-expect/" />
+  </url>
+
+  <!-- About -->
+  <url>
+    <loc>https://www.thriveivsolution.com/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.thriveivsolution.com/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.thriveivsolution.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.thriveivsolution.com/about/" />
+  </url>
+  <url>
+    <loc>https://www.thriveivsolution.com/es/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.thriveivsolution.com/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.thriveivsolution.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.thriveivsolution.com/about/" />
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://www.thriveivsolution.com/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.thriveivsolution.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.thriveivsolution.com/es/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.thriveivsolution.com/contact/" />
+  </url>
+  <url>
+    <loc>https://www.thriveivsolution.com/es/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.thriveivsolution.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.thriveivsolution.com/es/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.thriveivsolution.com/contact/" />
+  </url>
+
 </urlset>
