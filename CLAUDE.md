@@ -308,8 +308,8 @@ $20 travel fee within 30 miles of our Edinburg office, call for farther · hours
 mobile visits work" sequence (call → confirm location and drips → we arrive and set up →
 ~30–45 min session). The 5-item ledger with a separate "Travel" row for the $20 fee.
 FAQ (min 4; `FAQPage` JSON-LD matches the visible text) + `BreadcrumbList`. One 4:5 photo
-slot (placeholder `placehold.co/1200x1500` until the client supplies a photo
-`[NEEDS INPUT — mobile photo]`). Never say who comes to the visit (see Positioning).
+slot (`brand_assets/mobile-iv.*`, delivered 2026-10-01). Never say who comes to the visit
+(see Positioning).
 
 **What to Expect / FAQ.** Before / during (~30–45 min) / after, from the care advice.
 Disclaimer callout. FAQ (min 6, only from confirmed facts): how long a session takes,
@@ -399,8 +399,8 @@ body text, descriptive alt text with service + location context.
   (3:4, `object-position: center top`). Photo sections are true 50/50 splits with the image
   filling its full column width; never a small floating image box. Placeholders at the
   final size: `placehold.co/1200x1500` (4:5) and `placehold.co/900x1200` (portrait).
-- Photo tiers: Home 3 · Menu 1 per drip (4; Extra Liter has none) · Mobile IV 1 (placeholder
-  `placehold.co/1200x1500` until supplied `[NEEDS INPUT — mobile photo]`) · What to Expect 1 · About
+- Photo tiers (all slots filled as of 2026-10-01): Home 3 · Menu 1 per drip (4; Extra Liter has
+  none) · Mobile IV 1 (`mobile-iv.*`) · What to Expect 1 · About
   1 portrait of Dr. Brookshire (`aspect-[3/4]`, `object-position: center top`) · Contact 0.
 - Dr. Brookshire's headshot: `brand_assets/dr-brookshire.*` (1200×1600) and
   `dr-brookshire-600.*` (600×800), 3:4, metadata stripped, served via `srcset`. It is also
@@ -411,9 +411,13 @@ body text, descriptive alt text with service + location context.
   `home-visit.*` (Home, 30–45 min section) · `drip-recovery.*` (Menu `#recovery-pack`) ·
   `drip-hydration.*` (Menu `#basic-hydration`) · `drip-hangover.*` (Menu `#hangover-help`) ·
   `expect-prep.*` (What to Expect sticky) · `home-menu.*` (Home menu sticky) ·
-  `drip-nad.*` (Menu `#nad-plus`). The sources are only 768px tall, so the 1200×1500
-  files are ~2x upscales; ask for originals at least 1500px tall for crisp retina
-  rendering `[NEEDS INPUT — higher-res sources]`.
+  `drip-nad.*` (Menu `#nad-plus`) · `mobile-iv.*` (Mobile IV, we-come-to-you split; delivered
+  2026-10-01, cropped to the left 4:5 window: pole, base, window light, sofa corner). The
+  sources are only 768px tall, so the 1200×1500 files are ~2x upscales; ask for originals at
+  least 1500px tall for crisp retina rendering `[NEEDS INPUT — higher-res sources]`.
+- **Checked, not an exception (2026-10-01).** The hanging bag in `mobile-iv.*` carries a blank
+  white label band with no legible characters at any served size; the tubing ends in capped
+  connectors and a drip chamber (no needle); the navy kit has no text. Do NOT flag in audits.
 - **Client-approved exceptions (2026-09-29).** `home-menu.*` shows printed bag labels
   ("STERILE saline / Batch #4321 / Exp 12/26") and `drip-nad.*` shows a readable
   "ALCOHOL PREP PAD" packet and an uncapped syringe. Both were placed as-is at the
@@ -526,8 +530,7 @@ native Spanish read (disclaimer + care advice minimum; the new `/es/mobile-iv/` 
 **Backfillable:** vector/SVG logo (current PNG is usable) ·
 higher-res content-photo sources (current ones are 768px tall) · Dr. Brookshire
 bio details · email · whether the phone receives texts · Spanish duplicate of the GHL
-form · parking/suite note · mobile IV photo (`/mobile-iv/` placeholder) · minimum group
-size for events ·
+form · parking/suite note · minimum group size for events ·
 `areaServed` city list · `geo` coordinates · review status.
 
 **Open decisions:** lab-coat embroidery in the headshot (STVI name + full name
