@@ -1,6 +1,6 @@
 # CLAUDE.md — Thrive IV Solutions
 
-This is the **Thrive IV Solutions** website: a lean, bilingual (EN + `/es/`), 5-page site
+This is the **Thrive IV Solutions** website: a lean, bilingual (EN + `/es/`), 6-page site
 for a physician-supervised IV hydration and wellness clinic in Edinburg, TX. It is built
 from the **clean `nexor-template` base**. It is NOT a clone of the STVI repo, and no STVI
 content, copy, colors, or assets may appear in this repo. The STVI **design patterns**
@@ -20,7 +20,10 @@ value that needs a human check before launch.
 | Physician | Dr. R. Brookshire, board-certified vascular surgeon |
 | Address | 2511 Cornerstone Blvd, Ste 2511, Edinburg, TX 78539 `[VERIFY — suite number matches street number; confirm with client]` |
 | Phone (site) | (956) 322-7662 → `tel:+19563227662`. **Single swappable token** (see Phone rule). |
-| Hours | Mon–Fri 9:00 AM–5:00 PM. Sat–Sun closed. |
+| Hours | Mon–Fri 9:00 AM–5:00 PM. Sat–Sun closed. The same hours apply to clinic and mobile visits (confirmed 2026-09-30). |
+| Service model | In-clinic at 2511 Cornerstone Blvd **and** mobile IV (homes, offices, and events across the Rio Grande Valley). Both available. Confirmed 2026-09-30. |
+| Mobile travel fee | **$20 within 30 miles** of the Edinburg office. Beyond 30 miles: "call for details." No other mobile pricing. Mobile visits use the same menu and prices as the clinic. |
+| Events / groups | Event and group bookings route to a call. The events-only flyer menu (the shooting-event flyer) does NOT go on the site. Minimum group size `[NEEDS INPUT]`. |
 | Email | `[NEEDS INPUT]`. Omit from site and schema until provided. |
 | Domain | `thriveivsolution.com`. Build every absolute URL on the canonical host `https://www.thriveivsolution.com`. |
 | Canonical host | `https://www.thriveivsolution.com` (Vercel Primary; the bare domain redirects to www). Set as Vercel Primary on day one. |
@@ -115,11 +118,14 @@ Locked wording (ES):
 - "Bajo la supervisión del Dr. R. Brookshire, cirujano vascular certificado."
   `[VERIFY — native read]`
 
-Do NOT claim (until confirmed `[NEEDS INPUT]`):
-- Who administers the IV (RN / NP / other).
+Do NOT claim (standing rule, clinic and mobile alike; this is a closed decision, not an
+open question):
+- Who administers the IV (RN / NP / other), in the clinic or on a mobile visit.
 - That Dr. Brookshire is on-site during sessions or personally places IVs.
 - That there is a pre-drip health screening or consultation.
 - Any STVI credential line ("first board-certified…", "only one in Edinburg"). That wording belongs to STVI only.
+
+Copy says "physician-supervised" and stops there.
 
 **Owner-name override.** The skeleton restricts the owner name to the About page. For
 Thrive, Dr. Brookshire's name and credential MAY appear in the hero, meta, and schema,
@@ -150,11 +156,18 @@ change it here first, then grep every page.
 | `basic-hydration` | Basic Hydration | Hidratación Básica | IV drip | $100 | Stay hydrated, feel refreshed. For everyday wellness and routine hydration. | Everyday wellness and routine hydration. |
 | `hangover-help` | Hangover Help | Alivio para la Cruda | IV drip | $185 | Feel better fast. Rehydrate, replenish, and bounce back sooner. | The morning after a late night. `[VERIFY]` |
 | `nad-plus` | NAD+ Injection | Inyección de NAD+ | **Intramuscular injection (NOT an IV)** | $65 | Supports cellular energy and mental clarity. For healthy aging, focus, and overall wellness. | Healthy aging, focus, and overall wellness. |
+| `extra-liter` | Extra Liter | Litro adicional `[VERIFY]` | **Add-on to IV drips only (NOT with NAD+)** | $65 | Add an additional liter of IV fluid to your IV treatment. | No "best for" line (none confirmed). Render Type ("Add-on to any IV drip") + Pairs-with (the three drips, not NAD+) rows instead. |
 
 Rules:
 - Page and nav label: **"IV & Wellness Menu"** (ES: "Menú de IV y Bienestar"). URL stays `/iv-menu/`.
 - NAD+ is always labeled as an injection ("quick injection, no IV line"). Never call it a drip or an IV.
-- Order on the page: Recovery Pack, Basic Hydration, Hangover Help, then NAD+ as a visually separate "Add-on / Injection" item.
+- Order on the page: Recovery Pack, Basic Hydration, Hangover Help, then the add-on group
+  (visually set apart, dark section): NAD+ Injection, then Extra Liter. The Menu index bar
+  lists all 5.
+- Extra Liter (added 2026-09-30) is an add-on to the three IV drips only. Never pair it with
+  NAD+ in copy or schema. It has no photo slot.
+- Mobile visits use this same table. There is no separate mobile menu and no mobile markup
+  on any price; the only mobile-specific number is the $20 travel fee (see tokens).
 - No ingredient lists, dosages, or "what's in the bag" details until confirmed `[NEEDS INPUT]`.
 - Prices display as whole dollars ("$165"). No "starting at," no memberships, packages, or discounts unless added to this table.
 - The "Best for" line on the Menu page comes from this table. Three are lifted from the confirmed
@@ -166,6 +179,7 @@ Rules:
 
 - Benefits use soft, supportive verbs: *helps you rehydrate*, *supports recovery*, *helps you feel refreshed*.
 - NEVER: cure, treat, heal, prevent, detox, boost immunity, "instant," guaranteed results, anti-aging promises, or any disease/condition claim.
+- NEVER the event-flyer wording: "cure," "immunity," "number one" / "#1." The flyer is events-only and none of its copy goes on the site.
 - NEVER compare against or disparage medical care or other clinics.
 - "Hangover Help" copy stays about rehydration and feeling better. No glamorizing drinking.
 - Every page carries the disclaimer (see below).
@@ -212,6 +226,7 @@ resolve `/folder/` → `folder/index.html` locally. `vercel.json` sets `cleanUrl
 |---|---|---|
 | Home | `/` (`index.html`) | `/es/` |
 | IV & Wellness Menu | `/iv-menu/` | `/es/iv-menu/` |
+| Mobile IV Therapy (added 2026-09-30) | `/mobile-iv/` | `/es/mobile-iv/` |
 | What to Expect / FAQ | `/what-to-expect/` | `/es/what-to-expect/` |
 | About | `/about/` | `/es/about/` |
 | Contact / Book | `/contact/` | `/es/contact/` |
@@ -227,7 +242,7 @@ resolve `/folder/` → `folder/index.html` locally. `vercel.json` sets `cleanUrl
 - **No city pages, no individual drip pages, no gallery.** Local reach comes from schema `areaServed`. Drips link by anchor (`/iv-menu/#hangover-help`).
 
 ### Nav (simple, no mega-menu)
-Logo · IV & Wellness Menu · What to Expect · About · Contact · **Español/English toggle** ·
+Logo · IV & Wellness Menu · **Mobile IV** (ES "IV a domicilio") · What to Expect · About · Contact · **Español/English toggle** ·
 **Call to Book** button (phone token). Persistent click-to-call. Mobile: hamburger drawer +
 the call button stays visible in the bar.
 
@@ -240,11 +255,11 @@ behavior; the drawer is solid navy and forces the solid header while it is open.
 pages use the same pattern over their shorter heroes.
 
 ### Footer
-Logo (small) · NAP · hours · the 5 page links · language toggle · the disclaimer ·
+Logo (small) · NAP · hours · the 6 page links · language toggle · the disclaimer ·
 one line: "Thrive IV Solutions is led by Dr. R. Brookshire, who also leads
 South Texas Vascular Institute." with a single link to STVI (`https://stvi.tech`, on the
 practice name). No other STVI branding anywhere. Then, just before `</body>` on every
-page (10 + the 2 thank-you pages): the GHL chat widget `<script … defer>` (canonical copy
+page (12 + the 2 thank-you pages): the GHL chat widget `<script … defer>` (canonical copy
 in `_partials/footer.html`, identical tag everywhere, deferred so it never blocks
 rendering), followed by the `GHL EXTERNAL TRACKING SCRIPT` placeholder comment.
 
@@ -266,22 +281,42 @@ rendering), followed by the `GHL EXTERNAL TRACKING SCRIPT` placeholder comment.
 
 **Home.** Hero: eyebrow "Hydration. Recovery. Wellness." · H1 built on the target keyword
 ("IV therapy in Edinburg" + physician-supervised angle) · subline naming Dr. Brookshire's
-credential · CTAs: Call to Book (primary), See the Menu (secondary). Then: trust-badge row ·
-menu preview (all 4 items with prices, linking to anchors; sticky-image layout, see Layout) · "Why physician-supervised
-matters" section (plain-language, no claims beyond the Positioning rules) · short What to
-Expect teaser (30–45 min, what to bring) · final CTA ("Hydration That Works. So You Can
-Thrive." + call button + "Request online" link to `/contact/#request` + hours).
+credential · CTAs: Call to Book (primary), See the Menu (secondary) · hero meta line carries
+a "Clinic or mobile" link to `/mobile-iv/`. Then: trust-badge row ·
+menu preview (all 5 items with prices, linking to anchors; sticky-image layout, see Layout;
+NAD+ and Extra Liter under one "Add-ons" group label) · **"Clinic or mobile" section** right
+after the menu: a compact two-option sheet, side by side on desktop (visit us in Edinburg /
+we come to you, $20 travel fee within 30 miles), linking to `/contact/` and `/mobile-iv/` ·
+"Why physician-supervised matters" section (plain-language, no claims beyond the Positioning
+rules) · short What to Expect teaser (30–45 min, what to bring) · final CTA ("Hydration
+That Works. So You Can Thrive." + call button + "Request online" link to
+`/contact/#request` + hours).
 
-**IV & Wellness Menu.** H1 around "IV hydration menu and prices." Four item blocks with
+**IV & Wellness Menu.** H1 around "IV hydration menu and prices." Three drip blocks with
 anchor IDs, name, price, confirmed description, "best for" line, and a Call to Book
-button. NAD+ visually set apart as an injection. Short "Not sure which one?" section
-routing to a call, with a "Request online" link to `/contact/#request` beside it.
-Disclaimer visible near the menu.
+button, then the add-on group in one dark section: NAD+ (injection, with its photo) and
+Extra Liter (`#extra-liter`, price on the name line, "Add-on to any IV drip", no photo).
+Index bar lists all 5. One line linking to `/mobile-iv/` ("the same menu and prices on a
+mobile visit"). Short "Not sure which one?" section routing to a call, with a "Request
+online" link to `/contact/#request` beside it. Disclaimer visible near the menu.
+
+**Mobile IV Therapy** (`/mobile-iv/`, added 2026-09-30). Same inner-hero pattern and
+components. Content, from confirmed facts only: we come to you — homes, offices, and
+events across the Valley · physician-supervised, same menu and prices as the clinic ·
+$20 travel fee within 30 miles of our Edinburg office, call for farther · hours Mon–Fri
+9–5 · events and groups: call to plan (minimum group size `[NEEDS INPUT]`). A short "How
+mobile visits work" sequence (call → confirm location and drips → we arrive and set up →
+~30–45 min session). The 5-item ledger with a separate "Travel" row for the $20 fee.
+FAQ (min 4; `FAQPage` JSON-LD matches the visible text) + `BreadcrumbList`. One 4:5 photo
+slot (placeholder `placehold.co/1200x1500` until the client supplies a photo
+`[NEEDS INPUT — mobile photo]`). Never say who comes to the visit (see Positioning).
 
 **What to Expect / FAQ.** Before / during (~30–45 min) / after, from the care advice.
 Disclaimer callout. FAQ (min 6, only from confirmed facts): how long a session takes,
-what to do before, what to do after, who oversees the therapy, prices, how to book, hours,
-where you're located, whether NAD+ is an IV (no — injection).
+what to do before, what to do after, who oversees the therapy, prices (all 5 items), how
+to book, hours, where you're located, whether NAD+ is an IV (no — injection), "Can you
+come to me?" (yes, mobile, link to `/mobile-iv/`), "Is there a travel fee?" ($20 within
+30 miles, call beyond).
 
 **About.** Dr. R. Brookshire: board-certified vascular surgeon; why a physician-supervised
 clinic. Bio details beyond the credential are `[NEEDS INPUT]`. Do not invent training,
@@ -293,8 +328,10 @@ embed (side by side on desktop, form below the call block on mobile). The embed 
 verbatim (iframe + `form_embed.js`, the script once per page) inside `.form-frame`, a
 container with `min-height: 730px` so the page does not jump while the form loads; only the
 container is styled. `/es/contact/` uses the same EN form until the Spanish duplicate exists
-`[NEEDS INPUT]`. Then address, hours, Google Maps embed (public address confirmed),
-parking/suite note `[NEEDS INPUT]`, and the "Before you call" links.
+`[NEEDS INPUT]`. Mobile visits are booked by phone: say so in the hero lead and as a spec
+row in `#request`. Then address, hours, Google Maps embed (public address confirmed),
+parking/suite note `[NEEDS INPUT]`, and the "Before you call" links (Menu, What to Expect,
+Mobile IV).
 
 ---
 
@@ -306,6 +343,7 @@ parking/suite note `[NEEDS INPUT]`, and the "Before you call" links.
 - What to Expect: "What to Expect at Your IV Visit | Thrive IV Solutions"
 - About: "Physician-Supervised IV Therapy | Dr. R. Brookshire"
 - Contact: "Book IV Therapy in Edinburg, TX | Thrive IV Solutions"
+- Mobile IV: "Mobile IV Therapy in Edinburg & the RGV | Thrive IV"
 - ES titles translated equivalents, same length limits.
 - Home meta description must mention physician supervision + Edinburg + a call CTA.
 
@@ -318,22 +356,27 @@ index/follow with max-image/snippet/video-preview, OG + Twitter (`brand_assets/o
   (token), PostalAddress (INCLUDED — public address), `geo` `[VERIFY]`,
   `openingHoursSpecification` (Mon–Fri 09:00–17:00), `areaServed`: Edinburg, McAllen,
   Mission, Pharr, Weslaco, Rio Grande Valley `[VERIFY — client's actual draw area]`,
-  `hasOfferCatalog` with the 4 menu items, each an `Offer` with `price` and
-  `priceCurrency: "USD"`, and `priceRange` "$65–$185". Include a `Physician` object for
+  `hasOfferCatalog` with the 5 menu items, each an `Offer` with `price` and
+  `priceCurrency: "USD"`, and `priceRange` "$65–$185" (unchanged by the travel fee). Plus a
+  `Service` node for mobile IV therapy (`@id` `https://www.thriveivsolution.com/mobile-iv/#service`,
+  `provider` → `#clinic`, same `areaServed`, `hoursAvailable` Mon–Fri 09:00–17:00) with the
+  $20 travel fee described in its `description` text, never as a priced `Offer`. Include a `Physician` object for
   Dr. R. Brookshire as `employee` / `founder` `[VERIFY role]`, with
   `medicalSpecialty` vascular surgery. No `aggregateRating`, no `email` until provided.
-- Menu: `OfferCatalog` (the 4 Offers, same values as Home) + `BreadcrumbList`.
+- Menu: `OfferCatalog` (the 5 Offers, same values as Home) + `BreadcrumbList`.
+- Mobile IV: the same `Service` node (full declaration, same `@id`) + `FAQPage` (matches
+  visible FAQs exactly) + `BreadcrumbList`.
 - What to Expect: `FAQPage` (matches visible FAQs exactly) + `BreadcrumbList`.
 - About: `Physician` (Person) + `BreadcrumbList`.
 - Contact: clinic reference (`@id` only, not a re-declaration) + `BreadcrumbList`.
 - ES pages: same structures, translated text, `inLanguage: "es"`.
-- Offer count on Home == 4 == items on the Menu page.
+- Offer count on Home == 5 == items on the Menu page == rows in the Menu table.
 - Validate at search.google.com/test/rich-results before launch.
 
 **On-page:** exactly one H1 per page, no skipped heading levels, "Edinburg" in visible
 body text, descriptive alt text with service + location context.
 
-**Files:** `sitemap.xml` (all 10 pages, with `xhtml:link` hreflang alternates), `robots.txt`
+**Files:** `sitemap.xml` (all 12 pages, with `xhtml:link` hreflang alternates), `robots.txt`
 (allow all, point to sitemap).
 
 ---
@@ -356,7 +399,8 @@ body text, descriptive alt text with service + location context.
   (3:4, `object-position: center top`). Photo sections are true 50/50 splits with the image
   filling its full column width; never a small floating image box. Placeholders at the
   final size: `placehold.co/1200x1500` (4:5) and `placehold.co/900x1200` (portrait).
-- Photo tiers (all slots filled as of 2026-09-29): Home 3 · Menu 1 per drip (4) · What to Expect 1 · About
+- Photo tiers: Home 3 · Menu 1 per drip (4; Extra Liter has none) · Mobile IV 1 (placeholder
+  `placehold.co/1200x1500` until supplied `[NEEDS INPUT — mobile photo]`) · What to Expect 1 · About
   1 portrait of Dr. Brookshire (`aspect-[3/4]`, `object-position: center top`) · Contact 0.
 - Dr. Brookshire's headshot: `brand_assets/dr-brookshire.*` (1200×1600) and
   `dr-brookshire-600.*` (600×800), 3:4, metadata stripped, served via `srcset`. It is also
@@ -474,16 +518,16 @@ the single badge row) · mega-menu · any home-services artifact (emergency 24/7
 ## Active Blockers
 
 **Launch-blocking:** full disclaimer text · og-image ·
-native Spanish read (disclaimer + care advice minimum) · confirmation of what
-"physician-supervised" means in practice (who administers, screening, on-site presence) ·
-decision on dedicated Thrive phone line · **Remove pre-launch noindex lock** (vercel.json
+native Spanish read (disclaimer + care advice minimum; the new `/es/mobile-iv/` page and
+"Litro adicional") · decision on dedicated Thrive phone line · **Remove pre-launch noindex lock** (vercel.json
 `X-Robots-Tag` header + robots.txt `Disallow: /`, restore the launch robots.txt from its
 "RESTORE AT LAUNCH" block) — Prompt 5 must confirm before the domain is connected.
 
 **Backfillable:** vector/SVG logo (current PNG is usable) ·
 higher-res content-photo sources (current ones are 768px tall) · Dr. Brookshire
 bio details · email · whether the phone receives texts · Spanish duplicate of the GHL
-form · parking/suite note ·
+form · parking/suite note · mobile IV photo (`/mobile-iv/` placeholder) · minimum group
+size for events ·
 `areaServed` city list · `geo` coordinates · review status.
 
 **Open decisions:** lab-coat embroidery in the headshot (STVI name + full name
