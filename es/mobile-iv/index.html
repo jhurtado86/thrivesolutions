@@ -275,10 +275,12 @@
     <section class="section" id="we-come-to-you" aria-labelledby="come-title">
       <div class="wrap grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
         <div class="lg:order-2 reveal reveal--scale">
-          <!-- [NEEDS INPUT — mobile IV photo]: 4:5 placeholder at the final size (1200×1500) until the
-               client supplies a photo. Empty alt on purpose: a placeholder is not a photo to describe. -->
+          <!-- mobile-iv.* (delivered 2026-10-01): IV pole and bag beside a sofa; checked against the exclusion rules, no legible text. -->
           <figure class="photo-frame">
-            <img src="https://placehold.co/1200x1500/E9FDF6/4A5873.jpg?text=Foto+IV+a+domicilio" alt="" width="1200" height="1500" loading="lazy" decoding="async" />
+            <picture>
+              <source type="image/webp" srcset="/brand_assets/mobile-iv-600.webp 600w, /brand_assets/mobile-iv.webp 1200w" sizes="(min-width: 1024px) 50vw, 100vw" />
+              <img src="/brand_assets/mobile-iv.jpg" srcset="/brand_assets/mobile-iv-600.jpg 600w, /brand_assets/mobile-iv.jpg 1200w" sizes="(min-width: 1024px) 50vw, 100vw" alt="Soporte de suero con una bolsa de líquido IV junto a un sofá en una sala luminosa, una visita de terapia IV a domicilio de Thrive IV Solutions en una casa de Edinburg, TX, en el Valle del Río Grande" width="1200" height="1500" loading="lazy" decoding="async" />
+            </picture>
           </figure>
         </div>
         <div class="lg:order-1 flow reveal" data-delay="1" style="--flow: 1.5rem;">
