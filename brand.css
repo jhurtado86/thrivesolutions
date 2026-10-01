@@ -420,7 +420,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   .menu-grid__intro  { grid-area: intro; }
   .menu-grid__media  { grid-area: media; align-self: stretch; }
   .menu-grid__ledger { grid-area: ledger; }
-  .photo-frame.menu-grid__sticky { position: sticky; top: calc(var(--nav-height) + 1.5rem); }
+  .photo-frame.menu-grid__sticky, .range.menu-grid__sticky { position: sticky; top: calc(var(--nav-height) + 1.5rem); }
 }
 
 /* ============================================================
@@ -467,6 +467,8 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 }
 .ledger__group::after { content: ""; flex: 1; height: 1px; background: var(--color-line-dark); }
 .ledger__group + .ledger__row { border-top: 1px solid var(--color-line-dark); }
+.ledger__row--static { cursor: default; }            /* a fact row (e.g. the mobile travel fee), not a link */
+.ledger__row--static::before { display: none; }
 
 /* ============================================================
    Spec list — facts as label / value, hairline-separated
@@ -546,16 +548,19 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 /* ============================================================
    Menu page — index bar, item title/price, dark spec, callout
+   Index bar holds all 5 menu items (3 drips + 2 add-ons): 2-up on
+   mobile with an odd last item spanning the row, one row of 5 at ≥768.
    ============================================================ */
 .menu-index { border-bottom: 1px solid var(--color-line); background: var(--color-bg); }
-.menu-index__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.menu-index__list { list-style: none; margin: 0 0 -1px; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); } /* -1px: the last row's link borders sit on the bar's own border */
 .menu-index__link {
   position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.1rem;
   min-height: 76px; padding: 0.85rem 0.5rem; text-align: center;
   border-bottom: 1px solid var(--color-line);
 }
 .menu-index__list li:nth-child(odd) .menu-index__link { border-right: 1px solid var(--color-line); }
-.menu-index__list li:nth-last-child(-n+2) .menu-index__link { border-bottom: 0; }
+.menu-index__list li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.menu-index__list li:last-child:nth-child(odd) .menu-index__link { border-right: 0; }
 .menu-index__name { font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.01em; color: var(--color-ink); }
 .menu-index__price { font-family: var(--font-display); font-weight: 600; font-size: 1.375rem; letter-spacing: -0.02em; line-height: 1.1; color: var(--color-blue); font-variant-numeric: tabular-nums lining-nums; }
 .menu-index__link::after {
@@ -565,7 +570,8 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 .menu-index__link:hover::after { transform: scaleX(1); }
 .menu-index__link:active .menu-index__price { transform: translateY(1px); }
 @media (min-width: 768px) {
-  .menu-index__list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .menu-index__list { grid-template-columns: repeat(5, minmax(0, 1fr)); margin-bottom: 0; }
+  .menu-index__list li:last-child:nth-child(odd) { grid-column: auto; }
   .menu-index__link { min-height: 88px; border-bottom: 0; border-left: 1px solid var(--color-line); }
   .menu-index__list li:nth-child(odd) .menu-index__link { border-right: 0; }
   .menu-index__list li:first-child .menu-index__link { border-left: 0; }
@@ -587,6 +593,15 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 .section--dark .spec__row dt { color: var(--color-accent); }
 .section--dark .spec__row dd { color: var(--color-on-dark); }
 .section--dark .btn-outline { color: var(--color-on-dark); border-color: rgba(255, 255, 255, 0.32); }
+
+/* Extra Liter — second row of the dark add-on section on the Menu page. No photo slot:
+   a typographic "+1 liter" mark stands in the media column instead. */
+.addon-row { margin-top: clamp(3rem, 6vw, 5rem); padding-top: clamp(2.5rem, 5vw, 4rem); border-top: 1px solid var(--color-line-dark); }
+.addon-row__mark {
+  font-family: var(--font-display); font-style: italic; font-weight: 500; letter-spacing: -0.03em; line-height: 0.95;
+  font-size: clamp(3.25rem, 7.5vw, 6rem); color: var(--color-accent); text-wrap: balance;
+}
+.addon-row__mark small { display: block; font-family: var(--font-body); font-style: normal; font-weight: 500; font-size: 1.125rem; letter-spacing: 0; line-height: 1.5; color: var(--color-on-dark-muted); margin-top: 0.75rem; max-width: 30ch; }
 
 /* Disclaimer callout (visible, near the menu / on What to Expect) */
 .callout {
@@ -634,8 +649,61 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 .faq__item[open] .faq__chev { transform: rotate(180deg); }
 .faq__answer { padding: 0 0 1.35rem; color: var(--color-muted); max-width: 62ch; }
 .faq__answer p { margin: 0; }
-.faq__answer a, .spec__row dd a { color: var(--color-blue); font-weight: 600; text-underline-offset: 3px; display: inline-block; padding-block: 0.75rem; margin-block: -0.75rem; }
-.faq__answer a:hover, .spec__row dd a:hover { text-decoration: underline; }
+.faq__answer a, .spec__row dd a, .phase__note a { color: var(--color-blue); font-weight: 600; text-underline-offset: 3px; display: inline-block; padding-block: 0.75rem; margin-block: -0.75rem; }
+.faq__answer a:hover, .spec__row dd a:hover, .phase__note a:hover { text-decoration: underline; }
+
+/* ============================================================
+   Clinic or mobile — ONE two-option sheet (Home), split by a
+   hairline. Not two cards: one surface, two columns.
+   ============================================================ */
+.ways {
+  display: grid; background: var(--color-bg);
+  border: 1px solid var(--color-line); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-elevated); overflow: hidden;
+}
+.way { padding: clamp(1.75rem, 4vw, 3rem); display: grid; gap: 1rem; align-content: start; }
+.way + .way { border-top: 1px solid var(--color-line); }
+.way__head { display: flex; align-items: center; gap: 0.75rem; }
+.way__head svg { flex: none; width: 24px; height: 24px; color: var(--color-accent-mid); }
+.way__label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-deep); }
+.way h3 { font-size: clamp(1.5rem, 2.4vw, 1.875rem); }
+.way .copy { font-size: 1.0625rem; }
+.way .checklist { margin-top: 0.25rem; }
+.way .checklist li { font-size: 1.0625rem; }
+.way .link-arrow { margin-top: 0.25rem; }
+@media (min-width: 768px) {
+  .ways { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .way + .way { border-top: 0; border-left: 1px solid var(--color-line); }
+}
+
+/* ============================================================
+   Mobile IV — travel-range diagram. Rings are distance from the
+   Edinburg office (mint ring = the $20 zone, dashed = beyond, call).
+   Lives in the sticky media column of .menu-grid, in place of a photo.
+   ============================================================ */
+.range { margin: 0; }
+.range__frame {
+  position: relative; width: 100%; aspect-ratio: 4 / 5; overflow: hidden;
+  border-radius: var(--radius-md); background: var(--color-primary-mid); box-shadow: var(--shadow-on-dark);
+}
+.range__frame::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 58% 60%, rgba(var(--color-blue-bright-rgb), 0.16) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 0% 0%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 65%);
+}
+.range__frame svg { position: relative; display: block; width: 100%; height: 100%; }
+.range__ring { fill: none; stroke: rgba(255, 255, 255, 0.22); stroke-width: 1.5; }
+.range__ring--fee { stroke: var(--color-accent); stroke-opacity: 0.9; stroke-width: 2; }
+.range__ring--beyond { stroke-dasharray: 5 9; stroke-linecap: round; }
+.range__halo { fill: rgba(var(--color-accent-rgb), 0.16); }
+.range__dot { fill: var(--color-accent); }
+.range__tick { stroke: rgba(255, 255, 255, 0.35); stroke-width: 1.5; stroke-linecap: round; }
+.range text { font-family: var(--font-body); font-size: 15px; fill: var(--color-on-dark-muted); }
+.range .range__t-label { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; fill: var(--color-on-dark-faint); }
+.range .range__t-fee { font-family: var(--font-display); font-weight: 600; font-size: 52px; letter-spacing: -0.025em; fill: var(--color-accent); }
+.range .range__t-strong { font-weight: 600; fill: var(--color-on-dark); }
+.range__caption { margin-top: 0.9rem; font-size: 0.9375rem; line-height: 1.55; color: var(--color-on-dark-muted); }
 
 /* Map in the uniform frame (Contact has no content photos) */
 .photo-frame--map { background: var(--color-accent-wash); }
@@ -682,7 +750,7 @@ html.is-form-in-view chat-widget { display: none !important; }
   box-shadow: var(--shadow-floating);
 }
 .skip-link:focus { left: 0; }
-section[id] { scroll-margin-top: calc(var(--nav-height) + 12px); }
+section[id], article[id] { scroll-margin-top: calc(var(--nav-height) + 12px); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
